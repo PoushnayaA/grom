@@ -17,14 +17,6 @@
   }
 }
 
-.rouble {
-  font-family: $ff-rouble;
-  /* stylelint-disable */
-  text-transform: lowercase !important;
-  font-weight: 400 !important;
-  /* stylelint-enable */
-}
-
 .visually-hidden {
   position: absolute;
 
@@ -68,4 +60,25 @@
 
 .js-focus-visible :focus:not(.focus-visible) {
   outline: none;
+}
+
+h1 {
+  // Базовые стили
+  @each $property, $value in $h2 {
+    #{$property}: $value;
+  }
+
+  // Стили для экранов от 768px до 1440px
+  @include vp-768 {
+    @each $property, $value in $h2 {
+      #{$property}: $value;
+    }
+  }
+
+  // Стили для экранов от 1440px и больше
+  @include vp-1440 {
+    @each $property, $value in $h1 {
+      #{$property}: $value;
+    }
+  }
 }
