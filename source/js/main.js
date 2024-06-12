@@ -11,40 +11,37 @@ window.addEventListener('DOMContentLoaded', () => {
 
   iosVhFix();
 
-  // Modules
-  // ---------------------------------
 
-  // все скрипты должны быть в обработчике 'DOMContentLoaded', но не все в 'load'
-  // в load следует добавить скрипты, не участвующие в работе первого экрана
   window.addEventListener('load', () => {
     initModals();
     const form = new Form();
     window.form = form;
     form.init();
   });
+
+
+
+  const burger = document.querySelector('.burger');
+  const menu = document.querySelector('.menu');
+
+  burger.addEventListener('click', () => {
+    menu.classList.toggle('show');
+    menu.classList.toggle('hide');
+    burger.classList.toggle('active');
+    document.querySelector('body').classList.toggle('dark');
+  });
+
+  function handleWindowResize() {
+    const bodyElement = document.body;
+    const windowWidth = window.innerWidth;
+
+    if (windowWidth >= 768) {
+      bodyElement.classList.remove('dark');
+      menu.classList.remove('show');
+    menu.classList.add('hide');
+    burger.classList.remove('active');
+    }
+  }
+
+  window.addEventListener('resize', handleWindowResize);
 });
-
-// ---------------------------------
-
-// ❗❗❗ обязательно установите плагины eslint, stylelint, editorconfig в редактор кода.
-
-// привязывайте js не на классы, а на дата атрибуты (data-validate)
-
-// вместо модификаторов .block--active используем утилитарные классы
-// .is-active || .is-open || .is-invalid и прочие (обязателен нейминг в два слова)
-// .select.select--opened ❌ ---> [data-select].is-open ✅
-
-// выносим все в дата атрибуты
-// url до иконок пинов карты, настройки автопрокрутки слайдера, url к json и т.д.
-
-// для адаптивного JS используется matchMedia и addListener
-// const breakpoint = window.matchMedia(`(min-width:1024px)`);
-// const breakpointChecker = () => {
-//   if (breakpoint.matches) {
-//   } else {
-//   }
-// };
-// breakpoint.addListener(breakpointChecker);
-// breakpointChecker();
-
-// используйте .closest(el)

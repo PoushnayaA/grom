@@ -34,51 +34,33 @@
   clip-path: inset(100%);
 }
 
-.scroll-lock-ios {
-  position: fixed;
-
-  overflow: hidden;
-}
-
-.scroll-lock {
-  overflow: hidden;
-}
-
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-}
-
-.no-transition {
-  /* stylelint-disable-next-line */
-  transition: none !important;
-}
-
 .js-focus-visible :focus:not(.focus-visible) {
   outline: none;
 }
 
 h1 {
   // Базовые стили
-  @each $property, $value in $h2 {
+  @each $property,
+  $value in $h2 {
     #{$property}: $value;
   }
 
   // Стили для экранов от 768px до 1440px
   @include vp-768 {
-    @each $property, $value in $h2 {
+
+    @each $property,
+    $value in $h2 {
       #{$property}: $value;
     }
   }
 
   // Стили для экранов от 1440px и больше
   @include vp-1440 {
-    @each $property, $value in $h1 {
+
+    @each $property,
+    $value in $h1 {
       #{$property}: $value;
     }
   }
 }
+

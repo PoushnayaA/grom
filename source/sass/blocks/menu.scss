@@ -1,0 +1,292 @@
+header {
+  z-index: 10;
+}
+
+body.dark {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.513);
+  }
+}
+
+.top-bar {
+  background-color: $dark;
+  .container {
+
+
+    div {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    padding-bottom: 16px;
+
+    @include vp-768 {
+      justify-content: flex-start;
+      gap: 24px;
+    }
+
+    a {
+      color: $white;
+    }
+
+  }
+
+}
+
+
+@keyframes menuOpen {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navbar {
+
+  background-color: $white;
+}
+
+.navbar-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.burger,
+.logo,
+.menu,
+.login {
+  display: inline-block;
+}
+
+.menu {
+  display: none;
+  border-top: 1.5px solid $medium-grey;
+  background: $white;
+
+
+  @include vp-768 {
+    display: inline-block;
+    margin-left: 20px;
+    border: none;
+    position: relative;
+    background-color: transparent;
+    text-align: center;
+  }
+}
+
+.burger {
+  cursor: pointer;
+
+  @include vp-768 {
+    display: none;
+  }
+}
+
+.burger-line {
+  width: 25px;
+  height: 3px;
+  background-color: $grey;
+  margin: 5px 0;
+  position: relative;
+  transition: transform 0.4s ease-in-out;
+  border-radius: 10px;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: $grey;
+    transition: transform 0.4s ease-in-out;
+    border-radius: 10px;
+  }
+
+  &::before {
+    top: -8px;
+  }
+
+  &::after {
+    bottom: -8px;
+  }
+}
+
+.burger.active {
+  .burger-line {
+    background-color: transparent;
+
+    &::before {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    &::after {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+  }
+}
+
+.menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  margin: 10px 0;
+
+
+  .active {
+    border-bottom: 1.5px solid $green;
+    color: $dark;
+  }
+
+  @include vp-768 {
+    display: inline-block;
+    margin-right: 20px;
+  }
+
+  a {
+    color: $grey;
+    padding: 0 0 4px;
+
+    @each $property,
+    $value in $small {
+      #{$property}: $value;
+    }
+  }
+}
+
+.navbar {
+  position: relative;
+  box-shadow: 0px 4px 26px 0px rgba(0, 0, 0, 0.08);
+}
+
+.menu.show {
+  display: block;
+  animation-name: menuOpen;
+  animation-duration: 0.8s;
+  animation-timing-function: ease-in-out;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: $temp;
+  text-align: left;
+
+  @include vp-768 {
+    position: relative;
+    background-color: transparent;
+  }
+}
+
+.login {
+  a {
+    display: block;
+    white-space: nowrap;
+
+    @include vp-768 {
+      padding: 12px 24px;
+      border-radius: 25px;
+      border: 1.5px solid $green;
+    }
+
+    div {
+      display: none;
+
+      @include vp-768 {
+        display: block;
+      }
+
+      @each $property,
+      $value in $button {
+        #{$property}: $value;
+      }
+
+      color: $dark;
+    }
+
+    img {
+      display: block;
+
+      @include vp-768 {
+        display: none;
+      }
+    }
+  }
+}
+
+
+footer {
+  background-color: $dark;
+}
+
+.footer-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+
+  @include vp-1440 {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px 0;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 10px 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    li {
+      padding-bottom: 4px;
+    }
+
+    @include vp-1440 {
+      flex-direction: row;
+
+      grid-column: 2/3;
+      grid-row: 1/2;
+    }
+  }
+
+  ul a {
+    color: $white;
+
+    @each $property,
+    $value in $small {
+      #{$property}: $value;
+    }
+  }
+
+  .copyright {
+    color: $grey;
+    margin: 0;
+  }
+}
