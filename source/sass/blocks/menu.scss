@@ -18,9 +18,15 @@ body.dark {
 
 .top-bar {
   background-color: $dark;
+
+  a {
+    @each $property,
+    $value in $description {
+      #{$property}: $value;
+    }
+  }
+
   .container {
-
-
     div {
       display: flex;
       align-items: center;
@@ -31,12 +37,15 @@ body.dark {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
 
     @include vp-768 {
       justify-content: flex-start;
       gap: 24px;
+
+      padding-top: 16px;
+    padding-bottom: 16px;
     }
 
     a {
@@ -69,7 +78,15 @@ body.dark {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
+  padding: 16px 0;
+
+  @include vp-768 {
+    padding: 4px 0;
+  }
+
+  @include vp-1440 {
+    padding: 8px 0;
+  }
 }
 
 .burger,
@@ -77,6 +94,22 @@ body.dark {
 .menu,
 .login {
   display: inline-block;
+}
+
+.logo  {
+  @include vp-768 {
+    padding: 8px;
+
+    img {
+      width: 70px;
+    }
+  }
+
+  @include vp-1440 {
+    img {
+      width: 80px;
+    }
+  }
 }
 
 .menu {
@@ -87,16 +120,20 @@ body.dark {
 
   @include vp-768 {
     display: inline-block;
-    margin-left: 20px;
+    // margin-left: 20px;
     border: none;
     position: relative;
     background-color: transparent;
     text-align: center;
+    width: 70%;
   }
 }
 
 .burger {
   cursor: pointer;
+  width: 32px;
+  height: 32px;
+  padding: 8px 4px;
 
   @include vp-768 {
     display: none;
@@ -104,10 +141,10 @@ body.dark {
 }
 
 .burger-line {
-  width: 25px;
+  width: 100%;
   height: 3px;
   background-color: $grey;
-  margin: 5px 0;
+  // margin: 5px 0;
   position: relative;
   transition: transform 0.4s ease-in-out;
   border-radius: 10px;
@@ -124,11 +161,11 @@ body.dark {
   }
 
   &::before {
-    top: -8px;
+    bottom: -7px;
   }
 
   &::after {
-    bottom: -8px;
+    bottom: -14px;
   }
 }
 
@@ -137,7 +174,7 @@ body.dark {
     background-color: transparent;
 
     &::before {
-      transform: rotate(45deg) translate(6px, 6px);
+      transform: rotate(45deg) translate(0px, 0px);
     }
 
     &::after {
@@ -148,12 +185,23 @@ body.dark {
 
 .menu ul {
   list-style-type: none;
-  padding: 0;
+  padding: 18px 0 22px;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  @include vp-768 {
+    flex-direction: row;
+    justify-content: center;
+    gap: 56px;
+    flex-wrap: wrap;
+  }
 }
 
 .menu li {
-  margin: 10px 0;
+  // margin: 10px 0;
+  padding: 4px 0;
 
 
   .active {
@@ -163,7 +211,7 @@ body.dark {
 
   @include vp-768 {
     display: inline-block;
-    margin-right: 20px;
+    // margin-right: 20px;
   }
 
   a {
@@ -181,6 +229,8 @@ body.dark {
   position: relative;
   box-shadow: 0px 4px 26px 0px rgba(0, 0, 0, 0.08);
 }
+
+
 
 .menu.show {
   display: block;
@@ -246,26 +296,32 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px 0;
+  padding: 16px 0;
 
   @include vp-1440 {
     display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 20px 0;
+    grid-template-columns: 98px auto;
+    gap: 5px 20px;
+    justify-content: space-between;
+    padding: 12px 0;
   }
 
   ul {
     list-style-type: none;
-    margin: 10px 0;
+    margin: 18px 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 16px;
+    gap: 11px;
 
     li {
-      padding-bottom: 4px;
+      padding: 4px 10px;
+
+      @include vp-1440 {
+        padding: 4px 0;
+      }
     }
 
     @include vp-1440 {
@@ -273,6 +329,8 @@ footer {
 
       grid-column: 2/3;
       grid-row: 1/2;
+
+      gap: 16px;
     }
   }
 
@@ -287,6 +345,19 @@ footer {
 
   .copyright {
     color: $grey;
-    margin: 0;
+    margin: 5px 0 0;
+    @each $property,
+    $value in $small {
+      #{$property}: $value;
+    }
+
+    @include vp-1440 {
+      grid-column: 1/-1;
+      grid-row: 2/3;
+    }
   }
+}
+
+.footer-logo {
+  padding: 9px;
 }
