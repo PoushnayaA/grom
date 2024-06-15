@@ -75,9 +75,60 @@
       </div>
     </header>
     <main>
-      <section class="intro">
+      <section class="filter-list">
         <div class="container">
-          <h1></h1>
+          <div class="filter-list__header competitions-list">
+            <h1 class="competitions-list__title">Соревнования</h1>
+            <p class="competitions-list__counter">Всего: <span>2505</span></p>
+            <div class="competitions-list__sort">
+              <button class="competitions-list__filter-mobile-button">Filters</button>
+              <button class="competitions-list__sort-button">Сортировать</button>
+              <ul class="competitions-list__sort-list">
+                <li>
+                  <a href="#" data-sort="date">По дате</a>
+                </li>
+                <li>
+                  <a href="#" data-sort="popularity">По популярности</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="filter-list__body">
+            <div class="filters">
+              <h2>Фильтр</h2>
+              <form>
+                <input type="text" placeholder="Search" />
+                <div class="tags-container">
+                  <h3>Tags</h3>
+                  <div class="tags">
+                    <label>
+                      <input type="checkbox" name="tag" value="tag1" />
+                      Tag 1
+                    </label>
+                    <label>
+                      <input type="checkbox" name="tag" value="tag2" />
+                      Tag 2
+                    </label>
+                    <label>
+                      <input type="checkbox" name="tag" value="tag3" />
+                      Tag 3
+                    </label>
+                    <label>
+                      <input type="checkbox" name="tag" value="tag4" />
+                      Tag 4
+                    </label>
+                  </div>
+                </div>
+                <button type="submit">Показать</button>
+              </form>
+            </div>
+            <div class="list-container">
+              <h2 class="visually-hidden">Отсортированный список соревнований.</h2>
+              <ul>
+                <li>Item 1</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
     </main>
@@ -85,7 +136,7 @@
       <div class="container">
         <div class="footer-wrapper">
           <div class="footer-logo">
-            <img  src="./img/svg/logo-dark.svg" width="79" height="39">
+            <img src="./img/svg/logo-dark.svg" width="79" height="39">
           </div>
           <ul class="footer-list">
             <li><a href="#">О сервисе</a></li>

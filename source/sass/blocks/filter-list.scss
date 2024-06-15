@@ -1,0 +1,150 @@
+.filter-list {
+  .filter-list__body {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    @include vp-768 {
+      flex-direction: row;
+    }
+  }
+
+
+
+
+
+  .filters {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    z-index: 1;
+
+    position: relative;
+    padding: 20px;
+    background-color: $white;
+    border-radius: 10px;
+
+    @include vp-768 {
+      position: sticky;
+      top: 0;
+      width: 200px;
+      margin-right: 20px;
+      z-index: 0;
+    }
+
+    @include vp-768 {
+      display: block;
+      position: static;
+      width: auto;
+      background-color: transparent;
+      padding: 0;
+    }
+  }
+
+  .filters.active {
+    display: block;
+  }
+
+  .list-container {
+    margin-top: 20px;
+
+    @include vp-768 {
+      flex-grow: 1;
+      margin-top: 0;
+    }
+  }
+}
+
+.competitions-list {
+  @include vp-768 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__filter-mobile-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: $green;
+    border: none;
+    cursor: pointer;
+
+    @include vp-768 {
+      display: none;
+    }
+  }
+
+  &__sort {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__sort-button {
+    background-color: transparent;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: $grey;
+
+    @each $property,
+    $value in $small {
+      #{$property}: $value;
+    }
+  }
+
+  &__sort-list {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    top: 100%;
+    right: 0;
+    background-color: $white;
+    border-radius: 10px;
+    list-style-type: none;
+    padding: 16px;
+    margin: 0;
+    text-align: right;
+    white-space: nowrap;
+
+    @each $property,
+    $value in $small {
+      #{$property}: $value;
+    }
+  }
+
+  &__sort-list li {
+    padding: 5px 0;
+  }
+
+  &__sort-list.active {
+    display: block;
+  }
+
+  &__sort-list a {
+    color: $dark;
+    text-decoration: none;
+  }
+
+  &__title {
+    @each $property,
+    $value in $h2 {
+      #{$property}: $value;
+    }
+
+    text-transform: uppercase;
+  }
+
+  &__counter {
+    color: $grey;
+    @each $property,
+    $value in $small {
+      #{$property}: $value;
+    }
+  }
+}
