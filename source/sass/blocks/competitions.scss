@@ -1,0 +1,143 @@
+.competitions {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__item {
+    list-style-type: none;
+    background-color: $white;
+    border-radius: 10px;
+    padding: 16px;
+  }
+
+  &__inf-wrapper {
+
+    @each $property,
+    $value in $small {
+      #{$property}: $value;
+    }
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__category {
+
+    display: flex;
+    align-items: center;
+
+    @each $property,
+    $value in $small {
+      #{$property}: $value;
+    }
+
+  }
+
+  &__address-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    @each $property,
+    $value in $description {
+      #{$property}: $value;
+    }
+  }
+
+  &__description {
+
+    @each $property,
+    $value in $description {
+      #{$property}: $value;
+    }
+
+    color: $grey;
+    // padding: 0 16px;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+      // align-items: center;
+
+    @include vp-1440 {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      gap: 16px;
+    }
+
+
+    li {
+      position: relative;
+      padding-left: 16px;
+
+      &::before {
+        content: "";
+        /* Создаем псевдоэлемент для кружка */
+        position: absolute;
+        /* Позиционируем кружок абсолютно */
+        left: 0px;
+        /* Выравниваем кружок по левому краю */
+        top: 50%;
+        /* Выравниваем кружок по вертикали */
+        transform: translateY(-50%);
+        /* Смещаем кружок по вертикали */
+        width: 8px;
+        /* Ширина кружка */
+        height: 8px;
+        /* Высота кружка */
+        border-radius: 50%;
+        /* Делаем кружок круглым */
+        background-color: $green;
+        /* Зеленый цвет кружка */
+      }
+    }
+  }
+
+  &__buttons {
+
+    @include vp-1440 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    div {
+      display: flex;
+      gap: 12px;
+    }
+
+    div p,
+    div a {
+      @each $property,
+      $value in $button {
+        #{$property}: $value;
+      }
+    }
+
+    div a {
+      display: block;
+      background-color: $green;
+      border: none;
+      cursor: pointer;
+      padding: 12px 24px;
+      border-radius: 25px;
+      line-height: 26px;
+    }
+  }
+
+  &__members {
+    color: $blue;
+    text-decoration: underline;
+  }
+
+  a {
+    cursor: pointer;
+  }
+}

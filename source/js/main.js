@@ -59,6 +59,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   sortToggle.addEventListener('click', () => {
     sortOptions.classList.toggle('active');
+    sortToggle.querySelector('.arrow').classList.toggle('active')
   });
 
   const sortLinks = sortOptions.querySelectorAll('a');
@@ -70,4 +71,20 @@ window.addEventListener('DOMContentLoaded', () => {
       sortOptions.style.display = 'none';
     });
   });
+
+  const addressElements = document.querySelectorAll('.competitions__address');
+
+function updateAddresses() {
+  const windowWidth = window.innerWidth;
+
+  addressElements.forEach(addressElement => {
+    const shortAddress = addressElement.dataset.addressMobile;
+    const longAddress = addressElement.dataset.addressDesktop;
+    addressElement.textContent = windowWidth >= 1440 ? longAddress : shortAddress;
+  });
+  console.log(1);
+}
+
+updateAddresses();
+window.addEventListener('resize', updateAddresses);
 });

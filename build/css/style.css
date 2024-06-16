@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* stylelint-disable */
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
@@ -1910,6 +1911,31 @@ footer {
   }
 }
 
+@-webkit-keyframes sortOpen {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(20%);
+            transform: translateY(20%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes sortOpen {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(20%);
+            transform: translateY(20%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
 @media (min-width: 768px) {
   .competitions-list {
     display: -webkit-box;
@@ -1918,18 +1944,16 @@ footer {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
   }
 }
 .competitions-list__filter-mobile-button {
   display: block;
-  width: 100%;
   padding: 10px;
   background-color: #D6FD52;
   border: none;
   cursor: pointer;
+  padding: 12px 24px;
+  border-radius: 25px;
 }
 @media (min-width: 768px) {
   .competitions-list__filter-mobile-button {
@@ -1944,11 +1968,23 @@ footer {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  margin-left: auto;
 }
 .competitions-list__sort-button {
+  padding: 10px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.competitions-list__sort-button button {
   background-color: transparent;
   border: none;
-  padding: 10px 20px;
   cursor: pointer;
   color: #999999;
   font-size: 14px;
@@ -1968,6 +2004,9 @@ footer {
   margin: 0;
   text-align: right;
   white-space: nowrap;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 4px 26px 0px rgba(0, 0, 0, 0.08);
+          box-shadow: 0px 4px 26px 0px rgba(0, 0, 0, 0.08);
   font-size: 14px;
   font-weight: 400;
   line-height: 17.07px;
@@ -1977,6 +2016,12 @@ footer {
 }
 .competitions-list__sort-list.active {
   display: block;
+  -webkit-animation-name: sortOpen;
+          animation-name: sortOpen;
+  -webkit-animation-duration: 0.4s;
+          animation-duration: 0.4s;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
 }
 .competitions-list__sort-list a {
   color: #2E2E2E;
@@ -1993,4 +2038,187 @@ footer {
   font-size: 14px;
   font-weight: 400;
   line-height: 17.07px;
+}
+@media (min-width: 768px) {
+  .competitions-list__counter {
+    margin-left: 16px;
+  }
+}
+
+.arrow {
+  -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+          transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.4s ease-in-out;
+  transition: -webkit-transform 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
+}
+
+.arrow.active {
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
+  -webkit-transition: -webkit-transform 0.4s ease-in-out;
+  transition: -webkit-transform 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
+}
+
+.competitions {
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 16px;
+}
+.competitions__item {
+  list-style-type: none;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  padding: 16px;
+}
+.competitions__inf-wrapper {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17.07px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.competitions__category {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17.07px;
+}
+.competitions__address-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.63px;
+}
+.competitions__description {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.63px;
+  color: #999999;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+@media (min-width: 1440px) {
+  .competitions__description {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    gap: 16px;
+  }
+}
+.competitions__description li {
+  position: relative;
+  padding-left: 16px;
+}
+.competitions__description li::before {
+  content: "";
+  /* Создаем псевдоэлемент для кружка */
+  position: absolute;
+  /* Позиционируем кружок абсолютно */
+  left: 0px;
+  /* Выравниваем кружок по левому краю */
+  top: 50%;
+  /* Выравниваем кружок по вертикали */
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  /* Смещаем кружок по вертикали */
+  width: 8px;
+  /* Ширина кружка */
+  height: 8px;
+  /* Высота кружка */
+  border-radius: 50%;
+  /* Делаем кружок круглым */
+  background-color: #D6FD52;
+  /* Зеленый цвет кружка */
+}
+@media (min-width: 1440px) {
+  .competitions__buttons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+.competitions__buttons div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 12px;
+}
+.competitions__buttons div p,
+.competitions__buttons div a {
+  font-family: "Montserrat", "Arial", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.5px;
+  text-align: left;
+}
+.competitions__buttons div a {
+  display: block;
+  background-color: #D6FD52;
+  border: none;
+  cursor: pointer;
+  padding: 12px 24px;
+  border-radius: 25px;
+  line-height: 26px;
+}
+.competitions__members {
+  color: #4176FF;
+  text-decoration: underline;
+}
+.competitions a {
+  cursor: pointer;
 }

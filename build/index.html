@@ -81,8 +81,13 @@
             <h1 class="competitions-list__title">Соревнования</h1>
             <p class="competitions-list__counter">Всего: <span>2505</span></p>
             <div class="competitions-list__sort">
-              <button class="competitions-list__filter-mobile-button">Filters</button>
-              <button class="competitions-list__sort-button">Сортировать</button>
+              <button class="competitions-list__filter-mobile-button">Фильтр</button>
+              <div class="competitions-list__sort-button">
+                <button>Сортировать</button>
+                <svg class="arrow" width="10" height="5" viewBox="0 0 10 5" role="img">
+                  <use href="img/sprite.svg#arrow"></use>
+                </svg>
+              </div>
               <ul class="competitions-list__sort-list">
                 <li>
                   <a href="#" data-sort="date">По дате</a>
@@ -124,8 +129,106 @@
             </div>
             <div class="list-container">
               <h2 class="visually-hidden">Отсортированный список соревнований.</h2>
-              <ul>
-                <li>Item 1</li>
+              <ul class="competitions">
+                <li class="competitions__item">
+                  <div class="competitions__inf-wrapper">
+                    <div class="competitions__date">1 июня 2024</div>
+                  <div class="competitions__category">
+                    <svg class="arrow" width="24" height="24" viewBox="0 0 24 24" role="img">
+                      <use href="img/sprite.svg#another"></use>
+                    </svg>
+                    <div>Другое</div>
+                  </div>
+                  </div>
+                  <h2 class="competitions__title">SWIM SUP RUN - БУШОВО</h2>
+                  <ul class="competitions__description">
+                    <li>SUP 1000 метров</li>
+                    <li>SUP 4000 метров</li>
+                    <li>Открытая вода 1000 метров</li>
+                  </ul>
+                  <div class="competitions__address-wrapper">
+                  <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" role="img">
+                    <use href="img/sprite.svg#map"></use>
+                  </svg>
+                  <p class="competitions__address"
+                    data-address-desktop="Тула. Тульская обл, Ленинский р-н, деревня Крюково (Медвенский с/о), мкр Бушово"
+                    data-address-mobile="Тула">
+                  </p>
+                </div>
+                  <div class="competitions__buttons">
+                    <div>
+                      <a data-button-registration="registration-active">Регистрация</a>
+                      <p>от 1 500 ₽</p>
+                    </div>
+                    <a class="competitions__members">Список участников</a>
+                  </div>
+                </li>
+                <li class="competitions__item">
+                  <div class="competitions__inf-wrapper">
+                    <div class="competitions__date">18 мая 2024</div>
+                  <div class="competitions__category">
+                    <svg class="arrow" width="24" height="24" viewBox="0 0 24 24" role="img">
+                      <use href="img/sprite.svg#swimming"></use>
+                    </svg>
+                    <div>Плавание</div>
+                  </div>
+                  </div>
+                  <h2 class="competitions__title">Ночной Заплыв 2024 | NIGHT SWIM</h2>
+                  <ul class="competitions__description">
+                    <li>SUP 1000 метров</li>
+                    <li>SUP 4000 метров</li>
+                    <li>Открытая вода 1000 метров</li>
+                  </ul>
+                  <div class="competitions__address-wrapper">
+                  <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" role="img">
+                    <use href="img/sprite.svg#map"></use>
+                  </svg>
+                  <p class="competitions__address"
+                    data-address-desktop="Москва. Турчанинов переулок, 3с1"
+                    data-address-mobile="Москва">
+                  </p>
+                </div>
+                  <div class="competitions__buttons">
+                    <div>
+                      <a data-button-registration="registration-completed">Регистрация</a>
+                      <p>от 1 500 ₽</p>
+                    </div>
+                    <a class="competitions__members">Список участников</a>
+                  </div>
+                </li>
+                <li class="competitions__item">
+                  <div class="competitions__inf-wrapper">
+                    <div class="competitions__date">19 мая 2024</div>
+                  <div class="competitions__category">
+                    <svg class="arrow" width="24" height="24" viewBox="0 0 24 24" role="img">
+                      <use href="img/sprite.svg#swimming"></use>
+                    </svg>
+                    <div>Плавание</div>
+                  </div>
+                  </div>
+                  <h2 class="competitions__title">Swimcup Анапа 2024</h2>
+                  <ul class="competitions__description">
+                    <li>SUP 1000 метров</li>
+                    <li>SUP 4000 метров</li>
+                    <li>Открытая вода 1000 метров</li>
+                  </ul>
+                  <div class="competitions__address-wrapper">
+                  <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" role="img">
+                    <use href="img/sprite.svg#map"></use>
+                  </svg>
+                  <p class="competitions__address"
+                    data-address-desktop="Москва. Турчанинов переулок, 3с1"
+                    data-address-mobile="Москва">
+                  </p>
+                </div>
+                  <div class="competitions__buttons">
+                    <div>
+                      <a data-button-registration="over">Регистрация</a>
+                      <p>от 1 500 ₽</p>
+                    </div>
+                    <a class="competitions__members">Список участников</a>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
