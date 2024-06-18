@@ -1,10 +1,3 @@
-// Vendor
-// ---------------------------------
-
-@import "vendor/normalize";
-// Swiper 8.4.7
-@import "vendor/swiper";
-
 // Global
 // ---------------------------------
 
@@ -14,6 +7,16 @@
 @import "global/reboot";
 @import "global/utils";
 @import "global/container";
+
+
+// Vendor
+// ---------------------------------
+
+@import "vendor/normalize";
+// Swiper 8.4.7
+@import "vendor/swiper";
+@import "vendor/data-accordion";
+@import "vendor/accordion";
 
 // Blocks
 // ----------------------------------

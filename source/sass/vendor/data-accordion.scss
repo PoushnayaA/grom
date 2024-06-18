@@ -1,0 +1,49 @@
+[data-accordion="element"].is-active > [data-accordion="content"] {
+  max-height: 100%;
+}
+
+[data-accordion="parent"].no-transition [data-accordion="content"] {
+  transition: none;
+}
+
+
+[data-accordion="element"] {
+  svg {
+    transform: rotate(0deg);
+    transition: transform 0.4s ease-in-out;
+  }
+}
+
+[data-accordion="element"].is-active {
+  svg {
+    transform: rotate(180deg);
+    transition: transform 0.4s ease-in-out;
+  }
+}
+
+[data-accordion="content"] {
+  max-height: 0;
+  transition: max-height 0.3s;
+  overflow: hidden;
+}
+
+[data-accordion="button"] {
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent;
+  width: 100%;
+  h3 {
+    margin: 0;
+    @each $property,
+    $value in $button {
+      #{$property}: $value;
+    }
+  }
+
+}
+
+[data-accordion="content"] {
+  margin-top: 16px;
+}

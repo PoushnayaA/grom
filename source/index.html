@@ -84,7 +84,7 @@
               <button class="competitions-list__filter-mobile-button">Фильтр</button>
               <div class="competitions-list__sort-button">
                 <button>Сортировать</button>
-                <svg class="arrow" width="10" height="5" viewBox="0 0 10 5" role="img">
+                <svg width="10" height="5" viewBox="0 0 10 5" role="img">
                   <use href="img/sprite.svg#arrow"></use>
                 </svg>
               </div>
@@ -101,44 +101,287 @@
           <div class="filter-list__body">
             <div class="filters">
               <h2>Фильтр</h2>
-              <form>
-                <input type="text" placeholder="Search" />
-                <div class="tags-container">
-                  <h3>Tags</h3>
-                  <div class="tags">
-                    <label>
-                      <input type="checkbox" name="tag" value="tag1" />
-                      Tag 1
-                    </label>
-                    <label>
-                      <input type="checkbox" name="tag" value="tag2" />
-                      Tag 2
-                    </label>
-                    <label>
-                      <input type="checkbox" name="tag" value="tag3" />
-                      Tag 3
-                    </label>
-                    <label>
-                      <input type="checkbox" name="tag" value="tag4" />
-                      Tag 4
-                    </label>
+              <form id="filterForm" action="https://echo.htmlacademy.ru/" method="get">
+                <div id="filter-category" class="filter-container">
+                  <input type="text" class="filter-input" placeholder="Поиск по названию">
+                  <div class="filter-list">
+                    <div class="filter-item">
+                      <label>
+                        <input type="checkbox" name="category[]" value="triathlon">
+                        <span class="checkmark">
+                          <svg width="24" height="24" viewBox="0 0 24 24" role="img">
+                            <use href="img/sprite.svg#triathlon"></use>
+                          </svg>
+                          Триатлон</span>
+                      </label>
+                    </div>
+                    <div class="filter-item">
+                      <label>
+                        <input type="checkbox" name="category[]" value="duathlon">
+                        <span class="checkmark">
+                          <svg width="24" height="24" viewBox="0 0 24 24" role="img">
+                            <use href="img/sprite.svg#duathlon"></use>
+                          </svg>
+                          Дуатлон</span>
+                      </label>
+                    </div>
+                    <div class="filter-item">
+                      <label>
+                        <input type="checkbox" name="category[]" value="aquathlon">
+                        <span class="checkmark">
+                          <svg width="24" height="24" viewBox="0 0 24 24" role="img">
+                            <use href="img/sprite.svg#aquathlon"></use>
+                          </svg>
+                          Акватлон</span>
+                      </label>
+                    </div>
+                    <div class="filter-item">
+                      <label>
+                        <input type="checkbox" name="category[]" value="run">
+                        <span class="checkmark">
+                          <svg width="24" height="24" viewBox="0 0 24 24" role="img">
+                            <use href="img/sprite.svg#run"></use>
+                          </svg>
+                          Бег</span>
+                      </label>
+                    </div>
+                    <div class="filter-item">
+                      <label>
+                        <input type="checkbox" name="category[]" value="swimming">
+
+                        <span class="checkmark">
+                          <svg width="24" height="24" viewBox="0 0 24 24" role="img">
+                            <use href="img/sprite.svg#swimming"></use>
+                          </svg>
+                          Плавание</span>
+                      </label>
+                    </div>
+                    <div class="filter-item">
+                      <label>
+                        <input type="checkbox" name="category[]" value="skis">
+                        <span class="checkmark">
+                          <svg width="24" height="24" viewBox="0 0 24 24" role="img">
+                            <use href="img/sprite.svg#skis"></use>
+                          </svg>
+                          Лыжи</span>
+                      </label>
+                    </div>
+                    <div class="filter-item">
+                      <label>
+                        <input type="checkbox" name="category[]" value="bicycle-race">
+                        <span class="checkmark">
+                          <svg width="24" height="24" viewBox="0 0 24 24" role="img">
+                            <use href="img/sprite.svg#bicycle-race"></use>
+                          </svg>
+                          Велогонка</span>
+                      </label>
+                    </div>
+                    <div class="filter-item">
+                      <label>
+                        <input type="checkbox" name="category[]" value="fight">
+                        <span class="checkmark">
+                          <svg width="24" height="24" viewBox="0 0 24 24" role="img">
+                            <use href="img/sprite.svg#fight"></use>
+                          </svg>
+                          Борьба</span>
+                      </label>
+                    </div>
+                    <div class="filter-item">
+                      <label>
+                        <input type="checkbox" name="category[]" value="another">
+                        <span class="checkmark">
+                          <svg width="24" height="24" viewBox="0 0 24 24" role="img">
+                            <use href="img/sprite.svg#another"></use>
+                          </svg>
+                          Другое</span>
+                      </label>
+                    </div>
                   </div>
                 </div>
-                <button type="submit">Показать</button>
+
+                <div data-accordion="parent">
+                  <div id="filter-series" class="filter-container" data-accordion="element">
+                    <button data-accordion="button">
+                      <h3>Серия</h3>
+                      <svg class="arrow" width="10" height="5" viewBox="0 0 10 5" role="img">
+                        <use href="img/sprite.svg#arrow"></use>
+                      </svg>
+                    </button>
+                    <div data-accordion="content" class="filter-list">
+                      <div class="filter-item">
+                        <label>
+                          <input type="checkbox" name="series[]" value="all">
+                          <span class="checkmark">Все</span>
+                        </label>
+                      </div>
+                      <div class="filter-item">
+                        <label>
+                          <input type="checkbox" name="series[]" value="Grom">
+                          <span class="checkmark">Grom</span>
+                        </label>
+                      </div>
+                      <div class="filter-item">
+                        <label>
+                          <input type="checkbox" name="series[]" value="OpenBand">
+                          <span class="checkmark">OpenBand</span>
+                        </label>
+                      </div>
+                      <div class="filter-item">
+                        <label>
+                          <input type="checkbox" name="series[]" value="Swimcup">
+                          <span class="checkmark">Swimcup</span>
+                        </label>
+                      </div>
+                      <div class="filter-item">
+                        <label>
+                          <input type="checkbox" name="series[]" value="Another">
+                          <span class="checkmark">Другие</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="filter-distance" class="filter-container" data-accordion="element">
+                    <button data-accordion="button">
+                      <h3>Дистанция</h3>
+                      <svg class="arrow" width="10" height="5" viewBox="0 0 10 5" role="img">
+                        <use href="img/sprite.svg#arrow"></use>
+                      </svg>
+                    </button>
+                    <div data-accordion="content" class="filter-list">
+                      <div class="filter-item">
+                        <label>
+                          <input type="checkbox" name="distance[]" value="100m">
+                          <span class="checkmark">100м</span>
+                        </label>
+                      </div>
+                      <div class="filter-item">
+                        <label>
+                          <input type="checkbox" name="distance[]" value="200m">
+                          <span class="checkmark">200м</span>
+                        </label>
+                      </div>
+                      <div class="filter-item">
+                        <label>
+                          <input type="checkbox" name="distance[]" value="400m">
+                          <span class="checkmark">400м</span>
+                        </label>
+                      </div>
+                      <div class="filter-item">
+                        <label>
+                          <input type="checkbox" name="distance[]" value="1km">
+                          <span class="checkmark">1 км</span>
+                        </label>
+                      </div>
+                      <div class="filter-item">
+                        <label>
+                          <input type="checkbox" name="distance[]" value="3km">
+                          <span class="checkmark">3 км</span>
+                        </label>
+                      </div>
+                      <div class="filter-item">
+                        <label>
+                          <input type="checkbox" name="distance[]" value="5km">
+                          <span class="checkmark">5 км</span>
+                        </label>
+                      </div>
+                      <div class="filter-item">
+                        <label>
+                          <input type="checkbox" name="distance[]" value="10km">
+                          <span class="checkmark">10 км</span>
+                        </label>
+                      </div>
+                      <div class="filter-item">
+                        <label>
+                          <input type="checkbox" name="distance[]" value="15km">
+                          <span class="checkmark">15 км</span>
+                        </label>
+                      </div>
+                      <div class="filter-item">
+                        <label>
+                          <input type="checkbox" name="distance[]" value="half-marathon">
+                          <span class="checkmark">Полумарарфон</span>
+                        </label>
+                      </div>
+                      <div class="filter-item">
+                        <label>
+                          <input type="checkbox" name="distance[]" value="30km">
+                          <span class="checkmark">30 км</span>
+                        </label>
+                      </div>
+                      <div class="filter-item">
+                        <label>
+                          <input type="checkbox" name="distance[]" value="marathon">
+                          <span class="checkmark">Марафон</span>
+                        </label>
+                      </div>
+                      <div class="filter-item">
+                        <label>
+                          <input type="checkbox" name="distance[]" value="50km">
+                          <span class="checkmark">50 км</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="filter-place" class="filter-container">
+                  <button data-accordion="button">
+                    <h3>Место проведения</h3>
+                  </button>
+                </div>
+                <div id="filter-date" class="filter-container">
+                  <button data-accordion="button">
+                    <h3>Дата проведения</h3>
+                  </button>
+                  <div class="filter-dark-wrapper">
+                    <div class="filter-item">
+                      <label>
+                        <input type="checkbox" name="date[]" value="week">
+                        <span class="checkmark">Неделя</span>
+                      </label>
+                    </div>
+                    <div class="filter-item">
+                      <label>
+                        <input type="checkbox" name="date[]" value="month">
+                        <span class="checkmark">Месяц</span>
+                      </label>
+                    </div>
+                    <div class="filter-item">
+                      <label>
+                        <input type="checkbox" name="date[]" value="3month">
+                        <span class="checkmark">3 месяца</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="date-input">
+                    <input type="text" placeholder="Точная дата" class="date-input__field" maxlength="10">
+                    <!-- <button class="date-input__btn">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M15.8333 3.33337H4.16667C3.24619 3.33337 2.5 4.07957 2.5 5.00004V16.6667C2.5 17.5872 3.24619 18.3334 4.16667 18.3334H15.8333C16.7538 18.3334 17.5 17.5872 17.5 16.6667V5.00004C17.5 4.07957 16.7538 3.33337 15.8333 3.33337Z" stroke="#2E2E2E" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M13.3333 1.66663V4.99996" stroke="#2E2E2E" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M6.66675 1.66663V4.99996" stroke="#2E2E2E" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2.5 8.33337H17.5" stroke="#2E2E2E" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </button> -->
+                  </div>
+                </div>
+                <button type="submit" form="filterForm">Показать</button>
               </form>
             </div>
             <div class="list-container">
               <h2 class="visually-hidden">Отсортированный список соревнований.</h2>
+              <div class="selected-container">
+                <div class="selected-items visually-hidden"></div>
+              </div>
               <ul class="competitions">
                 <li class="competitions__item">
                   <div class="competitions__inf-wrapper">
                     <div class="competitions__date">1 июня 2024</div>
-                  <div class="competitions__category">
-                    <svg class="arrow" width="24" height="24" viewBox="0 0 24 24" role="img">
-                      <use href="img/sprite.svg#another"></use>
-                    </svg>
-                    <div>Другое</div>
-                  </div>
+                    <div class="competitions__category">
+                      <svg width="24" height="24" viewBox="0 0 24 24" role="img">
+                        <use href="img/sprite.svg#another"></use>
+                      </svg>
+                      <div>Другое</div>
+                    </div>
                   </div>
                   <h2 class="competitions__title">SWIM SUP RUN - БУШОВО</h2>
                   <ul class="competitions__description">
@@ -147,14 +390,14 @@
                     <li>Открытая вода 1000 метров</li>
                   </ul>
                   <div class="competitions__address-wrapper">
-                  <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" role="img">
-                    <use href="img/sprite.svg#map"></use>
-                  </svg>
-                  <p class="competitions__address"
-                    data-address-desktop="Тула. Тульская обл, Ленинский р-н, деревня Крюково (Медвенский с/о), мкр Бушово"
-                    data-address-mobile="Тула">
-                  </p>
-                </div>
+                    <svg width="16" height="16" viewBox="0 0 16 16" role="img">
+                      <use href="img/sprite.svg#map"></use>
+                    </svg>
+                    <p class="competitions__address"
+                      data-address-desktop="Тула. Тульская обл, Ленинский р-н, деревня Крюково (Медвенский с/о), мкр Бушово"
+                      data-address-mobile="Тула">
+                    </p>
+                  </div>
                   <div class="competitions__buttons">
                     <div>
                       <a data-button-registration="registration-active">Регистрация</a>
@@ -166,12 +409,12 @@
                 <li class="competitions__item">
                   <div class="competitions__inf-wrapper">
                     <div class="competitions__date">18 мая 2024</div>
-                  <div class="competitions__category">
-                    <svg class="arrow" width="24" height="24" viewBox="0 0 24 24" role="img">
-                      <use href="img/sprite.svg#swimming"></use>
-                    </svg>
-                    <div>Плавание</div>
-                  </div>
+                    <div class="competitions__category">
+                      <svg width="24" height="24" viewBox="0 0 24 24" role="img">
+                        <use href="img/sprite.svg#swimming"></use>
+                      </svg>
+                      <div>Плавание</div>
+                    </div>
                   </div>
                   <h2 class="competitions__title">Ночной Заплыв 2024 | NIGHT SWIM</h2>
                   <ul class="competitions__description">
@@ -180,17 +423,16 @@
                     <li>Открытая вода 1000 метров</li>
                   </ul>
                   <div class="competitions__address-wrapper">
-                  <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" role="img">
-                    <use href="img/sprite.svg#map"></use>
-                  </svg>
-                  <p class="competitions__address"
-                    data-address-desktop="Москва. Турчанинов переулок, 3с1"
-                    data-address-mobile="Москва">
-                  </p>
-                </div>
+                    <svg width="16" height="16" viewBox="0 0 16 16" role="img">
+                      <use href="img/sprite.svg#map"></use>
+                    </svg>
+                    <p class="competitions__address" data-address-desktop="Москва. Турчанинов переулок, 3с1"
+                      data-address-mobile="Москва">
+                    </p>
+                  </div>
                   <div class="competitions__buttons">
                     <div>
-                      <a data-button-registration="registration-completed">Регистрация</a>
+                      <a data-button-registration="registration-completed">Регистрация завершилась</a>
                       <p>от 1 500 ₽</p>
                     </div>
                     <a class="competitions__members">Список участников</a>
@@ -199,12 +441,12 @@
                 <li class="competitions__item">
                   <div class="competitions__inf-wrapper">
                     <div class="competitions__date">19 мая 2024</div>
-                  <div class="competitions__category">
-                    <svg class="arrow" width="24" height="24" viewBox="0 0 24 24" role="img">
-                      <use href="img/sprite.svg#swimming"></use>
-                    </svg>
-                    <div>Плавание</div>
-                  </div>
+                    <div class="competitions__category">
+                      <svg width="24" height="24" viewBox="0 0 24 24" role="img">
+                        <use href="img/sprite.svg#swimming"></use>
+                      </svg>
+                      <div>Плавание</div>
+                    </div>
                   </div>
                   <h2 class="competitions__title">Swimcup Анапа 2024</h2>
                   <ul class="competitions__description">
@@ -213,17 +455,16 @@
                     <li>Открытая вода 1000 метров</li>
                   </ul>
                   <div class="competitions__address-wrapper">
-                  <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" role="img">
-                    <use href="img/sprite.svg#map"></use>
-                  </svg>
-                  <p class="competitions__address"
-                    data-address-desktop="Москва. Турчанинов переулок, 3с1"
-                    data-address-mobile="Москва">
-                  </p>
-                </div>
+                    <svg width="16" height="16" viewBox="0 0 16 16" role="img">
+                      <use href="img/sprite.svg#map"></use>
+                    </svg>
+                    <p class="competitions__address" data-address-desktop="Москва. Турчанинов переулок, 3с1"
+                      data-address-mobile="Москва">
+                    </p>
+                  </div>
                   <div class="competitions__buttons">
                     <div>
-                      <a data-button-registration="over">Регистрация</a>
+                      <a data-button-registration="over">Соревнование завершилось</a>
                       <p>от 1 500 ₽</p>
                     </div>
                     <a class="competitions__members">Список участников</a>
@@ -254,7 +495,7 @@
       </div>
     </footer>
   </div>
-
+  <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
   <script src="js/vendor.min.js"></script>
   <script src="js/main.min.js"></script>
 </body>

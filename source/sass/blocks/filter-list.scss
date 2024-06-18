@@ -10,38 +10,108 @@
     }
   }
 
-
-
-
-
   .filters {
     display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    padding: 20px;
-    z-index: 1;
-
-    position: relative;
+    position: fixed;
+    top: 50%;
+    left:50%;
+    left: 16px;
+    right: 16px;
+transform:translate(0%, -50%);
+z-index: 4;
+    // width: 100%;
     padding: 20px;
     background-color: $white;
     border-radius: 10px;
+    height: max-content;
 
-    @include vp-768 {
-      position: sticky;
-      top: 0;
-      width: 200px;
-      margin-right: 20px;
-      z-index: 0;
+    h2 {
+      margin: 0 0 8px;
     }
 
     @include vp-768 {
+      position: sticky;
+      left: 0;
+      transform: translate(0);
+      top: 20px;
+      height: max-content;
+      max-width: 275px;
+      margin-right: 20px;
+      z-index: 0;
       display: block;
-      position: static;
-      width: auto;
-      background-color: transparent;
+    }
+
+    @include vp-1440 {
+      max-width: 397px;
+    }
+
+    .filter-container {
+      margin-bottom: 20px;
+    }
+
+    .filter-input {
+      padding: 8px 12px;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      border: 1.5px solid $medium-grey;
+      margin-bottom: 8px;
+    }
+
+    .filter-list {
+      list-style-type: none;
       padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-item {
+      // padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    .filter-item.hidden {
+      display: none;
+    }
+
+    .selected-container {
+      padding: 10px;
+    }
+
+    .selected-items {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .selected-item {
+      background-color: #f1f1f1;
+      padding: 5px 10px;
+      margin: 5px;
+      display: flex;
+      align-items: center;
+    }
+
+    .selected-item .remove-btn {
+      margin-left: 5px;
+      cursor: pointer;
+    }
+
+    .suggestions-container {
+      position: absolute;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 8px 12px;
+      width: 200px;
+      z-index: 1;
+    }
+
+    .suggestion {
+      cursor: pointer;
+    }
+
+    .suggestion.highlighted {
+      background-color: #f1f1f1;
     }
   }
 
@@ -76,7 +146,6 @@
   @include vp-768 {
     display: flex;
     align-items: center;
-    // justify-content: space-between;
   }
 
   &__filter-mobile-button {
@@ -113,6 +182,7 @@
 
     cursor: pointer;
     color: $grey;
+
     @each $property,
     $value in $small {
       #{$property}: $value;
@@ -134,7 +204,7 @@
     white-space: nowrap;
     border-radius: 10px;
 
-box-shadow: 0px 4px 26px 0px rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 4px 26px 0px rgba(0, 0, 0, 0.08);
 
     @each $property,
     $value in $small {
@@ -159,6 +229,7 @@ box-shadow: 0px 4px 26px 0px rgba(0, 0, 0, 0.08);
   }
 
   &__title {
+
     @each $property,
     $value in $h2 {
       #{$property}: $value;
@@ -169,6 +240,7 @@ box-shadow: 0px 4px 26px 0px rgba(0, 0, 0, 0.08);
 
   &__counter {
     color: $grey;
+
     @each $property,
     $value in $small {
       #{$property}: $value;
@@ -188,4 +260,143 @@ box-shadow: 0px 4px 26px 0px rgba(0, 0, 0, 0.08);
 .arrow.active {
   transform: rotate(180deg);
   transition: transform 0.4s ease-in-out;
+}
+
+
+.filter-item input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.filter-item .checkmark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  // border: 1px solid #ccc;
+  background-color: $light-grey;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  @each $property,
+  $value in $description {
+    #{$property}: $value;
+  }
+
+  color: $dark;
+
+  svg {
+    fill: $grey;
+  }
+}
+
+.filter-item input[type="checkbox"]:checked + .checkmark {
+  background-color: $green;
+  transition: background-color 0.3s ease;
+
+  svg {
+    fill: $dark;
+  }
+}
+
+.filter-dark-wrapper {
+  background-color: $light-grey;
+  border-radius: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+  padding: 4px;
+margin: 16px 0;
+
+}
+
+.filter-dark-wrapper .checkmark {
+  @each $property,
+  $value in $small {
+    #{$property}: $value;
+  }
+  padding: 12px 4px;
+}
+
+.selected-items {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+
+  @include vp-768 {
+    gap: 16px;
+  }
+}
+
+.selected-item {
+background-color: $medium-grey;
+padding: 4px 12px;
+border-radius: 30px;
+@each $property,
+  $value in $small {
+    #{$property}: $value;
+  }
+
+  svg {
+    cursor: pointer;
+  }
+}
+
+
+.date-input {
+  display: flex;
+  align-items: center;
+
+
+}
+
+.date-input__field {
+  flex-grow: 1;
+  padding: 8px 12px 8px 0;
+  border: none;
+  border-bottom: 1px solid $medium-grey;
+  border-radius: 0px;
+  font-size: 14px;
+  outline: none;
+  @each $property,
+    $value in $body {
+      #{$property}: $value;
+    }
+
+  &::placeholder {
+    @each $property,
+    $value in $body {
+      #{$property}: $value;
+    }
+
+  }
+}
+
+.date-input__btn {
+  margin-left: 8px;
+  padding: 6px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.date-input__btn svg {
+  display: block;
+}
+
+.filters button[type="submit"] {
+  display: block;
+  padding: 10px;
+  background-color: $green;
+  border: none;
+  cursor: pointer;
+  padding: 12px 24px;
+  border-radius: 25px;
+  width: 100%;
 }

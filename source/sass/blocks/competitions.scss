@@ -22,6 +22,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    svg {
+      fill: $grey;
+    }
   }
 
   &__category {
@@ -63,7 +67,7 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-      // align-items: center;
+    // align-items: center;
 
     @include vp-1440 {
       display: flex;
@@ -79,33 +83,28 @@
 
       &::before {
         content: "";
-        /* Создаем псевдоэлемент для кружка */
         position: absolute;
-        /* Позиционируем кружок абсолютно */
         left: 0px;
-        /* Выравниваем кружок по левому краю */
         top: 50%;
-        /* Выравниваем кружок по вертикали */
         transform: translateY(-50%);
-        /* Смещаем кружок по вертикали */
         width: 8px;
-        /* Ширина кружка */
         height: 8px;
-        /* Высота кружка */
         border-radius: 50%;
-        /* Делаем кружок круглым */
         background-color: $green;
-        /* Зеленый цвет кружка */
       }
     }
   }
 
   &__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 
     @include vp-1440 {
-      display: flex;
+      flex-direction: row;
       justify-content: space-between;
       align-items: center;
+      gap: 24px;
     }
 
     div {
@@ -115,20 +114,41 @@
 
     div p,
     div a {
+
       @each $property,
       $value in $button {
         #{$property}: $value;
       }
     }
 
-    div a {
-      display: block;
-      background-color: $green;
-      border: none;
-      cursor: pointer;
-      padding: 12px 24px;
-      border-radius: 25px;
+    div {
+      a {
+        display: block;
+        border: none;
+        cursor: pointer;
+        padding: 12px 24px;
+        border-radius: 25px;
+        line-height: 26px;
+      }
+
+      [data-button-registration="registration-active"] {
+        background-color: $green;
+      }
+
+      [data-button-registration="registration-completed"] {
+        background-color: $medium-grey;
+        color: $grey;
+      }
+
+      [data-button-registration="over"] {
+        padding: 12px 0;
+        @each $property,
+      $value in $h4 {
+        #{$property}: $value;
+      }
       line-height: 26px;
+      color: $grey;
+      }
     }
   }
 
