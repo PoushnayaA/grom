@@ -1,4 +1,4 @@
-import IMask from 'imask';
+
 import { iosVhFix } from './utils/ios-vh-fix';
 import { initModals } from './modules/modals/init-modals';
 import { Form } from './modules/form-validate/form';
@@ -6,16 +6,9 @@ import { Form } from './modules/form-validate/form';
 
 import { initAccordions } from './modules/accordion/init-accordion';
 
-// ---------------------------------
 
 window.addEventListener('DOMContentLoaded', () => {
-
-  // Utils
-  // ---------------------------------
-
   iosVhFix();
-
-
   window.addEventListener('load', () => {
     initModals();
     const form = new Form();
@@ -23,20 +16,16 @@ window.addEventListener('DOMContentLoaded', () => {
     form.init();
   });
 
-  setTimeout(initAccordions(), 1000);
-
+  //menu
   const burger = document.querySelector('.burger');
   const menu = document.querySelector('.menu');
-
   burger.addEventListener('click', () => {
     menu.classList.toggle('show');
     menu.classList.toggle('hide');
     burger.classList.toggle('active');
     document.querySelector('body').classList.toggle('dark');
   });
-
   const bodyElement = document.body;
-
   function handleWindowResize() {
     const windowWidth = window.innerWidth;
 
@@ -47,17 +36,15 @@ window.addEventListener('DOMContentLoaded', () => {
       burger.classList.remove('active');
     }
   }
-
   window.addEventListener('resize', handleWindowResize);
 
+  //filter-modal
   const filtersToggle = document.querySelector('.competitions-list__filter-mobile-button');
   const filtersContainer = document.querySelector('.filters');
-
   filtersToggle.addEventListener('click', () => {
     filtersContainer.classList.toggle('active');
     document.querySelector('body').classList.toggle('dark-modal');
   });
-
   window.addEventListener('resize', () => {
 
     const windowWidth = window.innerWidth;
@@ -68,14 +55,14 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+
+  //sort
   const sortToggle = document.querySelector('.competitions-list__sort-button');
   const sortOptions = document.querySelector('.competitions-list__sort-list');
-
   sortToggle.addEventListener('click', () => {
     sortOptions.classList.toggle('active');
     sortToggle.querySelector('.arrow').classList.toggle('active')
   });
-
   const sortLinks = sortOptions.querySelectorAll('a');
   sortLinks.forEach(link => {
     link.addEventListener('click', (event) => {
@@ -85,21 +72,21 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  const addressElements = document.querySelectorAll('.competitions__address');
 
+  //card address
+  const addressElements = document.querySelectorAll('.competitions__address');
   function updateAddresses() {
     const windowWidth = window.innerWidth;
-
     addressElements.forEach(addressElement => {
       const shortAddress = addressElement.dataset.addressMobile;
       const longAddress = addressElement.dataset.addressDesktop;
       addressElement.textContent = windowWidth >= 1440 ? longAddress : shortAddress;
     });
   }
-
   updateAddresses();
   window.addEventListener('resize', updateAddresses);
 
+  //registration button
   const competitionsButtons = document.querySelectorAll('.competitions__buttons');
   competitionsButtons.forEach(button => {
     const buttonRegistration = button.querySelector('a').getAttribute('data-button-registration');
@@ -111,11 +98,11 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  //filter search
   const filterInput = document.querySelector('.filter-input');
   const filterListSearch = document.getElementById('filter-category').querySelectorAll('.filter-item');
   const filterList = document.querySelectorAll('.filter-item');
   const selectedContainer = document.querySelector('.selected-items');
-
   filterInput.addEventListener('input', () => {
     const searchTerm = filterInput.value.toLowerCase();
     filterListSearch.forEach(item => {
@@ -128,6 +115,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  //filter checkbox + add container
   filterList.forEach(item => {
     const checkbox = item.querySelector('input[type="checkbox"]');
     checkbox.addEventListener('change', () => {
@@ -139,7 +127,6 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-
   function addToSelectedContainer(text, item) {
     selectedContainer.classList.remove('visually-hidden');
     const selectedItem = document.createElement('div');
@@ -175,7 +162,6 @@ window.addEventListener('DOMContentLoaded', () => {
     selectedItem.appendChild(removeBtn);
     selectedContainer.appendChild(selectedItem);
   }
-
   function removeFromSelectedContainer(text, item) {
     const selectedItems = selectedContainer.querySelectorAll('.selected-item');
     selectedItems.forEach(selectedItem => {
@@ -193,15 +179,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
   }
 
+  //filter item accordion
+  setTimeout(initAccordions(), 1000);
 
-
-
-
-
+  //filter date
   const dateInputField = document.querySelector('.date-input__field');
-  const dateInputBtn = document.querySelector('.date-input__btn');
-
-
+  // const dateInputBtn = document.querySelector('.date-input__btn');
   new Cleave(dateInputField, {
     date: true,
     datePattern: ['d', 'm', 'Y'],
@@ -210,34 +193,17 @@ window.addEventListener('DOMContentLoaded', () => {
     maxLength: 10,
 
   });
+  // dateInputBtn.addEventListener('click', (event) => {
+  //   event.preventDefault();
+  //   dateInputField.showPicker();
+  // });
+  // form.querySelector('button').addEventListener('click', (event) => {
+  //   event.preventDefault();
+  // })
 
-
-
-dateInputBtn.addEventListener('click', (event) => {
-  event.preventDefault();
-  dateInputField.showPicker();
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-    const form = document.getElementById('filterForm');
-
-    form.addEventListener('submit', (event) => {
-      // event.preventDefault();
-    });
-
-    form.querySelector('button').addEventListener('click', (event) => {
-      event.preventDefault();
-    })
-
+  //submit form
+  const form = document.getElementById('filterForm');
+  form.addEventListener('submit', (event) => {
+    // event.preventDefault();
+  });
 });

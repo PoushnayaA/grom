@@ -1487,6 +1487,10 @@ button.swiper-pagination-bullet {
   text-align: left;
 }
 
+[data-accordion=parent] [data-accordion=button] {
+  cursor: pointer;
+}
+
 [data-accordion=content] {
   margin-top: 16px;
 }
@@ -1986,6 +1990,8 @@ footer {
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
+  overflow-y: auto;
+  max-height: 100vh;
 }
 .filter-list .filters h2 {
   margin: 0 0 8px;

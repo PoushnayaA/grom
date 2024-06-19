@@ -29,11 +29,13 @@
 
 [data-accordion="button"] {
   border: none;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: transparent;
   width: 100%;
+
   h3 {
     margin: 0;
     @each $property,
@@ -42,6 +44,10 @@
     }
   }
 
+}
+
+[data-accordion="parent"] [data-accordion="button"] {
+  cursor: pointer;
 }
 
 [data-accordion="content"] {
