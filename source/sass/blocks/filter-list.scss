@@ -1,9 +1,15 @@
 .filter-list {
+  .container {
+    padding-top: 32px;
+    padding-bottom: 64px;
+  }
+
   .filter-list__body {
     display: flex;
     flex-direction: column;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    // padding-top: 20px;
+    // padding-bottom: 20px;
+    margin-top: 8px;
 
     @include vp-768 {
       flex-direction: row;
@@ -14,25 +20,27 @@
     display: none;
     position: fixed;
     top: 50%;
-    left:50%;
+    left: 50%;
     left: 16px;
     right: 16px;
-transform:translate(0%, -50%);
-z-index: 4;
+    transform: translate(0%, -50%);
+    z-index: 4;
     // width: 100%;
-    padding: 20px;
+    padding: 24px 16px;
     background-color: $white;
     border-radius: 10px;
     height: max-content;
 
     overflow-y: auto;
-    max-height: 100vh;
+    max-height: 90vh;
 
     h2 {
       margin: 0 0 8px;
     }
 
     @include vp-768 {
+      max-height: max-content;
+      // overflow-y: visible;
       position: sticky;
       left: 0;
       transform: translate(0);
@@ -42,10 +50,42 @@ z-index: 4;
       margin-right: 20px;
       z-index: 0;
       display: block;
+      // max-height: 100%;
+
+      overflow-y: auto;
+    max-height: 90vh;
     }
 
     @include vp-1440 {
       max-width: 397px;
+    }
+
+    &__title-wrapper {
+      display: flex;
+      justify-content: space-between;
+
+      button {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        @include vp-768 {
+          display: none;
+        }
+      }
+
+      h2 {
+        @each $property,
+  $value in $h3 {
+    #{$property}: $value;
+  }
+
+  @include vp-768 {
+    @each $property,
+  $value in $h2 {
+    #{$property}: $value;
+  }
+  }
+      }
     }
 
     .filter-container {
@@ -53,12 +93,13 @@ z-index: 4;
     }
 
     .filter-input {
-      padding: 8px 12px;
+      padding: 12px 12px;
       width: 100%;
       border: none;
       border-radius: 5px;
       border: 1.5px solid $medium-grey;
-      margin-bottom: 8px;
+      margin: 16px 0;
+      outline: none;
     }
 
     .filter-list {
@@ -67,6 +108,7 @@ z-index: 4;
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
+      margin: 10px 0;
     }
 
     .filter-item {
@@ -93,28 +135,13 @@ z-index: 4;
       margin: 5px;
       display: flex;
       align-items: center;
+
+
     }
 
     .selected-item .remove-btn {
       margin-left: 5px;
       cursor: pointer;
-    }
-
-    .suggestions-container {
-      position: absolute;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      padding: 8px 12px;
-      width: 200px;
-      z-index: 1;
-    }
-
-    .suggestion {
-      cursor: pointer;
-    }
-
-    .suggestion.highlighted {
-      background-color: #f1f1f1;
     }
   }
 
@@ -124,7 +151,7 @@ z-index: 4;
   }
 
   .list-container {
-    margin-top: 20px;
+    // margin-top: 20px;
 
     @include vp-768 {
       flex-grow: 1;
@@ -142,116 +169,6 @@ z-index: 4;
   100% {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-.competitions-list {
-  @include vp-768 {
-    display: flex;
-    align-items: center;
-  }
-
-  &__filter-mobile-button {
-    display: block;
-    padding: 10px;
-    background-color: $green;
-    border: none;
-    cursor: pointer;
-    padding: 12px 24px;
-    border-radius: 25px;
-
-    @include vp-768 {
-      display: none;
-    }
-  }
-
-  &__sort {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    margin-left: auto;
-  }
-
-  &__sort-button {
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  &__sort-button button {
-    background-color: transparent;
-    border: none;
-
-    cursor: pointer;
-    color: $grey;
-
-    @each $property,
-    $value in $small {
-      #{$property}: $value;
-    }
-  }
-
-  &__sort-list {
-    display: none;
-    position: absolute;
-    z-index: 2;
-    top: 100%;
-    right: 0;
-    background-color: $white;
-    border-radius: 10px;
-    list-style-type: none;
-    padding: 16px;
-    margin: 0;
-    text-align: right;
-    white-space: nowrap;
-    border-radius: 10px;
-
-    box-shadow: 0px 4px 26px 0px rgba(0, 0, 0, 0.08);
-
-    @each $property,
-    $value in $small {
-      #{$property}: $value;
-    }
-  }
-
-  &__sort-list li {
-    padding: 5px 0;
-  }
-
-  &__sort-list.active {
-    display: block;
-    animation-name: sortOpen;
-    animation-duration: 0.4s;
-    animation-timing-function: ease-in-out;
-  }
-
-  &__sort-list a {
-    color: $dark;
-    text-decoration: none;
-  }
-
-  &__title {
-
-    @each $property,
-    $value in $h2 {
-      #{$property}: $value;
-    }
-
-    text-transform: uppercase;
-  }
-
-  &__counter {
-    color: $grey;
-
-    @each $property,
-    $value in $small {
-      #{$property}: $value;
-    }
-
-    @include vp-768 {
-      margin-left: 16px;
-    }
   }
 }
 
@@ -299,7 +216,7 @@ z-index: 4;
   }
 }
 
-.filter-item input[type="checkbox"]:checked + .checkmark {
+.filter-item input[type="checkbox"]:checked+.checkmark {
   background-color: $green;
   transition: background-color 0.3s ease;
 
@@ -315,22 +232,24 @@ z-index: 4;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2px;
   padding: 4px;
-margin: 16px 0;
+  margin: 16px 0;
 
 }
 
 .filter-dark-wrapper .checkmark {
+
   @each $property,
   $value in $small {
     #{$property}: $value;
   }
+
   padding: 12px 4px;
 }
 
 .selected-items {
   display: flex;
   gap: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 
   @include vp-768 {
     gap: 16px;
@@ -338,10 +257,11 @@ margin: 16px 0;
 }
 
 .selected-item {
-background-color: $medium-grey;
-padding: 4px 12px;
-border-radius: 30px;
-@each $property,
+  background-color: $medium-grey;
+  padding: 4px 12px;
+  border-radius: 30px;
+
+  @each $property,
   $value in $small {
     #{$property}: $value;
   }
@@ -367,12 +287,14 @@ border-radius: 30px;
   border-radius: 0px;
   font-size: 14px;
   outline: none;
+
   @each $property,
-    $value in $body {
-      #{$property}: $value;
-    }
+  $value in $body {
+    #{$property}: $value;
+  }
 
   &::placeholder {
+
     @each $property,
     $value in $body {
       #{$property}: $value;
@@ -402,4 +324,60 @@ border-radius: 30px;
   padding: 12px 24px;
   border-radius: 25px;
   width: 100%;
+
+  @each $property,
+      $value in $button {
+        #{$property}: $value;
+      }
+
+      text-align: center;
+
+  @include vp-768 {
+    display: none;
+  }
+}
+
+.remove-btn {
+  margin-left: 6px;
+}
+
+.suggestion-wrapper {
+  position: relative;
+}
+
+.suggestion-list {
+  position: absolute;
+  top: calc(100% - 20px);
+  left: 0;
+  width: 100%;
+  background-color: $white;
+  border: 1.5px solid $medium-grey;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  z-index: 1;
+  max-height: 200px;
+  overflow-y: auto;
+  display: none;
+  box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.08);
+}
+
+.suggestion-item {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background-color: $light-grey;
+}
+
+.arrow {
+  stroke: $grey;
+
+  &--next {
+    transform: rotate(-90deg);
+  }
+
+  &--prev {
+    transform: rotate(90deg);
+  }
 }

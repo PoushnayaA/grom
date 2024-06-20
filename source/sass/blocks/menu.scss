@@ -271,6 +271,11 @@ body.dark-modal {
     display: block;
     white-space: nowrap;
 
+    @each $property,
+      $value in $button {
+        #{$property}: $value;
+      }
+
     @include vp-768 {
       padding: 12px 24px;
       border-radius: 25px;

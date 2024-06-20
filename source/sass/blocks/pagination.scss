@@ -1,0 +1,95 @@
+.pagination {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.pagination__list {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pagination__item {
+  display: flex;
+}
+
+.pagination__item {
+
+  @each $property,
+  $value in $small {
+    #{$property}: $value;
+  }
+
+  color: $dark;
+  border: none;
+}
+
+.pagination__item .pagination__link {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: $medium-grey;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+
+  svg {
+    stroke: $dark;
+  }
+}
+
+.pagination__item--active .pagination__link {
+  background-color: $green;
+}
+
+
+.pagination__link:hover {
+
+}
+
+.pagination__buttons-wrapper {
+  display: flex;
+}
+
+.pagination__link--prev {
+  transform: rotate(90deg);
+}
+
+.pagination__link--next {
+  transform: rotate(-90deg);
+}
+
+.pagination__show-all {
+  transition: all 0.3s;
+  display: block;
+  padding: 10px;
+  background-color: $green;
+  border: none;
+  cursor: pointer;
+  padding: 13px 24px;
+  border-radius: 25px;
+  color: $dark;
+  width: 100%;
+
+  @each $property,
+  $value in $button {
+    #{$property}: $value;
+  }
+
+  text-align: center;
+}
+
+.pagination__show-all:hover {}

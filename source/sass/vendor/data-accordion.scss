@@ -35,6 +35,7 @@
   justify-content: space-between;
   background-color: transparent;
   width: 100%;
+  padding: 4px 0;
 
   h3 {
     margin: 0;
@@ -50,6 +51,15 @@
   cursor: pointer;
 }
 
-[data-accordion="content"] {
-  margin-top: 16px;
+[data-accordion="element"] [data-accordion="content"] {
+  margin: 0 !important;
+}
+
+[data-accordion="element"].is-active [data-accordion="content"] {
+  margin: 10px 0 !important;
+}
+
+
+.hidden {
+  display: none;
 }

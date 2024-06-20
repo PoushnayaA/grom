@@ -84,7 +84,7 @@
               <button class="competitions-list__filter-mobile-button">Фильтр</button>
               <div class="competitions-list__sort-button">
                 <button>Сортировать</button>
-                <svg width="10" height="5" viewBox="0 0 10 5" role="img">
+                <svg class="arrow" width="10" height="5" viewBox="0 0 10 5" role="img">
                   <use href="img/sprite.svg#arrow"></use>
                 </svg>
               </div>
@@ -93,17 +93,33 @@
                   <a href="#" data-sort="date">По дате</a>
                 </li>
                 <li>
-                  <a href="#" data-sort="popularity">По популярности</a>
+                  <a class="active" href="#" data-sort="popularity">По популярности</a>
                 </li>
               </ul>
             </div>
           </div>
           <div class="filter-list__body">
             <div class="filters">
-              <h2>Фильтр</h2>
+              <div class="filters__title-wrapper">
+                <h2>Фильтр</h2>
+                <button class="filters__button-close">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path d="M1 1L17 17M17 1L1 17" stroke="#999999" stroke-width="2" stroke-linecap="round" />
+                  </svg>
+                </button>
+              </div>
               <form id="filterForm" action="https://echo.htmlacademy.ru/" method="get">
                 <div id="filter-category" class="filter-container">
-                  <input type="text" class="filter-input" placeholder="Поиск по названию">
+                  <div class="suggestion-wrapper">
+                    <input type="text" class="filter-input" placeholder="Поиск по названию">
+                    <div class="search-input__btn">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M16.0345 16.0345L21 21M10.3913 17.7827C6.30922 17.7827 3 14.4734 3 10.3913C3 6.30922 6.30922 3 10.3913 3C14.4734 3 17.7827 6.30922 17.7827 10.3913C17.7827 14.4734 14.4734 17.7827 10.3913 17.7827Z" stroke="#2E2E2E" stroke-width="1.5" stroke-linecap="round"/>
+                      </svg>
+                    </div>
+                    <div id="suggestion-list" class="suggestion-list"></div>
+                  </div>
+
                   <div class="filter-list">
                     <div class="filter-item">
                       <label>
@@ -198,7 +214,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div data-accordion="parent">
                   <div id="filter-series" class="filter-container" data-accordion="element">
                     <button data-accordion="button">
@@ -216,25 +231,25 @@
                       </div>
                       <div class="filter-item">
                         <label>
-                          <input type="checkbox" name="series[]" value="Grom">
+                          <input type="checkbox" name="series[]" value="grom">
                           <span class="checkmark">Grom</span>
                         </label>
                       </div>
                       <div class="filter-item">
                         <label>
-                          <input type="checkbox" name="series[]" value="OpenBand">
+                          <input type="checkbox" name="series[]" value="open-band">
                           <span class="checkmark">OpenBand</span>
                         </label>
                       </div>
                       <div class="filter-item">
                         <label>
-                          <input type="checkbox" name="series[]" value="Swimcup">
+                          <input type="checkbox" name="series[]" value="swimcup">
                           <span class="checkmark">Swimcup</span>
                         </label>
                       </div>
                       <div class="filter-item">
                         <label>
-                          <input type="checkbox" name="series[]" value="Another">
+                          <input type="checkbox" name="series[]" value="another">
                           <span class="checkmark">Другие</span>
                         </label>
                       </div>
@@ -335,33 +350,49 @@
                   <div class="filter-dark-wrapper">
                     <div class="filter-item">
                       <label>
-                        <input type="checkbox" name="date[]" value="week">
+                        <input type="checkbox" name="date[]" value="7">
                         <span class="checkmark">Неделя</span>
                       </label>
                     </div>
                     <div class="filter-item">
                       <label>
-                        <input type="checkbox" name="date[]" value="month">
+                        <input type="checkbox" name="date[]" value="30">
                         <span class="checkmark">Месяц</span>
                       </label>
                     </div>
                     <div class="filter-item">
                       <label>
-                        <input type="checkbox" name="date[]" value="3month">
+                        <input type="checkbox" name="date[]" value="90">
                         <span class="checkmark">3 месяца</span>
                       </label>
                     </div>
                   </div>
                   <div class="date-input">
-                    <input type="text" placeholder="Точная дата" class="date-input__field" maxlength="10">
-                    <!-- <button class="date-input__btn">
+                    <input type="text" name="input-date[]" placeholder="Точная дата" class="date-input__field" maxlength="10" readonly>
+                    <div class="date-input__btn date-picker__button">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <path d="M15.8333 3.33337H4.16667C3.24619 3.33337 2.5 4.07957 2.5 5.00004V16.6667C2.5 17.5872 3.24619 18.3334 4.16667 18.3334H15.8333C16.7538 18.3334 17.5 17.5872 17.5 16.6667V5.00004C17.5 4.07957 16.7538 3.33337 15.8333 3.33337Z" stroke="#2E2E2E" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M13.3333 1.66663V4.99996" stroke="#2E2E2E" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M6.66675 1.66663V4.99996" stroke="#2E2E2E" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M2.5 8.33337H17.5" stroke="#2E2E2E" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg>
-                    </button> -->
+                    </div>
+                    <div class="date-picker__calendar">
+                      <div class="date-picker__header">
+                        <button type="button" class="date-picker__prev-month">
+                          <svg class="arrow arrow--prev" width="12" height="6" viewBox="0 0 12 6" role="img">
+                            <use href="img/sprite.svg#arrow"></use>
+                          </svg>
+                        </button>
+                        <div class="date-picker__current-month"></div>
+                        <button type="button" class="date-picker__next-month">
+                          <svg class="arrow arrow--next" width="12" height="6" viewBox="0 0 12 6" role="img">
+                            <use href="img/sprite.svg#arrow"></use>
+                          </svg>
+                        </button>
+                      </div>
+                      <div class="date-picker__days"></div>
+                    </div>
                   </div>
                 </div>
                 <button type="submit" form="filterForm">Показать</button>
@@ -373,104 +404,179 @@
                 <div class="selected-items visually-hidden"></div>
               </div>
               <ul class="competitions">
-                <li class="competitions__item">
-                  <div class="competitions__inf-wrapper">
-                    <div class="competitions__date">1 июня 2024</div>
-                    <div class="competitions__category">
-                      <svg width="24" height="24" viewBox="0 0 24 24" role="img">
-                        <use href="img/sprite.svg#another"></use>
-                      </svg>
-                      <div>Другое</div>
+                <li data-series="" class="competitions__item">
+                  <a href="#">
+                    <div class="competitions__inf-wrapper">
+                      <div data-date="01.06.2024" class="competitions__date">1 июня 2024</div>
+                      <div class="competitions__category">
+                        <svg width="24" height="24" viewBox="0 0 24 24" role="img">
+                          <use href="img/sprite.svg#another"></use>
+                        </svg>
+                        <div data-category="another">Другое</div>
+                      </div>
                     </div>
-                  </div>
-                  <h2 class="competitions__title">SWIM SUP RUN - БУШОВО</h2>
-                  <ul class="competitions__description">
-                    <li>SUP 1000 метров</li>
-                    <li>SUP 4000 метров</li>
-                    <li>Открытая вода 1000 метров</li>
-                  </ul>
-                  <div class="competitions__address-wrapper">
-                    <svg width="16" height="16" viewBox="0 0 16 16" role="img">
-                      <use href="img/sprite.svg#map"></use>
-                    </svg>
-                    <p class="competitions__address"
-                      data-address-desktop="Тула. Тульская обл, Ленинский р-н, деревня Крюково (Медвенский с/о), мкр Бушово"
-                      data-address-mobile="Тула">
-                    </p>
-                  </div>
+                    <h2 class="competitions__title">SWIM SUP RUN - БУШОВО</h2>
+                    <ul class="competitions__description">
+                      <li data-distance="1km">SUP 1000 метров</li>
+                      <li data-distance="5km">SUP 5000 метров</li>
+                      <li data-distance="1km">Открытая вода 1000 метров</li>
+                    </ul>
+                    <div class="competitions__address-wrapper">
+                      <svg width="16" height="16" viewBox="0 0 16 16" role="img">
+                        <use href="img/sprite.svg#map"></use>
+                      </svg>
+                      <p class="competitions__address"
+                        data-address-desktop="Тула. Тульская обл, Ленинский р-н, деревня Крюково (Медвенский с/о), мкр Бушово"
+                        data-address-mobile="Тула">
+                      </p>
+                    </div>
+                  </a>
                   <div class="competitions__buttons">
                     <div>
-                      <a data-button-registration="registration-active">Регистрация</a>
-                      <p>от 1 500 ₽</p>
+                      <a href="#" data-button-registration="registration-active">Регистрация</a>
+                      <p>от <span>1 500 ₽</span></p>
                     </div>
-                    <a class="competitions__members">Список участников</a>
+                    <a href="#" class="competitions__members">Список участников</a>
                   </div>
                 </li>
-                <li class="competitions__item">
-                  <div class="competitions__inf-wrapper">
-                    <div class="competitions__date">18 мая 2024</div>
-                    <div class="competitions__category">
-                      <svg width="24" height="24" viewBox="0 0 24 24" role="img">
-                        <use href="img/sprite.svg#swimming"></use>
-                      </svg>
-                      <div>Плавание</div>
+                <li data-series="" class="competitions__item">
+                  <a href="#">
+                    <div class="competitions__inf-wrapper">
+                      <div data-date="18.07.2024" class="competitions__date">18 июля 2024</div>
+                      <div class="competitions__category">
+                        <svg width="24" height="24" viewBox="0 0 24 24" role="img">
+                          <use href="img/sprite.svg#swimming"></use>
+                        </svg>
+                        <div data-category="swimming">Плавание</div>
+                      </div>
                     </div>
-                  </div>
-                  <h2 class="competitions__title">Ночной Заплыв 2024 | NIGHT SWIM</h2>
-                  <ul class="competitions__description">
-                    <li>SUP 1000 метров</li>
-                    <li>SUP 4000 метров</li>
-                    <li>Открытая вода 1000 метров</li>
-                  </ul>
-                  <div class="competitions__address-wrapper">
-                    <svg width="16" height="16" viewBox="0 0 16 16" role="img">
-                      <use href="img/sprite.svg#map"></use>
-                    </svg>
-                    <p class="competitions__address" data-address-desktop="Москва. Турчанинов переулок, 3с1"
-                      data-address-mobile="Москва">
-                    </p>
-                  </div>
+                    <h2 class="competitions__title">Ночной Заплыв 2024 | NIGHT SWIM</h2>
+                    <ul class="competitions__description">
+                      <li data-distance="1km">SUP 1000 метров</li>
+                      <li data-distance="5km">SUP 5000 метров</li>
+                      <li data-distance="1km">Открытая вода 1000 метров</li>
+                    </ul>
+                    <div class="competitions__address-wrapper">
+                      <svg width="16" height="16" viewBox="0 0 16 16" role="img">
+                        <use href="img/sprite.svg#map"></use>
+                      </svg>
+                      <p class="competitions__address" data-address-desktop="Москва. Турчанинов переулок, 3с1"
+                        data-address-mobile="Москва">
+                      </p>
+                    </div>
+                  </a>
                   <div class="competitions__buttons">
                     <div>
-                      <a data-button-registration="registration-completed">Регистрация завершилась</a>
-                      <p>от 1 500 ₽</p>
+                      <a href="#" data-button-registration="registration-completed">Регистрация завершилась</a>
+                      <p>от <span>1 500</span> ₽</p>
                     </div>
-                    <a class="competitions__members">Список участников</a>
+                    <a href="#" class="competitions__members">Список участников</a>
                   </div>
                 </li>
-                <li class="competitions__item">
-                  <div class="competitions__inf-wrapper">
-                    <div class="competitions__date">19 мая 2024</div>
-                    <div class="competitions__category">
-                      <svg width="24" height="24" viewBox="0 0 24 24" role="img">
-                        <use href="img/sprite.svg#swimming"></use>
-                      </svg>
-                      <div>Плавание</div>
+                <li data-series="" class="competitions__item">
+                  <a href="#">
+                    <div class="competitions__inf-wrapper">
+                      <div data-date="19.05.2024" class="competitions__date">19 мая 2024</div>
+                      <div class="competitions__category">
+                        <svg width="24" height="24" viewBox="0 0 24 24" role="img">
+                          <use href="img/sprite.svg#swimming"></use>
+                        </svg>
+                        <div data-category="swimming">Плавание</div>
+                      </div>
                     </div>
-                  </div>
-                  <h2 class="competitions__title">Swimcup Анапа 2024</h2>
-                  <ul class="competitions__description">
-                    <li>SUP 1000 метров</li>
-                    <li>SUP 4000 метров</li>
-                    <li>Открытая вода 1000 метров</li>
-                  </ul>
-                  <div class="competitions__address-wrapper">
-                    <svg width="16" height="16" viewBox="0 0 16 16" role="img">
-                      <use href="img/sprite.svg#map"></use>
-                    </svg>
-                    <p class="competitions__address" data-address-desktop="Москва. Турчанинов переулок, 3с1"
-                      data-address-mobile="Москва">
-                    </p>
-                  </div>
+                    <h2 class="competitions__title">Swimcup Анапа 2024</h2>
+                    <ul class="competitions__description">
+                      <li data-distance="1km">SUP 1000 метров</li>
+                      <li data-distance="5km">SUP 5000 метров</li>
+                      <li data-distance="1km">Открытая вода 1000 метров</li>
+                    </ul>
+                    <div class="competitions__address-wrapper">
+                      <svg width="16" height="16" viewBox="0 0 16 16" role="img">
+                        <use href="img/sprite.svg#map"></use>
+                      </svg>
+                      <p class="competitions__address" data-address-desktop="Москва. Турчанинов переулок, 3с1"
+                        data-address-mobile="Москва">
+                      </p>
+                    </div>
+                  </a>
                   <div class="competitions__buttons">
                     <div>
-                      <a data-button-registration="over">Соревнование завершилось</a>
-                      <p>от 1 500 ₽</p>
+                      <a href="#" data-button-registration="over">Соревнование завершилось</a>
+                      <p>от <span>1 500</span> ₽</p>
                     </div>
-                    <a class="competitions__members">Список участников</a>
+                    <a href="#" class="competitions__members">Список участников</a>
+                  </div>
+                </li>
+                <li data-series="" class="competitions__item">
+                  <a href="#">
+                    <div class="competitions__inf-wrapper">
+                      <div data-date="13.08.2024" class="competitions__date">13 августа 2024</div>
+                      <div class="competitions__category">
+                        <svg width="24" height="24" viewBox="0 0 24 24" role="img">
+                          <use href="img/sprite.svg#aquathlon"></use>
+                        </svg>
+                        <div data-category="aquathlon">Акватлон</div>
+                      </div>
+                    </div>
+                    <h2 class="competitions__title">SWIM SUP RUN - БУШОВО</h2>
+                    <ul class="competitions__description">
+                      <li data-distance="1km">SUP 1000 метров</li>
+                      <li data-distance="5km">SUP 5000 метров</li>
+                      <li data-distance="1km">Открытая вода 1000 метров</li>
+                    </ul>
+                    <div class="competitions__address-wrapper">
+                      <svg width="16" height="16" viewBox="0 0 16 16" role="img">
+                        <use href="img/sprite.svg#map"></use>
+                      </svg>
+                      <p class="competitions__address"
+                        data-address-desktop="Тула. Тульская обл, Ленинский р-н, деревня Крюково (Медвенский с/о), мкр Бушово"
+                        data-address-mobile="Тула">
+                      </p>
+                    </div>
+                  </a>
+                  <div class="competitions__buttons">
+                    <div>
+                      <a href="#" data-button-registration="registration-active">Регистрация</a>
+                      <p>от <span>1 500 ₽</span></p>
+                    </div>
+                    <a href="#" class="competitions__members">Список участников</a>
                   </div>
                 </li>
               </ul>
+              <div class="pagination">
+                <div class="pagination__buttons-wrapper">
+
+                  <ul class="pagination__list">
+                    <li class="pagination__item">
+                      <button class="pagination__link pagination__link--prev visually-hidden">
+                        <svg width="10" height="5" viewBox="0 0 10 5" role="img">
+                          <use href="img/sprite.svg#arrow"></use>
+                        </svg>
+                      </button>
+                    </li>
+                    <li class="pagination__item pagination__item--active">
+                      <button class="pagination__link">1</button>
+                    </li>
+                    <li class="pagination__item">
+                      <button class="pagination__link">2</button>
+                    </li>
+                    <li class="pagination__item">
+                      <button class="pagination__link">3</button>
+                    </li>
+                    <li class="pagination__item">
+                      <button class="pagination__link">4</button>
+                    </li>
+                    <li class="pagination__item">
+                      <button class="pagination__link pagination__link--next">
+                        <svg width="10" height="5" viewBox="0 0 10 5" role="img">
+                          <use href="img/sprite.svg#arrow"></use>
+                        </svg>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+                <button class="pagination__show-all">Показать все</button>
+              </div>
             </div>
           </div>
         </div>
