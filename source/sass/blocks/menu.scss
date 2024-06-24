@@ -192,6 +192,18 @@ body.dark-modal {
   }
 }
 
+.burger {
+  &:hover,
+  &:focus-visible,
+  &:active {
+    .burger-line,
+    .burger-line::after,
+    .burger-line::before {
+      background-color: $dark;
+    }
+  }
+}
+
 .burger.active {
   .burger-line {
     background-color: transparent;
@@ -204,13 +216,10 @@ body.dark-modal {
       transform: rotate(-45deg) translate(5px, -5px);
     }
   }
-}
 
-.burger {
   &:hover,
   &:focus-visible,
   &:active {
-    .burger-line,
     .burger-line::after,
     .burger-line::before {
       background-color: $dark;

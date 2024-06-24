@@ -35,14 +35,17 @@ window.addEventListener('DOMContentLoaded', () => {
   const filtersToggle = document.querySelector('.competitions-list__filter-mobile-button');
   const filtersContainer = document.querySelector('.filters');
   const filtersClose = document.querySelector('.filters__button-close');
-  filtersToggle.addEventListener('click', () => {
-    filtersContainer.classList.toggle('active');
-    document.querySelector('body').classList.toggle('dark-modal');
-  });
-  filtersClose.addEventListener('click', () => {
-    filtersContainer.classList.remove('active');
-    document.querySelector('body').classList.remove('dark-modal');
-  });
+  if (filtersToggle) {
+    filtersToggle.addEventListener('click', () => {
+      filtersContainer.classList.toggle('active');
+      document.querySelector('body').classList.toggle('dark-modal');
+    });
+    filtersClose.addEventListener('click', () => {
+      filtersContainer.classList.remove('active');
+      document.querySelector('body').classList.remove('dark-modal');
+    });
+  }
+
   window.addEventListener('resize', () => {
 
     const windowWidth = window.innerWidth;
@@ -80,18 +83,23 @@ window.addEventListener('DOMContentLoaded', () => {
       fragment.appendChild(item);
     });
 
-    competitionsContainer.innerHTML = '';
-    competitionsContainer.appendChild(fragment);
+    if (competitionsContainer) {
+      competitionsContainer.innerHTML = '';
+      competitionsContainer.appendChild(fragment);
+    }
   }
   //при загрузке страницы изначально сортировка по популярности
   sortCompetitions('popularity');
   const sortToggle = document.querySelector('.competitions-list__sort-button');
   const sortOptions = document.querySelector('.competitions-list__sort-list');
-  sortToggle.addEventListener('click', () => {
-    sortOptions.classList.toggle('active');
-    sortToggle.querySelector('.arrow').classList.toggle('active')
-  });
-  const sortLinks = sortOptions.querySelectorAll('a');
+
+  if (sortToggle && sortOptions) {
+    sortToggle.addEventListener('click', () => {
+      sortOptions.classList.toggle('active');
+      sortToggle.querySelector('.arrow').classList.toggle('active')
+    });
+
+    const sortLinks = sortOptions.querySelectorAll('a');
   sortLinks.forEach(link => {
     link.addEventListener('click', (event) => {
       event.preventDefault();
@@ -108,6 +116,9 @@ window.addEventListener('DOMContentLoaded', () => {
       event.target.classList.add('active');
     });
   });
+  }
+
+
 
   window.addEventListener('resize', () => {
 
@@ -216,33 +227,40 @@ window.addEventListener('DOMContentLoaded', () => {
 
   //filter reset
 const resetButton = document.querySelector('.selected-container button[type="reset"]');
-resetButton.addEventListener('click', () => {
-  const forms = document.querySelectorAll('form');
-  forms.forEach((form) => {
-    form.reset();
-  });
 
-  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-  checkboxes.forEach((checkbox) => {
-    checkbox.checked = false;
-  });
-  selectedContainer.classList.add('visually-hidden');
-  const selectedItems = selectedContainer.querySelectorAll('.selected-item');
-  selectedItems.forEach(i => i.remove())
+if (resetButton) {
+  resetButton.addEventListener('click', () => {
+    const forms = document.querySelectorAll('form');
+    forms.forEach((form) => {
+      form.reset();
+    });
 
-  filterItems();
-});
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach((checkbox) => {
+      checkbox.checked = false;
+    });
+    selectedContainer.classList.add('visually-hidden');
+    const selectedItems = selectedContainer.querySelectorAll('.selected-item');
+    selectedItems.forEach(i => i.remove())
+
+    filterItems();
+  });
+}
+
 
   //filter item accordion
   setTimeout(initAccordions(), 1000);
 
   //submit form mobile
   const form = document.getElementById('filterForm');
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    filtersContainer.classList.remove('active');
-    document.querySelector('body').classList.remove('dark-modal');
-  });
+  if (form) {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      filtersContainer.classList.remove('active');
+      document.querySelector('body').classList.remove('dark-modal');
+    });
+  }
+
 
   //фильтрация каталога
   const competitionItems = document.querySelectorAll('.competitions__item');
@@ -314,38 +332,43 @@ resetButton.addEventListener('click', () => {
       return date >= firstDay && date <= endDate;
     }
   }
-
+if (dateInput) {
   dateInput.addEventListener('change', filterItems);
+}
+
 
   //подсказки при воде названия в фильтре
   const suggestionList = document.getElementById('suggestion-list');
   const competitionTitles = Array.from(document.querySelectorAll('.competitions__title')).map(title => title.textContent.toLowerCase());
 
-  filterInput.addEventListener('input', function () {
-    const filterText = this.value.toLowerCase();
-    suggestionList.innerHTML = '';
+  if (filterInput) {
+    filterInput.addEventListener('input', function () {
+      const filterText = this.value.toLowerCase();
+      suggestionList.innerHTML = '';
 
-    const matchingTitles = competitionTitles.filter(title => title.includes(filterText));
+      const matchingTitles = competitionTitles.filter(title => title.includes(filterText));
 
-    if (matchingTitles.length > 0) {
-      matchingTitles.forEach(title => {
-        const suggestionItem = document.createElement('div');
-        suggestionItem.classList.add('suggestion-item');
-        suggestionItem.textContent = title;
-        suggestionItem.addEventListener('click', () => {
-          filterInput.value = title;
-          suggestionList.style.display = 'none';
-          filterCompetitions(title.toLowerCase());
+      if (matchingTitles.length > 0) {
+        matchingTitles.forEach(title => {
+          const suggestionItem = document.createElement('div');
+          suggestionItem.classList.add('suggestion-item');
+          suggestionItem.textContent = title;
+          suggestionItem.addEventListener('click', () => {
+            filterInput.value = title;
+            suggestionList.style.display = 'none';
+            filterCompetitions(title.toLowerCase());
+          });
+          suggestionList.appendChild(suggestionItem);
         });
-        suggestionList.appendChild(suggestionItem);
-      });
-      suggestionList.style.display = 'block';
-    } else {
-      suggestionList.style.display = 'none';
-    }
+        suggestionList.style.display = 'block';
+      } else {
+        suggestionList.style.display = 'none';
+      }
 
-    filterCompetitions(filterText);
-  });
+      filterCompetitions(filterText);
+    });
+  }
+
 
   function filterCompetitions(filterText) {
     competitionItems.forEach(item => {
@@ -360,19 +383,22 @@ resetButton.addEventListener('click', () => {
 
   //подсказка региона
   const customSelect = document.querySelector('.custom-select');
-  const customSelectInput = customSelect.querySelector('.custom-select__input');
-  const customSelectOptions = customSelect.querySelectorAll('.custom-select__option');
+  const customSelectInput = document.querySelector('.custom-select__input');
+  const customSelectOptions = document.querySelectorAll('.custom-select__option');
 
-  customSelectOptions.forEach(option => {
-    option.addEventListener('click', () => {
-      customSelectInput.value = option.textContent;
-      customSelectInput.dataset.value = option.dataset.value;
-      filterItems();
-      customSelect.querySelector('.custom-select__options').style.display = 'none';
-      customSelect.querySelector('.arrow').classList.remove('active');
+  if (customSelectOptions) {
+    customSelectOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        customSelectInput.value = option.textContent;
+        customSelectInput.dataset.value = option.dataset.value;
+        filterItems();
+        customSelect.querySelector('.custom-select__options').style.display = 'none';
+        customSelect.querySelector('.arrow').classList.remove('active');
+      });
     });
-  });
+  }
 
+if (customSelectInput) {
   customSelectInput.addEventListener('click', () => {
     if (customSelect.querySelector('.custom-select__options').style.display === 'block') {
       customSelect.querySelector('.custom-select__options').style.display = 'none';
@@ -382,12 +408,6 @@ resetButton.addEventListener('click', () => {
       customSelect.querySelector('.custom-select__options').style.display = 'block';
       customSelect.querySelector('.arrow').classList.add('active');
       console.log(customSelect.querySelector('.arrow'));
-    }
-  });
-
-  document.addEventListener('click', event => {
-    if (!customSelect.contains(event.target)) {
-      customSelect.querySelector('.custom-select__options').style.display = 'none';
     }
   });
 
@@ -404,6 +424,17 @@ resetButton.addEventListener('click', () => {
       option.style.display = 'none';
     });
   });
+}
+
+
+
+  document.addEventListener('click', event => {
+    if (!customSelect.contains(event.target)) {
+      customSelect.querySelector('.custom-select__options').style.display = 'none';
+    }
+  });
+
+
 
   //календарь
   const dateInputs = document.querySelectorAll('.date-input');

@@ -153,4 +153,15 @@
   background-color: $green;
 }
 
+.date-picker__day--empty {
+  pointer-events: none;
+}
 
+.date-picker__next-month {
+  svg {
+    margin-left: auto;
+  }
+}
+.date-picker__current-month {
+  text-align: center;
+}

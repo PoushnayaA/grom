@@ -27,7 +27,7 @@
   overflow: hidden;
 }
 
-[data-accordion="button"] {
+[data-accordion="button"], .filter-container button {
   border: none;
 
   display: flex;
