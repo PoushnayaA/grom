@@ -56,8 +56,8 @@
             </div>
             <nav class="menu hide">
               <ul>
-                <li><a class="active" href="#">Соревнования</a></li>
-                <li><a href="#">Клубы</a></li>
+                <li><a class="active" href="index.html">Соревнования</a></li>
+                <li><a href="club.html">Клубы</a></li>
               </ul>
             </nav>
             <div class="login">
@@ -65,7 +65,9 @@
                 <div>
                   Регистрация/Вход
                 </div>
-                <img src="./img/svg/login.svg" width="32" height="33">
+                <svg class="login-icon" width="32" height="33" viewBox="0 0 32 33" role="img">
+                  <use href="img/sprite.svg#login"></use>
+                </svg>
               </a>
             </div>
           </div>
@@ -114,7 +116,9 @@
                     <input type="text" class="filter-input" placeholder="Поиск по названию">
                     <div class="search-input__btn">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M16.0345 16.0345L21 21M10.3913 17.7827C6.30922 17.7827 3 14.4734 3 10.3913C3 6.30922 6.30922 3 10.3913 3C14.4734 3 17.7827 6.30922 17.7827 10.3913C17.7827 14.4734 14.4734 17.7827 10.3913 17.7827Z" stroke="#2E2E2E" stroke-width="1.5" stroke-linecap="round"/>
+                        <path
+                          d="M16.0345 16.0345L21 21M10.3913 17.7827C6.30922 17.7827 3 14.4734 3 10.3913C3 6.30922 6.30922 3 10.3913 3C14.4734 3 17.7827 6.30922 17.7827 10.3913C17.7827 14.4734 14.4734 17.7827 10.3913 17.7827Z"
+                          stroke="#2E2E2E" stroke-width="1.5" stroke-linecap="round" />
                       </svg>
                     </div>
                     <div id="suggestion-list" class="suggestion-list"></div>
@@ -223,12 +227,12 @@
                       </svg>
                     </button>
                     <div data-accordion="content" class="filter-list">
-                      <div class="filter-item">
+                      <!-- <div class="filter-item">
                         <label>
                           <input type="checkbox" name="series[]" value="all">
                           <span class="checkmark">Все</span>
                         </label>
-                      </div>
+                      </div> -->
                       <div class="filter-item">
                         <label>
                           <input type="checkbox" name="series[]" value="grom">
@@ -243,7 +247,7 @@
                       </div>
                       <div class="filter-item">
                         <label>
-                          <input type="checkbox" name="series[]" value="swimcup">
+                          <input type="checkbox" name="series[]" value="swim-cup">
                           <span class="checkmark">Swimcup</span>
                         </label>
                       </div>
@@ -342,6 +346,20 @@
                   <button data-accordion="button">
                     <h3>Место проведения</h3>
                   </button>
+                  <div class="custom-select">
+                    <div class="custom-select__buttons">
+                      <input type="text" class="custom-select__input" placeholder="Регион/область">
+                      <svg class="arrow" width="10" height="5" viewBox="0 0 10 5" role="img">
+                        <use href="img/sprite.svg#arrow"></use>
+                      </svg>
+                    </div>
+                    <div class="custom-select__options">
+                      <div class="custom-select__option" data-value="1">Республика Адыгея</div>
+                      <div class="custom-select__option" data-value="2">Республика Башкортостан</div>
+                      <div class="custom-select__option" data-value="3">Республика Бурятия</div>
+                      <div class="custom-select__option" data-value="71">Тульская область</div>
+                    </div>
+                  </div>
                 </div>
                 <div id="filter-date" class="filter-container">
                   <button data-accordion="button">
@@ -368,13 +386,18 @@
                     </div>
                   </div>
                   <div class="date-input">
-                    <input type="text" name="input-date[]" placeholder="Точная дата" class="date-input__field" maxlength="10" readonly>
+                    <input type="text" name="input-date[]" placeholder="Точная дата" class="date-input__field"
+                      maxlength="10" readonly>
                     <div class="date-input__btn date-picker__button">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M15.8333 3.33337H4.16667C3.24619 3.33337 2.5 4.07957 2.5 5.00004V16.6667C2.5 17.5872 3.24619 18.3334 4.16667 18.3334H15.8333C16.7538 18.3334 17.5 17.5872 17.5 16.6667V5.00004C17.5 4.07957 16.7538 3.33337 15.8333 3.33337Z" stroke="#2E2E2E" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M13.3333 1.66663V4.99996" stroke="#2E2E2E" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M6.66675 1.66663V4.99996" stroke="#2E2E2E" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M2.5 8.33337H17.5" stroke="#2E2E2E" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path
+                          d="M15.8333 3.33337H4.16667C3.24619 3.33337 2.5 4.07957 2.5 5.00004V16.6667C2.5 17.5872 3.24619 18.3334 4.16667 18.3334H15.8333C16.7538 18.3334 17.5 17.5872 17.5 16.6667V5.00004C17.5 4.07957 16.7538 3.33337 15.8333 3.33337Z"
+                          stroke="#2E2E2E" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M13.3333 1.66663V4.99996" stroke="#2E2E2E" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                        <path d="M6.66675 1.66663V4.99996" stroke="#2E2E2E" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                        <path d="M2.5 8.33337H17.5" stroke="#2E2E2E" stroke-linecap="round" stroke-linejoin="round" />
                       </svg>
                     </div>
                     <div class="date-picker__calendar">
@@ -391,6 +414,15 @@
                           </svg>
                         </button>
                       </div>
+                      <div class="date-picker__days-of-week">
+                        <div class="date-picker__day-of-week">Пн</div>
+                        <div class="date-picker__day-of-week">Вт</div>
+                        <div class="date-picker__day-of-week">Ср</div>
+                        <div class="date-picker__day-of-week">Чт</div>
+                        <div class="date-picker__day-of-week">Пт</div>
+                        <div class="date-picker__day-of-week">Сб</div>
+                        <div class="date-picker__day-of-week">Вс</div>
+                      </div>
                       <div class="date-picker__days"></div>
                     </div>
                   </div>
@@ -401,11 +433,13 @@
             <div class="list-container">
               <h2 class="visually-hidden">Отсортированный список соревнований.</h2>
               <div class="selected-container">
-                <div class="selected-items visually-hidden"></div>
+                <div class="selected-items visually-hidden">
+                  <button type="reset">Очистить</button>
+                </div>
               </div>
               <ul class="competitions">
-                <li data-series="" class="competitions__item">
-                  <a href="#">
+                <li data-series="another" data-popularity="10" class="competitions__item">
+                  <a class="competitions__item-link" href="competition.html">
                     <div class="competitions__inf-wrapper">
                       <div data-date="01.06.2024" class="competitions__date">1 июня 2024</div>
                       <div class="competitions__category">
@@ -421,7 +455,7 @@
                       <li data-distance="5km">SUP 5000 метров</li>
                       <li data-distance="1km">Открытая вода 1000 метров</li>
                     </ul>
-                    <div class="competitions__address-wrapper">
+                    <div data-region="1" class="competitions__address-wrapper">
                       <svg width="16" height="16" viewBox="0 0 16 16" role="img">
                         <use href="img/sprite.svg#map"></use>
                       </svg>
@@ -430,17 +464,17 @@
                         data-address-mobile="Тула">
                       </p>
                     </div>
-                  </a>
-                  <div class="competitions__buttons">
-                    <div>
-                      <a href="#" data-button-registration="registration-active">Регистрация</a>
-                      <p>от <span>1 500 ₽</span></p>
+                    <div class="competitions__buttons">
+                      <div>
+                        <object><a href="registration.html" data-button-registration="registration-active">Регистрация</a></object>
+                        <p>от <span>1 500 ₽</span></p>
+                      </div>
+                    <object><a href="members.html" class="competitions__members">Список участников</a></object>
                     </div>
-                    <a href="#" class="competitions__members">Список участников</a>
-                  </div>
+                  </a>
                 </li>
-                <li data-series="" class="competitions__item">
-                  <a href="#">
+                <li data-series="swim-cup" data-popularity="80" class="competitions__item">
+                  <a class="competitions__item-link" href="competition.html">
                     <div class="competitions__inf-wrapper">
                       <div data-date="18.07.2024" class="competitions__date">18 июля 2024</div>
                       <div class="competitions__category">
@@ -456,7 +490,7 @@
                       <li data-distance="5km">SUP 5000 метров</li>
                       <li data-distance="1km">Открытая вода 1000 метров</li>
                     </ul>
-                    <div class="competitions__address-wrapper">
+                    <div data-region="2" class="competitions__address-wrapper">
                       <svg width="16" height="16" viewBox="0 0 16 16" role="img">
                         <use href="img/sprite.svg#map"></use>
                       </svg>
@@ -464,17 +498,17 @@
                         data-address-mobile="Москва">
                       </p>
                     </div>
-                  </a>
-                  <div class="competitions__buttons">
-                    <div>
-                      <a href="#" data-button-registration="registration-completed">Регистрация завершилась</a>
-                      <p>от <span>1 500</span> ₽</p>
+                    <div class="competitions__buttons">
+                      <div>
+                      <object><a href="registration.html" data-button-registration="registration-completed">Регистрация завершилась</a></object>
+                        <p>от <span>1 500</span> ₽</p>
+                      </div>
+                    <object><a href="members.html" class="competitions__members">Список участников</a></object>
                     </div>
-                    <a href="#" class="competitions__members">Список участников</a>
-                  </div>
+                  </a>
                 </li>
-                <li data-series="" class="competitions__item">
-                  <a href="#">
+                <li data-series="grom" data-popularity="76" class="competitions__item">
+                  <a class="competitions__item-link" href="#">
                     <div class="competitions__inf-wrapper">
                       <div data-date="19.05.2024" class="competitions__date">19 мая 2024</div>
                       <div class="competitions__category">
@@ -490,7 +524,7 @@
                       <li data-distance="5km">SUP 5000 метров</li>
                       <li data-distance="1km">Открытая вода 1000 метров</li>
                     </ul>
-                    <div class="competitions__address-wrapper">
+                    <div data-region="3" class="competitions__address-wrapper">
                       <svg width="16" height="16" viewBox="0 0 16 16" role="img">
                         <use href="img/sprite.svg#map"></use>
                       </svg>
@@ -498,17 +532,18 @@
                         data-address-mobile="Москва">
                       </p>
                     </div>
-                  </a>
-                  <div class="competitions__buttons">
-                    <div>
-                      <a href="#" data-button-registration="over">Соревнование завершилось</a>
-                      <p>от <span>1 500</span> ₽</p>
+
+                    <div class="competitions__buttons">
+                      <div>
+                      <object><a href="registration.html" data-button-registration="over">Соревнование завершилось</a></object>
+                        <p>от <span>1 500</span> ₽</p>
+                      </div>
+                    <object><a href="members.html" class="competitions__members">Список участников</a></object>
                     </div>
-                    <a href="#" class="competitions__members">Список участников</a>
-                  </div>
+                  </a>
                 </li>
-                <li data-series="" class="competitions__item">
-                  <a href="#">
+                <li data-series="open-band" data-popularity="3" class="competitions__item">
+                  <a class="competitions__item-link" href="#">
                     <div class="competitions__inf-wrapper">
                       <div data-date="13.08.2024" class="competitions__date">13 августа 2024</div>
                       <div class="competitions__category">
@@ -524,7 +559,7 @@
                       <li data-distance="5km">SUP 5000 метров</li>
                       <li data-distance="1km">Открытая вода 1000 метров</li>
                     </ul>
-                    <div class="competitions__address-wrapper">
+                    <div data-region="71" class="competitions__address-wrapper">
                       <svg width="16" height="16" viewBox="0 0 16 16" role="img">
                         <use href="img/sprite.svg#map"></use>
                       </svg>
@@ -533,15 +568,16 @@
                         data-address-mobile="Тула">
                       </p>
                     </div>
-                  </a>
-                  <div class="competitions__buttons">
-                    <div>
-                      <a href="#" data-button-registration="registration-active">Регистрация</a>
-                      <p>от <span>1 500 ₽</span></p>
+                    <div class="competitions__buttons">
+                      <div>
+                      <object><a href="registration.html" data-button-registration="registration-active">Регистрация</a></object>
+                        <p>от <span>1 500 ₽</span></p>
+                      </div>
+                    <object><a href="members.html" class="competitions__members">Список участников</a></object>
                     </div>
-                    <a href="#" class="competitions__members">Список участников</a>
-                  </div>
+                  </a>
                 </li>
+
               </ul>
               <div class="pagination">
                 <div class="pagination__buttons-wrapper">

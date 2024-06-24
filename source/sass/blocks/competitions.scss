@@ -7,13 +7,35 @@
 
   &__item {
     list-style-type: none;
-    background-color: $white;
-    border-radius: 10px;
-    padding: 16px;
+
+    & .competitions__item-link {
+      width: 100%;
+      height: 100%;
+      display: block;
+      background-color: $white;
+      border-radius: 10px;
+      padding: 15px;
+      border: 1.5px solid transparent;
+
+      &:hover,
+      &:focus-visible,
+      &:active {
+        border-color: $green;
+      }
+    }
   }
 
   a:not(.competitions__members) {
     color: $dark;
+  }
+
+  .competitions__members {
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      color: $dark;
+    }
   }
 
   &__inf-wrapper {
@@ -33,7 +55,6 @@
   }
 
   &__category {
-
     display: flex;
     align-items: center;
     gap: 5px;
@@ -42,7 +63,6 @@
     $value in $description {
       #{$property}: $value;
     }
-
   }
 
   &__address-wrapper {
@@ -85,7 +105,6 @@
       gap: 16px;
     }
 
-
     li {
       position: relative;
       padding-left: 16px;
@@ -107,7 +126,6 @@
   &__buttons {
     display: flex;
     flex-direction: column;
-    // align-items: center;
     justify-content: center;
     gap: 16px;
 
@@ -144,12 +162,20 @@
         cursor: pointer;
         padding: 12px 24px;
         border-radius: 25px;
-        // line-height: 28px;
+
         @each $property,
-      $value in $button {
-        #{$property}: $value;
+        $value in $button {
+          #{$property}: $value;
+        }
+
+        &:hover,
+        &:focus-visible,
+        &:active {
+          box-shadow: $green-shadow;
+        }
       }
-      }
+
+
 
       [data-button-registration="registration-active"] {
         background-color: $green;
@@ -158,10 +184,12 @@
       [data-button-registration="registration-completed"] {
         background-color: $medium-grey;
         color: $grey;
+        pointer-events: none;
       }
 
       [data-button-registration="over"] {
         padding: 12px 0;
+        pointer-events: none;
 
         @each $property,
         $value in $h4 {
@@ -186,11 +214,14 @@
 
   &__title {
     margin: 8px 0;
+
     @each $property,
     $value in $h3 {
       #{$property}: $value;
     }
-        @include vp-768 {
+
+    @include vp-768 {
+
       @each $property,
       $value in $h2 {
         #{$property}: $value;
@@ -219,12 +250,18 @@
     border-radius: 25px;
 
     @each $property,
-      $value in $button {
-        #{$property}: $value;
-      }
+    $value in $button {
+      #{$property}: $value;
+    }
 
     @include vp-768 {
       display: none;
+    }
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      box-shadow: $dark-shadow;
     }
   }
 
@@ -261,6 +298,14 @@
     $value in $small {
       #{$property}: $value;
     }
+
+    border-bottom: 1.5px solid transparent;
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      border-color: $green;
+    }
   }
 
   &__sort-list {
@@ -291,25 +336,52 @@
       display: flex;
       border-radius: 30px;
       gap: 8px;
-      padding: 12px 4px;
+      padding: 4px;
       height: 100%;
     }
   }
 
   &__sort-list li {
-    padding: 5px 0;
+    a {
+      margin-left: auto;
+      width: max-content;
+      padding: 5px 0;
+      display: block;
+      border-bottom: 1.5px solid transparent;
+
+      &:hover,
+      &:focus-visible,
+      &:active {
+        border-color: $green;
+      }
+    }
+
+    .active {
+      border-color: $green;
+    }
 
     @include vp-1440 {
       a {
-        padding: 12px 24px;
+        border: none;
+        padding: 10px 22px;
 
         border-radius: 25px;
+        border: 1.5px solid transparent;
+
+        &:hover,
+        &:focus-visible,
+        &:active {
+          border-color: $green;
+        }
       }
 
       .active {
         background-color: $green;
+        border-color: $green;
       }
     }
+
+
   }
 
   &__sort-list.active {

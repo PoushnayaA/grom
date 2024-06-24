@@ -56,7 +56,7 @@ export class Accordions {
     if (element) {
       const content = element.querySelector('[data-accordion="content"]');
       content.style.transition = 'none';
-      content.style.maxHeight = `${content.scrollHeight}px`;
+      content.style.maxHeight = `${content.scrollHeight + 5}px`;
       setTimeout(() => {
         content.style.transition = null;
       });
@@ -84,7 +84,7 @@ export class Accordions {
         return;
       }
       content.style.transition = 'none';
-      content.style.maxHeight = `${content.scrollHeight}px`;
+      content.style.maxHeight = `${content.scrollHeight + 5}px`;
       setTimeout(() => {
         content.style.transition = null;
       });
@@ -119,10 +119,10 @@ export class Accordions {
 
     element.classList.add('is-active');
     if (transition) {
-      contentElement.style.maxHeight = `${this._openHeight}px`;
+      contentElement.style.maxHeight = `${this._openHeight + 5}px`;
     } else {
       contentElement.style.transition = 'none';
-      contentElement.style.maxHeight = `${this._openHeight}px`;
+      contentElement.style.maxHeight = `${this._openHeight + 5}px`;
       setTimeout(() => {
         contentElement.style.transition = null;
       });

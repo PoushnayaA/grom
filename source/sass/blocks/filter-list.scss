@@ -7,8 +7,6 @@
   .filter-list__body {
     display: flex;
     flex-direction: column;
-    // padding-top: 20px;
-    // padding-bottom: 20px;
     margin-top: 8px;
 
     @include vp-768 {
@@ -25,22 +23,20 @@
     right: 16px;
     transform: translate(0%, -50%);
     z-index: 4;
-    // width: 100%;
     padding: 24px 16px;
     background-color: $white;
     border-radius: 10px;
     height: max-content;
 
     overflow-y: auto;
-    max-height: 90vh;
+    // max-height: 90vh;
 
     h2 {
       margin: 0 0 8px;
     }
 
     @include vp-768 {
-      max-height: max-content;
-      // overflow-y: visible;
+      // max-height: max-content;
       position: sticky;
       left: 0;
       transform: translate(0);
@@ -50,10 +46,8 @@
       margin-right: 20px;
       z-index: 0;
       display: block;
-      // max-height: 100%;
-
       overflow-y: auto;
-    max-height: 90vh;
+      max-height: calc(100vh - 40px);
     }
 
     @include vp-1440 {
@@ -68,23 +62,26 @@
         border: none;
         background-color: transparent;
         cursor: pointer;
+
         @include vp-768 {
           display: none;
         }
       }
 
       h2 {
-        @each $property,
-  $value in $h3 {
-    #{$property}: $value;
-  }
 
-  @include vp-768 {
-    @each $property,
-  $value in $h2 {
-    #{$property}: $value;
-  }
-  }
+        @each $property,
+        $value in $h3 {
+          #{$property}: $value;
+        }
+
+        @include vp-768 {
+
+          @each $property,
+          $value in $h2 {
+            #{$property}: $value;
+          }
+        }
       }
     }
 
@@ -112,7 +109,6 @@
     }
 
     .filter-item {
-      // padding: 8px 12px;
       cursor: pointer;
     }
 
@@ -128,21 +124,6 @@
       display: flex;
       flex-wrap: wrap;
     }
-
-    .selected-item {
-      background-color: #f1f1f1;
-      padding: 5px 10px;
-      margin: 5px;
-      display: flex;
-      align-items: center;
-
-
-    }
-
-    .selected-item .remove-btn {
-      margin-left: 5px;
-      cursor: pointer;
-    }
   }
 
   .filters.active {
@@ -151,8 +132,6 @@
   }
 
   .list-container {
-    // margin-top: 20px;
-
     @include vp-768 {
       flex-grow: 1;
       margin-top: 0;
@@ -198,7 +177,6 @@
   gap: 4px;
   padding: 4px 12px;
   border-radius: 20px;
-  // border: 1px solid #ccc;
   background-color: $light-grey;
   font-size: 14px;
   cursor: pointer;
@@ -225,6 +203,18 @@
   }
 }
 
+.filter-item input[type="checkbox"]:hover+.checkmark,
+.filter-item input[type="checkbox"]:focus-visible+.checkmark,
+.filter-item input[type="checkbox"]:active+.checkmark {
+  background-color: $green;
+  transition: background-color 0.3s ease;
+  box-shadow: $green-shadow;
+
+  svg {
+    fill: $dark;
+  }
+}
+
 .filter-dark-wrapper {
   background-color: $light-grey;
   border-radius: 30px;
@@ -234,6 +224,18 @@
   padding: 4px;
   margin: 16px 0;
 
+  .filter-item input[type=checkbox]+.checkmark {
+    border: 1.5px solid transparent;
+    box-shadow: none;
+  }
+
+  .filter-item input[type=checkbox]:not(:checked):hover+.checkmark,
+  .filter-item input[type=checkbox]:not(:checked):focus-visible+.checkmark,
+  .filter-item input[type=checkbox]:not(:checked):active+.checkmark {
+    border: 1.5px solid $green;
+    background: transparent;
+    box-shadow: none;
+  }
 }
 
 .filter-dark-wrapper .checkmark {
@@ -248,13 +250,36 @@
 
 .selected-items {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 24px;
 
   @include vp-768 {
     gap: 16px;
   }
+
+  [type="reset"] {
+
+    border: none;
+    background-color: transparent;
+    color: $blue;
+    text-decoration: underline;
+    cursor: pointer;
+    order: 999;
+
+    @each $property,
+    $value in $small {
+      #{$property}: $value;
+    }
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      color: $dark;
+    }
+  }
 }
+
 
 .selected-item {
   background-color: $medium-grey;
@@ -287,6 +312,13 @@
   border-radius: 0px;
   font-size: 14px;
   outline: none;
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    border-color: $green;
+    cursor: pointer;
+  }
 
   @each $property,
   $value in $body {
@@ -326,11 +358,11 @@
   width: 100%;
 
   @each $property,
-      $value in $button {
-        #{$property}: $value;
-      }
+  $value in $button {
+    #{$property}: $value;
+  }
 
-      text-align: center;
+  text-align: center;
 
   @include vp-768 {
     display: none;
@@ -339,10 +371,28 @@
 
 .remove-btn {
   margin-left: 6px;
+  stroke: $grey;
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    svg {
+      stroke: $dark;
+    }
+  }
 }
 
 .suggestion-wrapper {
   position: relative;
+}
+
+.suggestion-wrapper input {
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    border-color: $green !important;
+  }
 }
 
 .suggestion-list {
@@ -366,8 +416,13 @@
   cursor: pointer;
 }
 
-.suggestion-item:hover {
-  background-color: $light-grey;
+.suggestion-item {
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    background-color: $light-grey;
+  }
 }
 
 .arrow {
@@ -379,5 +434,110 @@
 
   &--prev {
     transform: rotate(90deg);
+  }
+}
+
+[data-accordion="parent"] .filter-item input[type=checkbox]+.checkmark {
+  border: 1.5px solid transparent;
+  box-shadow: none;
+}
+
+[data-accordion="parent"] .filter-item input[type=checkbox]:not(:checked):hover+.checkmark,
+[data-accordion="parent"] .filter-item input[type=checkbox]:not(:checked):focus-visible+.checkmark,
+[data-accordion="parent"] .filter-item input[type=checkbox]:not(:checked):active+.checkmark {
+  border: 1.5px solid $green;
+  background: $light-grey;
+  box-shadow: none;
+}
+
+
+
+
+.custom-select {
+  position: relative;
+}
+
+.custom-select__buttons {
+  position: relative;
+
+  svg {
+    position: absolute;
+    right: 0;
+    top: 45%;
+  }
+}
+
+.custom-select__input {
+  flex-grow: 1;
+  padding: 8px 12px 8px 0;
+  border: none;
+  border-bottom: 1px solid $medium-grey;
+  border-radius: 0px;
+  font-size: 14px;
+  outline: none;
+  width: 100%;
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    border-color: $green;
+  }
+
+  @each $property,
+  $value in $body {
+    #{$property}: $value;
+  }
+
+  &::placeholder {
+
+    @each $property,
+    $value in $body {
+      #{$property}: $value;
+    }
+
+  }
+}
+
+.custom-select__options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: $white;
+  border: 1.5px solid $medium-grey;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  z-index: 1;
+  max-height: 200px;
+  overflow-y: auto;
+  display: none;
+  box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.08);
+}
+
+.custom-select__option {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.custom-select__option:hover,
+.custom-select__option:focus,
+.custom-select__option:active {
+  background-color: $light-grey;
+}
+
+.filter-list__header {
+  position: sticky;
+  left: 0;
+  transform: translate(0);
+  top: 0;
+  height: max-content;
+  padding: 10px 0 0;
+  z-index: 2;
+  display: block;
+  background-color: $light-grey;
+
+  @include vp-768 {
+   position: relative;
+   padding: 0;
   }
 }

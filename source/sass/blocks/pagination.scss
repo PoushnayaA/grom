@@ -40,11 +40,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid transparent;
 
   background-color: $medium-grey;
   border-radius: 50%;
   width: 32px;
   height: 32px;
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    box-shadow: $green-normal-shadow;
+    background-color: $light-grey-bg;
+    border: 1px solid $green;
+  }
 
   svg {
     stroke: $dark;
@@ -53,6 +62,7 @@
 
 .pagination__item--active .pagination__link {
   background-color: $green;
+  pointer-events: none;
 }
 
 
@@ -90,6 +100,12 @@
   }
 
   text-align: center;
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    box-shadow: $dark-shadow;
+  }
 }
 
 .pagination__show-all:hover {}
