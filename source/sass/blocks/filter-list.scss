@@ -382,6 +382,20 @@
   }
 }
 
+.filters__button-close {
+  svg {
+    stroke: $grey;
+  }
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    svg {
+      stroke: $dark;
+    }
+  }
+}
+
 .suggestion-wrapper {
   position: relative;
 }

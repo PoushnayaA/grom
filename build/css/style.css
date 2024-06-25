@@ -147,6 +147,10 @@ button,
           appearance: none;
 }
 
+li::marker {
+  color: transparent;
+}
+
 .wrapper {
   position: relative;
   display: -webkit-box;
@@ -2421,6 +2425,13 @@ footer {
   stroke: #2E2E2E;
 }
 
+.filters__button-close svg {
+  stroke: #999999;
+}
+.filters__button-close:hover svg, .filters__button-close:focus-visible svg, .filters__button-close:active svg {
+  stroke: #2E2E2E;
+}
+
 .suggestion-wrapper {
   position: relative;
 }
@@ -2618,9 +2629,6 @@ footer {
 .competitions__item .competitions__item-link:hover, .competitions__item .competitions__item-link:focus-visible, .competitions__item .competitions__item-link:active {
   border-color: #D6FD52;
 }
-.competitions a:not(.competitions__members) {
-  color: #2E2E2E;
-}
 .competitions .competitions__members:hover, .competitions .competitions__members:focus-visible, .competitions .competitions__members:active {
   color: #2E2E2E;
 }
@@ -2653,6 +2661,9 @@ footer {
   font-weight: 400;
   line-height: 14.63px;
 }
+.competitions__date {
+  color: #2E2E2E;
+}
 .competitions__address-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2662,6 +2673,7 @@ footer {
           align-items: center;
   gap: 4px;
   margin: 16px 0;
+  color: #2E2E2E;
   font-size: 12px;
   font-weight: 400;
   line-height: 14.63px;
@@ -2732,6 +2744,7 @@ footer {
       -ms-flex-pack: center;
           justify-content: center;
   gap: 16px;
+  color: #2E2E2E;
 }
 .competitions__buttons p {
   margin: auto 0;
@@ -2765,44 +2778,6 @@ footer {
   line-height: 19.5px;
   text-align: left;
 }
-.competitions__buttons div a {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border: none;
-  cursor: pointer;
-  padding: 12px 24px;
-  border-radius: 25px;
-  font-family: "Montserrat", "Arial", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 19.5px;
-  text-align: left;
-}
-.competitions__buttons div a:hover, .competitions__buttons div a:focus-visible, .competitions__buttons div a:active {
-  -webkit-box-shadow: 0px 0px 10px 0px rgba(188, 233, 39, 0.6);
-          box-shadow: 0px 0px 10px 0px rgba(188, 233, 39, 0.6);
-}
-.competitions__buttons div [data-button-registration=registration-active] {
-  background-color: #D6FD52;
-}
-.competitions__buttons div [data-button-registration=registration-completed] {
-  background-color: #E1E2E4;
-  color: #999999;
-  pointer-events: none;
-}
-.competitions__buttons div [data-button-registration=over] {
-  padding: 12px 0;
-  pointer-events: none;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 21.94px;
-  line-height: 26px;
-  color: #999999;
-}
 .competitions__members {
   color: #4176FF;
   text-decoration: underline;
@@ -2812,6 +2787,7 @@ footer {
 }
 .competitions__title {
   margin: 8px 0;
+  color: #2E2E2E;
   font-size: 20px;
   font-weight: 700;
   line-height: 24.38px;
@@ -2997,6 +2973,52 @@ footer {
   .competitions-list__counter {
     margin-left: 16px;
   }
+}
+
+[data-button-registration] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: none;
+  cursor: pointer;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-family: "Montserrat", "Arial", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.5px;
+  text-align: left;
+}
+[data-button-registration]:hover, [data-button-registration]:focus-visible, [data-button-registration]:active {
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(188, 233, 39, 0.6);
+          box-shadow: 0px 0px 10px 0px rgba(188, 233, 39, 0.6);
+}
+
+[data-button-registration=registration-active] {
+  background-color: #D6FD52;
+  color: #2E2E2E;
+}
+
+[data-button-registration=registration-completed] {
+  background-color: #E1E2E4;
+  color: #999999;
+  pointer-events: none;
+}
+
+[data-button-registration=over] {
+  padding: 12px 0;
+  pointer-events: none;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.94px;
+  line-height: 26px;
+  color: #999999;
 }
 
 .pagination {
@@ -3440,40 +3462,28 @@ footer {
   }
 }
 
-.competition__information {
-  display: none;
-  background-color: #FFFFFF;
-  border-radius: 10px;
-  z-index: 1;
-  height: -webkit-max-content;
-  height: -moz-max-content;
-  height: max-content;
-  padding: 16px;
+.information-modal__buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 @media (min-width: 768px) {
-  .competition__information {
-    display: block;
-    width: 232px;
+  .information-modal__buttons {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 }
-@media (min-width: 1440px) {
-  .competition__information {
-    width: 292px;
-  }
-}
-
-.competition__item {
+.information-modal__buttons [data-button-registration] {
   width: 100%;
-  height: 100%;
-  display: block;
-  background-color: #FFFFFF;
-  border-radius: 10px;
-  padding: 15px;
-  border: 1.5px solid transparent;
-  z-index: 1;
-}
-.competition__item a {
-  color: #2E2E2E;
 }
 
 .competition__text-wrapper {
@@ -3506,4 +3516,197 @@ footer {
   background-color: #FFFFFF;
   padding: 10px;
   border-radius: 10px;
+}
+.competition [data-accordion=button] h3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24.38px;
+}
+@media (min-width: 1440px) {
+  .competition [data-accordion=button] h3 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24.38px;
+  }
+}
+
+.information-modal {
+  position: sticky;
+  bottom: -5px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  z-index: 1;
+  padding: 20px 12px;
+  margin-left: -16px;
+  width: 100vw;
+  -webkit-box-shadow: 0px 4px 26px 0px rgba(0, 0, 0, 0.0784313725);
+          box-shadow: 0px 4px 26px 0px rgba(0, 0, 0, 0.0784313725);
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  height: auto;
+}
+@media (min-width: 768px) {
+  .information-modal {
+    width: 100%;
+    margin-left: 0;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    display: block;
+    max-width: 232px;
+    -webkit-box-shadow: 0px 4px 26px 0px rgba(0, 0, 0, 0.0784313725);
+            box-shadow: 0px 4px 26px 0px rgba(0, 0, 0, 0.0784313725);
+    position: sticky;
+    text-align: center;
+    left: 0;
+    -webkit-transform: translate(0);
+        -ms-transform: translate(0);
+            transform: translate(0);
+    top: 20px;
+    height: -webkit-max-content;
+    height: -moz-max-content;
+    height: max-content;
+    display: block;
+    overflow-y: auto;
+    max-height: calc(100vh - 40px);
+  }
+}
+@media (min-width: 1440px) {
+  .information-modal {
+    max-width: 292px;
+  }
+}
+
+.information-modal__links {
+  display: none;
+  margin: 0;
+  padding: 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 16px;
+}
+@media (min-width: 768px) {
+  .information-modal__links {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+.information-modal__links.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.information-modal__close {
+  display: none;
+}
+
+.information-modal.mobile-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 4;
+  -webkit-transition: -webkit-transform 0.5s ease-in-out;
+  transition: -webkit-transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  overflow-y: auto;
+  width: 80%;
+}
+.information-modal.mobile-modal .information-modal__links {
+  display: block;
+}
+.information-modal.mobile-modal .information-modal__registration-date {
+  display: none;
+}
+.information-modal.mobile-modal [data-button-registration] {
+  display: none;
+}
+.information-modal.mobile-modal .information-modal__more {
+  pointer-events: none;
+}
+.information-modal.mobile-modal .information-modal__close {
+  display: block;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.information-modal.mobile-modal .information-modal__close svg {
+  stroke: #999999;
+}
+.information-modal.mobile-modal .information-modal__close:hover svg, .information-modal.mobile-modal .information-modal__close:focus-visible svg, .information-modal.mobile-modal .information-modal__close:active svg {
+  stroke: #2E2E2E;
+}
+
+.information-modal.none {
+  z-index: -1;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  position: absolute;
+  margin-left: -130%;
+}
+
+.information-modal__registration-date {
+  text-align: center;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  font-family: "Montserrat", "Arial", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.5px;
+  text-align: left;
+  text-align: center;
+  margin: 15px 0 10px;
+}
+@media (min-width: 768px) {
+  .information-modal__registration-date {
+    margin-top: 16px;
+    margin-bottom: 32px;
+  }
+}
+
+.information-modal__more {
+  border: none;
+  display: block;
+  background-color: transparent;
+  text-decoration: underline;
+  color: #4176FF;
+  cursor: pointer;
+  margin-left: auto;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+.information-modal__more:hover, .information-modal__more:focus-visible, .information-modal__more:active {
+  color: #2E2E2E;
+}
+@media (min-width: 768px) {
+  .information-modal__more {
+    display: none;
+  }
+}
+
+.information-modal__link {
+  color: #4176FF;
+  text-decoration: underline;
+  list-style-type: none;
+  font-family: "Montserrat", "Arial", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.5px;
+  text-align: left;
+}
+.information-modal__link:hover, .information-modal__link:focus-visible, .information-modal__link:active {
+  color: #2E2E2E;
 }

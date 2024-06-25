@@ -25,9 +25,9 @@
     }
   }
 
-  a:not(.competitions__members) {
-    color: $dark;
-  }
+  // a:not(.competitions__members) {
+  //   color: $dark;
+  // }
 
   .competitions__members {
 
@@ -65,11 +65,17 @@
     }
   }
 
+  &__date {
+    color: $dark;
+  }
+
   &__address-wrapper {
     display: flex;
     align-items: center;
     gap: 4px;
     margin: 16px 0;
+
+    color: $dark;
 
     @each $property,
     $value in $description {
@@ -128,6 +134,7 @@
     flex-direction: column;
     justify-content: center;
     gap: 16px;
+    color: $dark;
 
     p {
       margin: auto 0;
@@ -154,52 +161,7 @@
       }
     }
 
-    div {
-      a {
-        display: flex;
-        align-items: center;
-        border: none;
-        cursor: pointer;
-        padding: 12px 24px;
-        border-radius: 25px;
 
-        @each $property,
-        $value in $button {
-          #{$property}: $value;
-        }
-
-        &:hover,
-        &:focus-visible,
-        &:active {
-          box-shadow: $green-shadow;
-        }
-      }
-
-
-
-      [data-button-registration="registration-active"] {
-        background-color: $green;
-      }
-
-      [data-button-registration="registration-completed"] {
-        background-color: $medium-grey;
-        color: $grey;
-        pointer-events: none;
-      }
-
-      [data-button-registration="over"] {
-        padding: 12px 0;
-        pointer-events: none;
-
-        @each $property,
-        $value in $h4 {
-          #{$property}: $value;
-        }
-
-        line-height: 26px;
-        color: $grey;
-      }
-    }
   }
 
   &__members {
@@ -214,6 +176,7 @@
 
   &__title {
     margin: 8px 0;
+    color: $dark;
 
     @each $property,
     $value in $h3 {
@@ -421,4 +384,49 @@
       margin-left: 16px;
     }
   }
+}
+
+[data-button-registration] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  padding: 12px 24px;
+  border-radius: 25px;
+
+  @each $property,
+  $value in $button {
+    #{$property}: $value;
+  }
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    box-shadow: $green-shadow;
+  }
+}
+
+[data-button-registration="registration-active"] {
+  background-color: $green;
+  color: $dark;
+}
+
+[data-button-registration="registration-completed"] {
+  background-color: $medium-grey;
+  color: $grey;
+  pointer-events: none;
+}
+
+[data-button-registration="over"] {
+  padding: 12px 0;
+  pointer-events: none;
+
+  @each $property,
+  $value in $h4 {
+    #{$property}: $value;
+  }
+
+  line-height: 26px;
+  color: $grey;
 }
