@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "Montserrat";
   font-style: normal;
@@ -2313,6 +2314,7 @@ footer {
   background-color: transparent;
   color: #4176FF;
   text-decoration: underline;
+  text-underline-offset: 4px;
   cursor: pointer;
   -webkit-box-ordinal-group: 1000;
       -ms-flex-order: 999;
@@ -2637,7 +2639,7 @@ footer {
   border-color: #D6FD52;
 }
 .competitions .competitions__members:hover, .competitions .competitions__members:focus-visible, .competitions .competitions__members:active {
-  color: #F3F4F6;
+  color: #2E2E2E;
 }
 .competitions__category {
   color: #2E2E2E;
@@ -2791,6 +2793,7 @@ footer {
 .competitions__members {
   color: #4176FF;
   text-decoration: underline;
+  text-underline-offset: 4px;
   font-size: 14px;
   font-weight: 400;
   line-height: 17.07px;
@@ -3029,6 +3032,41 @@ footer {
   line-height: 21.94px;
   line-height: 26px;
   color: #999999;
+}
+
+.competitions__card-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 6px;
+}
+.competitions__card-title button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+.competitions__card-title button svg {
+  stroke: #999999;
+  fill: none;
+}
+.competitions__card-title button:hover svg, .competitions__card-title button:focus-visible svg, .competitions__card-title button:active svg {
+  stroke: #999999;
+  fill: #999999;
+}
+
+[data-like=true] button svg {
+  stroke: #D6FD52;
+  fill: #D6FD52;
 }
 
 .pagination {
@@ -3361,8 +3399,17 @@ footer {
     padding-bottom: 102px;
   }
 }
+.competition .competitions__item-link {
+  pointer-events: none;
+}
 .competition .competitions__item-link:hover, .competition .competitions__item-link:focus-visible, .competition .competitions__item-link:active {
   border-color: transparent;
+}
+.competition .competitions__item-link [data-button-registration] {
+  pointer-events: all;
+}
+.competition .competitions__item-link [data-button=add-like] {
+  pointer-events: all;
 }
 
 .competition__photo-content {
@@ -3458,6 +3505,18 @@ footer {
   .breadcrumb .breadcrumb__item-button {
     display: none;
   }
+}
+.breadcrumb .breadcrumb__item-button:hover a, .breadcrumb .breadcrumb__item-button:focus-visible a, .breadcrumb .breadcrumb__item-button:active a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.breadcrumb .breadcrumb__item:not(.active):hover a, .breadcrumb .breadcrumb__item:not(.active):focus-visible a, .breadcrumb .breadcrumb__item:not(.active):active a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.breadcrumb .breadcrumb__item-button:hover, .breadcrumb .breadcrumb__item-button:focus-visible, .breadcrumb .breadcrumb__item-button:active {
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 @media (min-width: 768px) {
@@ -3614,6 +3673,63 @@ footer {
   display: none;
 }
 
+.information-modal__registration-date {
+  text-align: center;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  font-family: "Montserrat", "Arial", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.5px;
+  text-align: left;
+  text-align: center;
+  margin: 15px 0 10px;
+}
+@media (min-width: 768px) {
+  .information-modal__registration-date {
+    margin-top: 16px;
+    margin-bottom: 32px;
+  }
+}
+
+.information-modal__more {
+  border: none;
+  display: block;
+  background-color: transparent;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  color: #4176FF;
+  cursor: pointer;
+  margin-left: auto;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+.information-modal__more:hover, .information-modal__more:focus-visible, .information-modal__more:active {
+  color: #2E2E2E;
+}
+@media (min-width: 768px) {
+  .information-modal__more {
+    display: none;
+  }
+}
+
+.information-modal__link {
+  color: #4176FF;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  list-style-type: none;
+  font-family: "Montserrat", "Arial", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.5px;
+  text-align: left;
+}
+.information-modal__link:hover, .information-modal__link:focus-visible, .information-modal__link:active {
+  color: #2E2E2E;
+}
+
 .information-modal.mobile-modal {
   position: fixed;
   top: 50%;
@@ -3633,9 +3749,52 @@ footer {
   height: max-content;
   overflow-y: auto;
   width: 80%;
+  padding: 16px;
+}
+.information-modal.mobile-modal .information-modal__mobile-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 16px;
+}
+.information-modal.mobile-modal .information-modal__more {
+  margin-left: 0;
+  color: #2E2E2E;
+  pointer-events: none;
+  text-decoration: none;
+  font-family: "Montserrat", "Arial", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.5px;
+  text-align: left;
+  padding: 0;
 }
 .information-modal.mobile-modal .information-modal__links {
-  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+.information-modal.mobile-modal .information-modal__links a {
+  font-family: "Montserrat", "Arial", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.5px;
+  text-align: left;
+}
+.information-modal.mobile-modal .information-modal__links-container {
+  width: 100%;
 }
 .information-modal.mobile-modal .information-modal__registration-date {
   display: none;
@@ -3667,59 +3826,25 @@ footer {
   margin-left: -130%;
 }
 
-.information-modal__registration-date {
-  text-align: center;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  font-family: "Montserrat", "Arial", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 19.5px;
-  text-align: left;
-  text-align: center;
-  margin: 15px 0 10px;
+.competition__extra-block {
+  margin-top: 24px;
+  position: relative;
 }
-@media (min-width: 768px) {
-  .information-modal__registration-date {
-    margin-top: 16px;
-    margin-bottom: 32px;
-  }
+.competition__extra-block p {
+  margin: 0;
+  padding-top: 20px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.94px;
 }
-
-.information-modal__more {
-  border: none;
-  display: block;
-  background-color: transparent;
-  text-decoration: underline;
-  color: #4176FF;
-  cursor: pointer;
-  margin-left: auto;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-}
-.information-modal__more:hover, .information-modal__more:focus-visible, .information-modal__more:active {
-  color: #2E2E2E;
-}
-@media (min-width: 768px) {
-  .information-modal__more {
-    display: none;
-  }
-}
-
-.information-modal__link {
-  color: #4176FF;
-  text-decoration: underline;
-  list-style-type: none;
-  font-family: "Montserrat", "Arial", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 19.5px;
-  text-align: left;
-}
-.information-modal__link:hover, .information-modal__link:focus-visible, .information-modal__link:active {
-  color: #2E2E2E;
+.competition__extra-block::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 77px;
+  height: 4px;
+  background-color: #D6FD52;
 }
 
 .competition__container [data-accordion=element].is-active [data-accordion=content] {
@@ -3728,6 +3853,20 @@ footer {
 
 .competition [data-accordion=element] {
   padding: 16px;
+}
+
+.competition__text-wrapper {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .competition__text-wrapper {
+    width: calc(100% - 16px - 232px);
+  }
+}
+@media (min-width: 1440px) {
+  .competition__text-wrapper {
+    width: calc(100% - 16px - 292px);
+  }
 }
 
 .content__text p {
@@ -3833,6 +3972,116 @@ footer {
   height: 100%;
   max-width: unset;
   max-height: unset;
+}
+
+.content__table {
+  margin: 16px 0 0;
+  /* Скрываем системный скроллбар */
+}
+@media (min-width: 1440px) {
+  .content__table {
+    margin: 24px 0 0;
+  }
+}
+.content__table table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow-x: auto; /* Добавляет горизонтальный скролл */
+  display: block; /* Делает таблицу блочным элементом */
+}
+.content__table table::-webkit-scrollbar {
+  display: none; /* Для Chrome, Safari и Opera */
+}
+.content__table table {
+  -ms-overflow-style: none; /* Для Internet Explorer и Edge */
+  scrollbar-width: none; /* Для Firefox */
+}
+.content__table th, .content__table td {
+  white-space: nowrap;
+}
+.content__table th {
+  text-align: center;
+  padding: 16px;
+  border-bottom: 1px solid #E1E2E4;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.5px;
+  color: #999999;
+}
+.content__table th:first-child {
+  text-align: left;
+}
+.content__table td {
+  padding: 16px;
+  border-bottom: 1px solid #E1E2E4;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17.07px;
+}
+.content__table td:first-child {
+  text-align: left;
+}
+.content__table .content__table-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 8px;
+}
+.content__table .content__table-title h5 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.5px;
+}
+.content__table .content__table-title div {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17.07px;
+  position: relative;
+  padding-left: 12px;
+}
+.content__table .content__table-title div:before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #D6FD52;
+}
+.content__table .content__table-title div span {
+  font-family: "Montserrat", "Arial", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17.07px;
+  text-align: left;
+}
+.content__table td a {
+  color: #4176FF;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17.07px;
+}
+.content__table td a:hover, .content__table td a:focus-visible, .content__table td a:active {
+  color: #2E2E2E;
+}
+.content__table [data-state=disabled]::after {
+  content: "Нет мест";
+  color: #999999;
+}
+.content__table [data-state=active]::after {
+  content: "Есть места";
 }
 
 .content__text-list,

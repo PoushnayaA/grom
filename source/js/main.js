@@ -709,6 +709,16 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  window.addEventListener('resize', closeModal);
+
+  function closeModal() {
+    const windowWidth = window.innerWidth;
+      if (windowWidth >= 768) {
+        document.querySelector('.information-modal').classList.remove('mobile-modal');
+    document.querySelector('body').classList.remove('dark-modal');
+      }
+    }
+
   const moreButton = document.querySelector('.information-modal__more');
   moreButton.addEventListener('click', function () {
     document.querySelector('.information-modal').classList.add('mobile-modal');
@@ -720,4 +730,21 @@ window.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.information-modal').classList.remove('mobile-modal');
     document.querySelector('body').classList.remove('dark-modal');
   })
+
+  const disabledSlot = document.querySelector('[data-state="disabled"]');
+  if (disabledSlot) {
+    disabledSlot.parentElement.style.backgroundColor = "#f3f4f6"
+  }
+
+  const buttonLike = document.querySelector('[data-button="add-like"]');
+  if (buttonLike) {
+    buttonLike.addEventListener('click', function (event) {
+      event.preventDefault();
+      if (buttonLike.parentElement.parentElement.getAttribute('data-like') === 'true') {
+        buttonLike.parentElement.parentElement.setAttribute('data-like', 'false');
+      } else {
+        buttonLike.parentElement.parentElement.setAttribute('data-like', 'true');
+      }
+    })
+  }
 })

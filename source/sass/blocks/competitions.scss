@@ -31,7 +31,7 @@
     &:hover,
     &:focus-visible,
     &:active {
-      color: $light-grey;
+      color: $dark;
     }
   }
 
@@ -168,6 +168,7 @@
   &__members {
     color: $blue;
     text-decoration: underline;
+    text-underline-offset: 4px;
 
     @each $property,
     $value in $small {
@@ -430,4 +431,44 @@
 
   line-height: 26px;
   color: $grey;
+}
+
+
+.competitions__card-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  button {
+    // padding: 3px;
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+
+    svg {
+      stroke: $grey;
+      fill: none;
+    }
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      svg {
+        stroke: $grey;
+        fill: $grey;
+
+      }
+    }
+
+  }
+}
+
+[data-like="true"] button {
+  svg {
+    stroke: $green;
+    fill: $green;
+  }
 }

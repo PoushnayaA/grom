@@ -6,6 +6,18 @@
   padding: 16px;
 }
 
+.competition__text-wrapper {
+  width: 100%;
+
+  @include vp-768 {
+    width: calc(100% - 16px - 232px);
+  }
+
+  @include vp-1440 {
+    width: calc(100% - 16px - 292px);
+  }
+}
+
 .content__text p {
   @each $property,
   $value in $body {
@@ -99,7 +111,137 @@
   }
 }
 
-.content__table {}
+.content__table {
+  margin: 16px 0 0;
+
+  @include vp-1440 {
+    margin: 24px 0 0;
+  }
+  table {
+    width: 100%;
+    // table-layout: fixed;
+    border-collapse: collapse;
+    overflow-x: auto; /* Добавляет горизонтальный скролл */
+    display: block; /* Делает таблицу блочным элементом */
+  }
+
+  /* Скрываем системный скроллбар */
+  table::-webkit-scrollbar {
+    display: none; /* Для Chrome, Safari и Opera */
+  }
+
+  table {
+    -ms-overflow-style: none; /* Для Internet Explorer и Edge */
+    scrollbar-width: none; /* Для Firefox */
+  }
+
+th, td {
+  white-space: nowrap;
+}
+  th {
+
+    text-align: center;
+    padding: 16px;
+    border-bottom: 1px solid $medium-grey;
+
+    &:first-child {
+      text-align: left;
+    }
+
+    @each $property,
+  $value in $body {
+    #{$property}: $value;
+  }
+  color: $grey;
+  }
+
+  td {
+    padding: 16px;
+    border-bottom: 1px solid $medium-grey;
+    text-align: center;
+
+    &:first-child {
+      text-align: left;
+    }
+
+    @each $property,
+  $value in $small {
+    #{$property}: $value;
+  }
+  }
+
+
+.content__table-title {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  h5 {
+    margin: 0;
+    @each $property,
+    $value in $body {
+      #{$property}: $value;
+    }
+  }
+
+  div {
+    @each $property,
+    $value in $small {
+      #{$property}: $value;
+    }
+
+position: relative;
+padding-left: 12px;
+&:before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: $green;
+}
+
+    span {
+      @each $property,
+      $value in $link-small {
+        #{$property}: $value;
+      }
+    }
+  }
+}
+
+td a {
+  color: $blue;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  @each $property,
+  $value in $small {
+    #{$property}: $value;
+  }
+
+
+
+&:hover,
+&:focus-visible,
+&:active {
+  color: $dark;
+}
+}
+
+
+  [data-state="disabled"]::after {
+    content: 'Нет мест';
+    color: $grey;
+  }
+
+  [data-state="active"]::after {
+    content: 'Есть места';
+  }
+}
+
+
 
 .content__text-list,
 .content__text-list * {

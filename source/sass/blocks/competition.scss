@@ -17,11 +17,20 @@
   }
 
   .competitions__item-link {
+    pointer-events: none;
 
     &:hover,
     &:focus-visible,
     &:active {
       border-color: transparent;
+    }
+
+    [data-button-registration] {
+      pointer-events: all;
+    }
+
+    [data-button="add-like"] {
+      pointer-events: all;
     }
   }
 }
@@ -116,6 +125,36 @@
 
     @include vp-768 {
       display: none;
+    }
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      a {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+    }
+  }
+
+  .breadcrumb__item:not(.active) {
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      a {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+    }
+  }
+
+  .breadcrumb__item-button {
+    &:hover,
+    &:focus-visible,
+    &:active {
+        text-decoration: underline;
+        text-underline-offset: 4px;
     }
   }
 }
@@ -251,6 +290,72 @@
   display: none;
 }
 
+.information-modal__registration-date {
+  text-align: center;
+  width: max-content;
+
+  @each $property,
+  $value in $link {
+    #{$property}: $value;
+  }
+
+  text-align: center;
+  margin: 15px 0 10px;
+
+  @include vp-768 {
+    margin-top: 16px;
+    margin-bottom: 32px;
+  }
+}
+
+
+.information-modal__more {
+  border: none;
+  display: block;
+  background-color: transparent;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  color: $blue;
+  cursor: pointer;
+  margin-left: auto;
+  width: max-content;
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    color: $dark;
+  }
+
+  @include vp-768 {
+    display: none;
+  }
+}
+
+
+.information-modal__links-container {
+  // background-color: ;
+}
+
+.information-modal__link {
+  color: $blue;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  list-style-type: none;
+
+  @each $property,
+  $value in $link {
+    #{$property}: $value;
+  }
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    color: $dark;
+  }
+
+}
+
+
 .information-modal.mobile-modal {
   position: fixed;
   top: 50%;
@@ -264,9 +369,48 @@
   height: max-content;
   overflow-y: auto;
   width: 80%;
+  padding: 16px;
+
+  .information-modal__mobile-buttons {
+    display: flex;
+    // flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .information-modal__more {
+    margin-left: 0;
+    color: $dark;
+    pointer-events: none;
+    text-decoration: none;
+
+    @each $property,
+    $value in $link {
+      #{$property}: $value;
+    }
+
+    padding: 0;
+
+  }
 
   .information-modal__links {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 16px;
+
+    a {
+
+      @each $property,
+      $value in $link {
+        #{$property}: $value;
+      }
+    }
+  }
+
+  .information-modal__links-container {
+    width: 100%;
   }
 
   .information-modal__registration-date {
@@ -310,65 +454,28 @@
   margin-left: -130%;
 }
 
-.information-modal__registration-date {
-  text-align: center;
-  width: max-content;
+.competition__extra-block {
+  margin-top: 24px;
 
-  @each $property,
-  $value in $link {
-    #{$property}: $value;
+  p {
+    margin: 0;
+    padding-top: 20px;
+
+    @each $property,
+    $value in $h4 {
+      #{$property}: $value;
+    }
   }
 
-  text-align: center;
-  margin: 15px 0 10px;
+  position: relative;
 
-  @include vp-768 {
-    margin-top: 16px;
-    margin-bottom: 32px;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 77px;
+    height: 4px;
+    background-color: $green;
   }
-}
-
-
-.information-modal__more {
-  border: none;
-  display: block;
-  background-color: transparent;
-  text-decoration: underline;
-  color: $blue;
-  cursor: pointer;
-  margin-left: auto;
-  width: max-content;
-
-  &:hover,
-  &:focus-visible,
-  &:active {
-    color: $dark;
-  }
-
-  @include vp-768 {
-    display: none;
-  }
-}
-
-
-.information-modal__links-container {
-  // background-color: ;
-}
-
-.information-modal__link {
-  color: $blue;
-  text-decoration: underline;
-  list-style-type: none;
-
-  @each $property,
-  $value in $link {
-    #{$property}: $value;
-  }
-
-  &:hover,
-  &:focus-visible,
-  &:active {
-    color: $dark;
-  }
-
 }

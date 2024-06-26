@@ -105,7 +105,7 @@
             <div class="competition__container">
               <div class="competition__text-wrapper">
                 <ul class="competitions">
-                  <li data-series="another" data-popularity="10" class="competitions__item">
+                  <li data-series="another" data-popularity="10" data-like="false" class="competitions__item">
                     <a class="competitions__item-link" href="competition.html">
                       <div class="competitions__inf-wrapper">
                         <div data-date="01.06.2024" class="competitions__date">1 июня 2024</div>
@@ -116,7 +116,14 @@
                           <div data-category="another">Другое</div>
                         </div>
                       </div>
-                      <h2 class="competitions__title">SWIM SUP RUN - БУШОВО</h2>
+                      <div class="competitions__card-title">
+                        <button data-button="add-like" type="button">
+                          <svg width="20" height="18" viewBox="0 0 20 18" role="img">
+                            <use href="img/sprite.svg#like"></use>
+                          </svg>
+                        </button>
+                        <h2 class="competitions__title">SWIM SUP RUN - БУШОВО</h2>
+                      </div>
                       <ul class="competitions__description">
                         <li data-distance="1km">SUP 1000 метров</li>
                         <li data-distance="5km">SUP 5000 метров</li>
@@ -182,7 +189,55 @@
                       </svg>
                     </button>
                     <div data-accordion="content">
-                      <div class="content__table"></div>
+                      <div class="content__table">
+                        <table>
+                          <tr>
+                            <th>Старт</th>
+                            <th>Слоты</th>
+                            <th>Дата</th>
+                            <th>Пол</th>
+                            <th>Возраст</th>
+                            <th>Дистанция</th>
+                            <th></th>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="content__table-title">
+                                <h5>
+                                  SUP 5000 метров
+                                </h5>
+                                <div>Стартовая стоимость – <span>от 500 ₽</span></div>
+                              </div>
+                            </td>
+                            <td>
+                              <div data-state="disabled"></div>
+                            </td>
+                            <td>23.07.24</td>
+                            <td>М/Ж</td>
+                            <td>с 0 лет</td>
+                            <td>1,0 км</td>
+                            <td><a href="#">Регистрация</a></td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="content__table-title">
+                                <h5>
+                                  Открытая вода 1000 метров
+                                </h5>
+                                <div>Стартовая стоимость – <span>от 500 ₽</span></div>
+                              </div>
+                            </td>
+                            <td>
+                              <div data-state="active"></div>
+                            </td>
+                            <td>23.07.24</td>
+                            <td>М/Ж</td>
+                            <td>с 18 лет</td>
+                            <td>1,0 км</td>
+                            <td><a href="#">Регистрация</a></td>
+                          </tr>
+                        </table>
+                      </div>
                     </div>
                   </div>
 
@@ -453,6 +508,9 @@
                   </div>
 
 
+                </div>
+                <div class="competition__extra-block">
+                  <p>Также все участники соревнований участвуют в розыгрыше SUP-борда от нашего партнёра GLADIATOR!</p>
                 </div>
               </div>
               <div class="competition__information information-modal">
