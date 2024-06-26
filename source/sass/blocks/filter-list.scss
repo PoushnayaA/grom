@@ -139,6 +139,16 @@
   }
 }
 
+.list-container {
+  .list-container__nothing {
+    @each $property,
+    $value in $body {
+      #{$property}: $value;
+    }
+    text-align: center;
+  }
+}
+
 @keyframes sortOpen {
   0% {
     opacity: 0;

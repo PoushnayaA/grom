@@ -25,17 +25,18 @@
     }
   }
 
-  // a:not(.competitions__members) {
-  //   color: $dark;
-  // }
 
   .competitions__members {
 
     &:hover,
     &:focus-visible,
     &:active {
-      color: $dark;
+      color: $light-grey;
     }
+  }
+
+  &__category {
+    color: $dark;
   }
 
   &__inf-wrapper {

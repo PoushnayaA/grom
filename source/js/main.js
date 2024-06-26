@@ -218,6 +218,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
         if (document.querySelectorAll('.selected-item').length === 0) {
           selectedContainer.classList.add('visually-hidden');
+        } else {
+          selectedContainer.classList.remove('visually-hidden');
         }
       }
     });
@@ -312,8 +314,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
     if (visibleItems === 0) {
       pagination.classList.add('visually-hidden');
+      document.querySelector('.list-container__nothing').classList.remove('visually-hidden');
     } else {
       pagination.classList.remove('visually-hidden');
+      document.querySelector('.list-container__nothing').classList.add('visually-hidden');
     }
   }
 

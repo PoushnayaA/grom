@@ -142,6 +142,8 @@
                   </li>
                 </ul>
                 <div data-accordion="parent">
+
+
                   <div data-accordion="element">
                     <button data-accordion="button">
                       <h3>О событии</h3>
@@ -150,9 +152,28 @@
                       </svg>
                     </button>
                     <div data-accordion="content">
-                      <div>текст</div>
+                      <div class="content__small-text">
+                        <p>SWIM SUP RUN - в новом месте! Все три вида в потрясающей локации! Оборудованный пляж, заход в воду по песку - все это Бушовский пруд! Его акватория - идеальное место для плавания и SUP - серфинга, а поля и леса вблизи создают живописный маршрут для трейлового забега!</p>
+                      </div>
+                      <div class="content__img">
+                        <picture>
+                          <source type="image/webp" media="(min-width: 320px)" width="256" height="144"
+                            srcset="./img/competition/competition-photo.webp">
+                          <img src="./img/competition/competition-photo.jpg" width="256" height="144"
+                            alt="Контентное изображение соревнования">
+                        </picture>
+                      </div>
+                      <h4 class="content__title">Спонсоры и партнеры</h4>
+                      <ul class="content__photo-list">
+                        <li><img src="./img/svg/partner-1.svg" width="107" height="107" alt="Партнер"></li>
+                        <li><img src="./img/svg/partner-2.svg" width="107" height="107" alt="Партнер"></li>
+                        <li><img src="./img/svg/partner-3.svg" width="107" height="107" alt="Партнер"></li>
+                        <li><img src="./img/svg/partner-4.svg" width="107" height="107" alt="Партнер"></li>
+                      </ul>
                     </div>
                   </div>
+
+
                   <div data-accordion="element">
                     <button data-accordion="button">
                       <h3>Дистанции мероприятия и стоимость </h3>
@@ -161,9 +182,11 @@
                       </svg>
                     </button>
                     <div data-accordion="content">
-                      <div>текст</div>
+                      <div class="content__table"></div>
                     </div>
                   </div>
+
+
                   <div data-accordion="element">
                     <button data-accordion="button">
                       <h3>Что входит в стартовый пакет</h3>
@@ -172,9 +195,15 @@
                       </svg>
                     </button>
                     <div data-accordion="content">
-                      <div>текст</div>
+                      <ul class="content__text-list">
+                        <li>Футболка</li>
+                        <li>Медаль</li>
+                        <li>Хронометраж</li>
+                      </ul>
                     </div>
                   </div>
+
+
                   <div data-accordion="element">
                     <button data-accordion="button">
                       <h3>Камера хранения и раздевалки</h3>
@@ -183,9 +212,15 @@
                       </svg>
                     </button>
                     <div data-accordion="content">
-                      <div>текст</div>
+                      <div class="content__text">
+                        <p>
+                          На старте будут отапливаемые раздевалки и камера хранения
+                        </p>
+                      </div>
                     </div>
                   </div>
+
+
                   <div data-accordion="element">
                     <button data-accordion="button">
                       <h3>Необходимые документы</h3>
@@ -194,9 +229,15 @@
                       </svg>
                     </button>
                     <div data-accordion="content">
-                      <div>текст</div>
+                      <ul class="content__text-list">
+                        <li>Справка от врача форма 114 фз</li>
+                        <li>Паспорт или другой документ с фотографией</li>
+                        <li>Страховка от несчастного случая</li>
+                      </ul>
                     </div>
                   </div>
+
+
                   <div data-accordion="element">
                     <button data-accordion="button">
                       <h3>Местоположение</h3>
@@ -205,9 +246,29 @@
                       </svg>
                     </button>
                     <div data-accordion="content">
-                      <div>текст</div>
+                      <div class="content__text">
+                        <svg width="16" height="16" viewBox="0 0 16 16" role="img">
+                          <use href="img/sprite.svg#map"></use>
+                        </svg>
+                        <p>Координаты места старта 22222.22222</p>
+                      </div>
+                      <div class="content__map">
+                        <div style="position:relative;overflow:hidden;">
+                          <a href="https://yandex.ru/maps/213/moscow/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Москва</a>
+                          <a href="https://yandex.ru/maps/213/moscow/geo/prospekt_andropova/8062583/?ll=37.660207%2C55.677212&utm_medium=mapframe&utm_source=maps&z=13.36" style="color:#eee;font-size:12px;position:absolute;top:14px;">Проспект Андропова — Яндекс Карты</a>
+                          <iframe src="https://yandex.ru/map-widget/v1/?ll=37.660207%2C55.677212&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgc4MDYyNTgzEj_QoNC-0YHRgdC40Y8sINCc0L7RgdC60LLQsCwg0L_RgNC-0YHQv9C10LrRgiDQkNC90LTRgNC-0L_QvtCy0LAiCg37phZCFc-0XkI%2C&z=13.36" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe>
+                        </div>
+                      </div>
+                      <h4 class="content__title">Парковка и как добраться</h4>
+                      <ul class="content__text-list">
+                        <li>Парковка № 1 Москва ул. Крылатская д 15</li>
+                        <li>Парковка № 1 Москва ул. Крылатская д 15</li>
+                        <li>На троллейбусе 119, остановка Весенний бульвар, на метро Молодежная</li>
+                      </ul>
                     </div>
                   </div>
+
+
                   <div data-accordion="element">
                     <button data-accordion="button">
                       <h3>Расписание</h3>
@@ -216,9 +277,49 @@
                       </svg>
                     </button>
                     <div data-accordion="content">
-                      <div>текст</div>
+                      <h4 class="content__title">23 июня</h4>
+                      <ul class="content__timetable">
+                        <li>
+                          <div>08:00</div>
+                          <p>Начало регистрации участников</p>
+                        </li>
+                        <li>
+                          <div>09:30</div>
+                          <p>Открытие соревнований</p>
+                        </li>
+                        <li>
+                          <div>10:00</div>
+                          <p>Старт трейла 5 км</p>
+                        </li>
+                        <li>
+                          <div>11:00</div>
+                          <p>Старт плавания на открытой воде 2000 метров</p>
+                        </li>
+                        <li>
+                          <div>11:30</div>
+                          <p>Старт плавания на открытой воде 2000 метров</p>
+                        </li>
+                        <li>
+                          <div>12:30</div>
+                          <p>Старт SUP-гонки на 4000 метров</p>
+                        </li>
+                        <li>
+                          <div>13:00</div>
+                          <p>Старт SUP-гонки на 1000 метров</p>
+                        </li>
+                        <li>
+                          <div>14:00</div>
+                          <p>Начало церемонии награждения</p>
+                        </li>
+                        <li>
+                          <div>15:00</div>
+                          <p>Закрытие соревнований</p>
+                        </li>
+                      </ul>
                     </div>
                   </div>
+
+
                   <div data-accordion="element">
                     <button data-accordion="button">
                       <h3>Получение стартового пакета</h3>
@@ -227,9 +328,18 @@
                       </svg>
                     </button>
                     <div data-accordion="content">
-                      <div>текст</div>
+                      <ul class="content__text-list">
+                        <li>В день старта с 14.00</li>
+                        <li>Получить стартовый пакет можно по доверенности при предъявлении следующих документов:
+                          <li class="simple-list-item">— Подписанная доверенность в свободной форме с указанием твоих паспортных данных и доверенного лица</li>
+                          <li class="simple-list-item">— Копия твоего паспорта</li>
+                          <li class="simple-list-item">— Оригинал медицинской справки</li>
+                        </li>
+                      </ul>
                     </div>
                   </div>
+
+
                   <div data-accordion="element">
                     <button data-accordion="button">
                       <h3>Награждение и результаты</h3>
@@ -238,9 +348,16 @@
                       </svg>
                     </button>
                     <div data-accordion="content">
-                      <div>текст</div>
+                      <ul class="content__text-list">
+                        <li>Результаты будут здесь <a href="#">http://…</a></li>
+                        <li>Награждение на дистанции 5 км в возрастных категориях АГ 20-25 и т.д.</li>
+                        <li>Награждение на дистанции 1 км нет</li>
+                        <li>Награждение абсолютных победителей на 5 км 1-3 места мужчины и женщины</li>
+                      </ul>
                     </div>
                   </div>
+
+
                   <div data-accordion="element">
                     <button data-accordion="button">
                       <h3>Схемы дистанции</h3>
@@ -249,9 +366,43 @@
                       </svg>
                     </button>
                     <div data-accordion="content">
-                      <div>текст</div>
+                      <div class="content__text">
+                        <p>Трасса 1</p>
+                      </div>
+                      <div class="content__img">
+                        <picture>
+                          <source type="image/webp" media="(min-width: 320px)" width="256" height="144"
+                            srcset="./img/competition/track-1.webp">
+                          <img src="./img/competition/track-1.jpg" width="256" height="144"
+                            alt="Трасса соревнования">
+                        </picture>
+                      </div>
+                      <div class="content__small-text">
+                        <p>Трасса 2</p>
+                      </div>
+                      <div class="content__img">
+                        <picture>
+                          <source type="image/webp" media="(min-width: 320px)" width="256" height="144"
+                            srcset="./img/competition/track-2.webp">
+                          <img src="./img/competition/track-2.jpg" width="256" height="144"
+                            alt="Трасса соревнования">
+                        </picture>
+                      </div>
+                      <div class="content__small-text">
+                        <p>Трасса 3</p>
+                      </div>
+                      <div class="content__img">
+                        <picture>
+                          <source type="image/webp" media="(min-width: 320px)" width="256" height="144"
+                            srcset="./img/competition/track-3.webp">
+                          <img src="./img/competition/track-3.jpg" width="256" height="144"
+                            alt="Трасса соревнования">
+                        </picture>
+                      </div>
                     </div>
                   </div>
+
+
                   <div data-accordion="element">
                     <button data-accordion="button">
                       <h3>Корпоративное участие и оплата по счету</h3>
@@ -260,9 +411,13 @@
                       </svg>
                     </button>
                     <div data-accordion="content">
-                      <div>текст</div>
+                      <div class="content__text">
+                        <p>Оплата по счету возможна и т.д.</p>
+                      </div>
                     </div>
                   </div>
+
+
                   <div data-accordion="element">
                     <button data-accordion="button">
                       <h3>Фотография, видео соцсети, обратная связь</h3>
@@ -271,9 +426,16 @@
                       </svg>
                     </button>
                     <div data-accordion="content">
-                      <div>текст</div>
+                      <ul class="content__text-list">
+                        <li>Фотографии будут здесь <a href="#">http://…</a></li>
+                        <li>Соцсети здесь <a href="#">http://…</a></li>
+                        <li>Телеграмм канал здесь <a href="#">http://…</a></li>
+                        <li>Задать вопрос <a href="#">http://…</a></li>
+                      </ul>
                     </div>
                   </div>
+
+
                   <div data-accordion="element">
                     <button data-accordion="button">
                       <h3>Возврат слота и передача слота другому лицу, смена дистанции</h3>
@@ -282,9 +444,15 @@
                       </svg>
                     </button>
                     <div data-accordion="content">
-                      <div>текст</div>
+                      <ul class="content__text-list">
+                        <li>За месяц до соревнования 100% от взноса</li>
+                        <li>За две недели 50% от взноса</li>
+                        <li>Передача другому лицу возможно по след механизму: …</li>
+                      </ul>
                     </div>
                   </div>
+
+
                 </div>
               </div>
               <div class="competition__information information-modal">
