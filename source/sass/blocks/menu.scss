@@ -193,9 +193,11 @@ body.dark-modal {
 }
 
 .burger {
+
   &:hover,
   &:focus-visible,
   &:active {
+
     .burger-line,
     .burger-line::after,
     .burger-line::before {
@@ -220,6 +222,7 @@ body.dark-modal {
   &:hover,
   &:focus-visible,
   &:active {
+
     .burger-line::after,
     .burger-line::before {
       background-color: $dark;
@@ -245,7 +248,6 @@ body.dark-modal {
 
 .menu li {
   padding: 4px 0;
-  border-bottom: 1.5px solid transparent;
 
   @include vp-768 {
     display: inline-block;
@@ -255,26 +257,24 @@ body.dark-modal {
     color: $grey;
     padding: 0 0 4px;
     transition: all 0.3s ease;
+    border-bottom: 1.5px solid transparent;
 
     @each $property,
     $value in $small {
       #{$property}: $value;
     }
-  }
 
-  transition: all 0.3s ease;
+    &.active {
+      border-bottom: 1.5px solid $green;
+      color: $dark;
+    }
 
-  &:hover,
-  &:focus-visible,
-  &:active,
-  .active {
-    border-bottom: 1.5px solid $green;
-    color: $dark;
-    transition: all 0.3s ease;
-
-    a {
+    &:hover,
+    &:focus-visible,
+    &:active {
       color: $dark;
       transition: all 0.3s ease;
+      border-bottom: 1.5px solid $green;
     }
   }
 }

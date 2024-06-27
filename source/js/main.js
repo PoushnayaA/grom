@@ -7,7 +7,7 @@ import { initAccordions } from './modules/accordion/init-accordion';
 window.addEventListener('DOMContentLoaded', () => {
   iosVhFix();
 
-  //menu
+  menu
   const burger = document.querySelector('.burger');
   const menu = document.querySelector('.menu');
   burger.addEventListener('click', () => {
@@ -50,7 +50,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const windowWidth = window.innerWidth;
 
-    if (windowWidth >= 768) {
+    if (windowWidth >= 768 && filtersContainer) {
       filtersContainer.classList.remove('active');
       document.querySelector('body').classList.remove('dark-modal');
     }
@@ -79,11 +79,12 @@ window.addEventListener('DOMContentLoaded', () => {
     const competitionsContainer = document.querySelector('.competitions');
     const fragment = document.createDocumentFragment();
 
-    competitionItemsArray.forEach(item => {
-      fragment.appendChild(item);
-    });
+
 
     if (competitionsContainer) {
+      competitionItemsArray.forEach(item => {
+        fragment.appendChild(item);
+      });
       competitionsContainer.innerHTML = '';
       competitionsContainer.appendChild(fragment);
     }
@@ -105,7 +106,6 @@ window.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
         const sortBy = event.target.dataset.sort;
         sortCompetitions(sortBy);
-        console.log(1);
         const windowWidth = window.innerWidth;
         if (windowWidth < 1440) {
           sortOptions.classList.toggle('active');
@@ -124,7 +124,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const windowWidth = window.innerWidth;
 
-    if (windowWidth >= 1440) {
+    if (windowWidth >= 1440 && sortOptions) {
       sortOptions.classList.remove('active');
       sortToggle.querySelector('.arrow').classList.remove('active')
     }
@@ -174,7 +174,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   });
   function addToSelectedContainer(text, item) {
-    filterItems();
+    // filterItems();
     selectedContainer.classList.remove('visually-hidden');
     const selectedItem = document.createElement('div');
     selectedItem.classList.add('selected-item');
@@ -200,7 +200,7 @@ window.addEventListener('DOMContentLoaded', () => {
     removeBtn.addEventListener('click', () => {
       removeFromSelectedContainer(text, item);
       item.querySelector('input').checked = false;
-      filterItems();
+      // filterItems();
     });
 
     selectedItem.appendChild(selectedItemText);
@@ -208,7 +208,7 @@ window.addEventListener('DOMContentLoaded', () => {
     selectedContainer.appendChild(selectedItem);
   }
   function removeFromSelectedContainer(text, item) {
-    filterItems();
+    // filterItems();
     const selectedItems = selectedContainer.querySelectorAll('.selected-item');
     selectedItems.forEach(selectedItem => {
       if (selectedItem.dataset.text === text) {
@@ -253,11 +253,12 @@ window.addEventListener('DOMContentLoaded', () => {
   //filter item accordion
   setTimeout(initAccordions(), 1000);
 
-  //submit form mobile
+  //submit
   const form = document.getElementById('filterForm');
   if (form) {
     form.addEventListener('submit', (event) => {
       event.preventDefault();
+      filterItems();
       filtersContainer.classList.remove('active');
       document.querySelector('body').classList.remove('dark-modal');
     });
@@ -323,7 +324,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
   function isDateInRange(date, range, firstDay) {
     const rangeStr = range.toString();
-    console.log(date, rangeStr);
     const today = new Date();
     const daysToAdd = parseInt(rangeStr, 10);
     var endDate;
@@ -336,9 +336,9 @@ window.addEventListener('DOMContentLoaded', () => {
       return date >= firstDay && date <= endDate;
     }
   }
-  if (dateInput) {
-    dateInput.addEventListener('change', filterItems);
-  }
+  // if (dateInput) {
+  //   dateInput.addEventListener('change', filterItems);
+  // }
 
 
   //подсказки при воде названия в фильтре
@@ -395,7 +395,7 @@ window.addEventListener('DOMContentLoaded', () => {
       option.addEventListener('click', () => {
         customSelectInput.value = option.textContent;
         customSelectInput.dataset.value = option.dataset.value;
-        filterItems();
+        // filterItems();
         customSelect.querySelector('.custom-select__options').style.display = 'none';
         customSelect.querySelector('.arrow').classList.remove('active');
       });
@@ -406,12 +406,10 @@ window.addEventListener('DOMContentLoaded', () => {
     customSelectInput.addEventListener('click', () => {
       if (customSelect.querySelector('.custom-select__options').style.display === 'block') {
         customSelect.querySelector('.custom-select__options').style.display = 'none';
-        console.log(customSelect.querySelector('.arrow'));
         customSelect.querySelector('.arrow').classList.remove('active');
       } else {
         customSelect.querySelector('.custom-select__options').style.display = 'block';
         customSelect.querySelector('.arrow').classList.add('active');
-        console.log(customSelect.querySelector('.arrow'));
       }
     });
 
@@ -433,9 +431,16 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
   document.addEventListener('click', event => {
-    if (!customSelect.contains(event.target)) {
-      customSelect.querySelector('.custom-select__options').style.display = 'none';
-    }
+    const customSelects = document.querySelectorAll('.custom-select');
+    customSelects.forEach(select => {
+      if (select.querySelector('.custom-select__options')) {
+        if (select.querySelector('.custom-select__options').style.display === 'block') {
+          if (!select.contains(event.target)) {
+            select.querySelector('.custom-select__options').style.display = 'none';
+          }
+        }
+      }
+    });
   });
 
 
@@ -546,7 +551,7 @@ window.addEventListener('DOMContentLoaded', () => {
         input.value = `${formatDate(startDate)}-${formatDate(endDate)}`;
         calendar.style.display = 'none';
         renderCalendar();
-        filterItems();
+        // filterItems();
       } else {
         startDate = date;
         endDate = null;
@@ -592,95 +597,44 @@ window.addEventListener('DOMContentLoaded', () => {
 
   //клик на построннюю область
   document.addEventListener('click', (event) => {
-    if (!event.target.closest('.filter-container')) {
-      suggestionList.style.display = 'none';
-    }
+    if (suggestionList) {
+      if (!event.target.closest('.filter-container')) {
+        suggestionList.style.display = 'none';
+      }
 
-    if (!event.target.closest('.competitions-list__sort-list') && !event.target.closest('.competitions-list__sort-button')) {
-      document.querySelector('.competitions-list__sort-list').classList.remove('active');
-      document.querySelector('.competitions-list__sort-button .arrow').classList.remove('active');
-    }
+      if (!event.target.closest('.competitions-list__sort-list') && !event.target.closest('.competitions-list__sort-button')) {
+        document.querySelector('.competitions-list__sort-list').classList.remove('active');
+        document.querySelector('.competitions-list__sort-button .arrow').classList.remove('active');
+      }
 
-    if (!event.target.closest('.menu') && !event.target.closest('header')) {
-      document.querySelector('.menu').classList.remove('show');
-      document.querySelector('body').classList.remove('dark');
-      document.querySelector('.burger').classList.remove('active');
+      if (!event.target.closest('.menu') && !event.target.closest('header')) {
+        document.querySelector('.menu').classList.remove('show');
+        document.querySelector('body').classList.remove('dark');
+        document.querySelector('.burger').classList.remove('active');
+      }
     }
   });
-
-
-
-
-  // const informationModal = document.querySelector('.information-modal');
-  // const modalHeight = informationModal.offsetHeight;
-  //   const modalTop = informationModal.getBoundingClientRect().top;
-
-  // window.addEventListener('scroll', function() {
-  //   const modalTopTemp = informationModal.getBoundingClientRect().top;
-  //   if (modalTop !== modalTopTemp) {
-  //     informationModal.classList.add('hidden');
-  //   } else {
-  //     informationModal.classList.remove('hidden');
-  //   }
-  // });
-
-
-
-
-
-
-
-
-  // // Получаем элемент information-modal
-  // const informationModal = document.querySelector('.information-modal');
-
-  // // Переменные для отслеживания состояния элемента
-  // let isModalVisible = true;
-  // let prevScrollPos = window.pageYOffset;
-  // let modalHeight = informationModal.offsetHeight;
-  // let modalBottom = informationModal.getBoundingClientRect().bottom;
-
-  // // Добавляем обработчик события прокрутки страницы
-  // window.addEventListener('scroll', function() {
-  //   const currentScrollPos = window.pageYOffset;
-  //   const windowHeight = window.innerHeight;
-
-  //   // Если пользователь прокручивает вниз и нижняя граница элемента достигает нижней части экрана
-  //   if (currentScrollPos > prevScrollPos && modalBottom <= windowHeight) {
-  //     // Скрываем элемент
-  //     informationModal.classList.add('hidden');
-  //     isModalVisible = false;
-  //   } else {
-  //     // Если пользователь прокручивает вверх или нижняя граница элемента не достигает нижней части экрана
-  //     // Показываем элемент
-  //     informationModal.classList.remove('hidden');
-  //     isModalVisible = true;
-  //   }
-
-  //   // Обновляем предыдущее положение прокрутки и нижнюю границу элемента
-  //   prevScrollPos = currentScrollPos;
-  //   modalBottom = informationModal.getBoundingClientRect().bottom;
-  // });
-
-
-
 
   // Получаем элемент information-modal
   const informationModal = document.querySelector('.information-modal');
 
   let isModalVisible = true;
   let prevScrollPos = window.pageYOffset;
-  let modalHeight = informationModal.offsetHeight;
-  let modalTop = informationModal.getBoundingClientRect().top;
-  const modalTopStart = informationModal.getBoundingClientRect().top;
-  let hiddenModalTop = 0;
 
-  window.addEventListener('scroll', registrationModal);
+  let hiddenModalTop = 0;
+  if (informationModal) {
+    window.addEventListener('scroll', registrationModal);
   window.addEventListener('load', registrationModal);
   window.addEventListener('resize', registrationModal);
+  }
+
 
 
   function registrationModal() {
+    let modalHeight = informationModal.offsetHeight;
+  let modalTop = informationModal.getBoundingClientRect().top;
+  const modalTopStart = informationModal.getBoundingClientRect().top;
+
     const windowWidth = window.innerWidth;
     const currentScrollPos = window.pageYOffset;
     const windowHeight = window.innerHeight;
@@ -704,7 +658,7 @@ window.addEventListener('DOMContentLoaded', () => {
         modalTop = informationModal.getBoundingClientRect().top;
       } else {
         informationModal.classList.remove('none');
-          isModalVisible = true;
+        isModalVisible = true;
       }
     }
   }
@@ -713,23 +667,27 @@ window.addEventListener('DOMContentLoaded', () => {
 
   function closeModal() {
     const windowWidth = window.innerWidth;
-      if (windowWidth >= 768) {
-        document.querySelector('.information-modal').classList.remove('mobile-modal');
-    document.querySelector('body').classList.remove('dark-modal');
-      }
+    if (windowWidth >= 768 && document.querySelector('.information-modal')) {
+      document.querySelector('.information-modal').classList.remove('mobile-modal');
+      document.querySelector('body').classList.remove('dark-modal');
     }
+  }
 
   const moreButton = document.querySelector('.information-modal__more');
+if (moreButton) {
   moreButton.addEventListener('click', function () {
     document.querySelector('.information-modal').classList.add('mobile-modal');
     document.querySelector('body').classList.add('dark-modal');
   })
+}
 
   const closeModalButton = document.querySelector('.information-modal__close');
+if (closeModalButton) {
   closeModalButton.addEventListener('click', function () {
     document.querySelector('.information-modal').classList.remove('mobile-modal');
     document.querySelector('body').classList.remove('dark-modal');
   })
+}
 
   const disabledSlot = document.querySelector('[data-state="disabled"]');
   if (disabledSlot) {
@@ -747,4 +705,47 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     })
   }
+
+  //lazy load
+function addLazyLoadingToImages() {
+  const images = document.querySelectorAll('img');
+  if (images) {
+    images.forEach(img => {
+      img.setAttribute('loading', 'lazy');
+    });
+  }
+
+  const sources = document.querySelectorAll('source');
+  if (sources) {
+    sources.forEach(source => {
+      source.setAttribute('loading', 'lazy');
+    });
+  }
+
+  const iframes = document.querySelectorAll('source');
+  if (iframes) {
+    iframes.forEach(iframe => {
+      iframe.setAttribute('loading', 'lazy');
+    });
+  }
+}
+
+window.addEventListener('load', addLazyLoadingToImages);
+
+
+
+  // $(document).ready(function() {
+  //   $('.js-select2').select2({
+  //     placeholder: "Выберите город",
+  //     // maximumSelectionLength: 2,
+  //     // language: "ru",
+  //     minimumResultsForSearch: 0,
+  //     allowClear: true
+  //     // multiple: true,
+  //   });
+  // });
+
+
+
+
 })

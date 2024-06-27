@@ -17,7 +17,9 @@
   <link rel="preload" href="fonts/montserrat-medium.woff2" type="font/woff2" as="font" crossorigin="anonymous">
   <link rel="preload" href="fonts/montserrat-bold.woff2" type="font/woff2" as="font" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="css/style.min.css">
+
+  <!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> -->
+ <link rel="stylesheet" href="css/style.min.css">
 </head>
 
 <body>
@@ -50,13 +52,14 @@
               <div class="burger-line"></div>
             </div>
             <div class="logo">
-              <a href="#">
+              <a href="index.html">
                 <img src="./img/svg/logo.svg" width="62" height="30">
               </a>
             </div>
             <nav class="menu hide">
               <ul>
                 <li><a class="active" href="index.html">Соревнования</a></li>
+                <li><a href="club.html">Клубы</a></li>
                 <li><a href="club.html">Клубы</a></li>
               </ul>
             </nav>
@@ -101,7 +104,7 @@
             </div>
           </div>
           <div class="filter-list__body">
-            <div class="filters">
+            <section class="filters">
               <div class="filters__title-wrapper">
                 <h2>Фильтр</h2>
                 <button class="filters__button-close">
@@ -353,13 +356,23 @@
                         <use href="img/sprite.svg#arrow"></use>
                       </svg>
                     </div>
-                    <div class="custom-select__options">
+                    <!-- <select class="js-select2 custom-select__options" name="region" placeholder="Регион/область">
+                      <option value=""></option>
+                      <option class="custom-select__option" value="1">Республика Адыгея</option>
+                      <option class="custom-select__option" value="2">Республика Башкортостан</option>
+                      <option class="custom-select__option" value="3">Республика Бурятия</option>
+                      <option class="custom-select__option" value="71">Тульская область</option>
+                    </select> -->
+                    <div class="custom-select__options" name="region" placeholder="Регион/область">
                       <div class="custom-select__option" data-value="1">Республика Адыгея</div>
                       <div class="custom-select__option" data-value="2">Республика Башкортостан</div>
                       <div class="custom-select__option" data-value="3">Республика Бурятия</div>
                       <div class="custom-select__option" data-value="71">Тульская область</div>
                     </div>
+
+
                   </div>
+
                 </div>
                 <div id="filter-date" class="filter-container">
                   <button data-accordion="button">
@@ -429,7 +442,7 @@
                 </div>
                 <button type="submit" form="filterForm">Показать</button>
               </form>
-            </div>
+            </section>
             <div class="list-container">
               <h2 class="visually-hidden">Отсортированный список соревнований.</h2>
               <div class="selected-container">
@@ -438,8 +451,8 @@
                 </div>
               </div>
               <div class="list-container__nothing visually-hidden">Ничего не найдено. Попробуйте изменить фильтр.</div>
-              <ul class="competitions">
-                <li data-series="another" data-popularity="10" class="competitions__item">
+              <div class="competitions">
+                <section data-series="another" data-popularity="10" class="competitions__item">
                   <a class="competitions__item-link" href="competition.html">
                     <div class="competitions__inf-wrapper">
                       <div data-date="01.06.2024" class="competitions__date">1 июня 2024</div>
@@ -473,8 +486,8 @@
                     <object><a href="members.html" class="competitions__members">Список участников</a></object>
                     </div>
                   </a>
-                </li>
-                <li data-series="swim-cup" data-popularity="80" class="competitions__item">
+                </section>
+                <section data-series="swim-cup" data-popularity="80" class="competitions__item">
                   <a class="competitions__item-link" href="competition.html">
                     <div class="competitions__inf-wrapper">
                       <div data-date="18.07.2024" class="competitions__date">18 июля 2024</div>
@@ -507,8 +520,8 @@
                     <object><a href="members.html" class="competitions__members">Список участников</a></object>
                     </div>
                   </a>
-                </li>
-                <li data-series="grom" data-popularity="76" class="competitions__item">
+                </section>
+                <section data-series="grom" data-popularity="76" class="competitions__item">
                   <a class="competitions__item-link" href="#">
                     <div class="competitions__inf-wrapper">
                       <div data-date="19.05.2024" class="competitions__date">19 мая 2024</div>
@@ -542,8 +555,8 @@
                     <object><a href="members.html" class="competitions__members">Список участников</a></object>
                     </div>
                   </a>
-                </li>
-                <li data-series="open-band" data-popularity="3" class="competitions__item">
+                </section>
+                <section data-series="open-band" data-popularity="3" class="competitions__item">
                   <a class="competitions__item-link" href="#">
                     <div class="competitions__inf-wrapper">
                       <div data-date="13.08.2024" class="competitions__date">13 августа 2024</div>
@@ -577,9 +590,9 @@
                     <object><a href="members.html" class="competitions__members">Список участников</a></object>
                     </div>
                   </a>
-                </li>
+                </section>
 
-              </ul>
+              </div>
               <div class="pagination">
                 <div class="pagination__buttons-wrapper">
 
@@ -625,20 +638,25 @@
           <div class="footer-logo">
             <img src="./img/svg/logo-dark.svg" width="79" height="39">
           </div>
-          <ul class="footer-list">
-            <li><a href="#">О сервисе</a></li>
-            <li><a href="#">Реквизиты</a></li>
-            <li><a href="#">Пользовательское соглашение</a></li>
-            <li><a href="#">Политика конфиденциальности</a></li>
-            <li><a href="#">Публичная оферта</a></li>
-            <li><a href="#">Програмное обеспечение</a></li>
-          </ul>
+          <nav>
+            <ul class="footer-list">
+              <li><a href="#">О сервисе</a></li>
+              <li><a href="#">Реквизиты</a></li>
+              <li><a href="#">Пользовательское соглашение</a></li>
+              <li><a href="#">Политика конфиденциальности</a></li>
+              <li><a href="#">Публичная оферта</a></li>
+              <li><a href="#">Програмное обеспечение</a></li>
+            </ul>
+          </nav>
           <p class="copyright">© 2024 grom.place</p>
         </div>
       </div>
     </footer>
   </div>
+ <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> -->
+
   <script src="js/vendor.min.js"></script>
   <script src="js/main.min.js"></script>
 </body>

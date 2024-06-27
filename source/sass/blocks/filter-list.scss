@@ -375,9 +375,15 @@
 
   text-align: center;
 
-  @include vp-768 {
-    display: none;
-  }
+  &:hover,
+  &:focus-visible,
+  &:active {
+    box-shadow: $dark-shadow;
+}
+
+  // @include vp-768 {
+  //   display: none;
+  // }
 }
 
 .remove-btn {
