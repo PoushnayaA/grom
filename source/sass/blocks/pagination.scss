@@ -21,18 +21,19 @@
 }
 
 .pagination__item {
-
   @each $property,
   $value in $small {
     #{$property}: $value;
   }
 
-  color: $dark;
   border: none;
+
+  a {
+    color: $dark;
+  }
 }
 
 .pagination__item .pagination__link {
-  border: none;
   background-color: transparent;
   cursor: pointer;
   width: 100%;

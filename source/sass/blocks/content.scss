@@ -1,3 +1,7 @@
+.content h3 {
+  margin: 0;
+}
+
 .competition__container [data-accordion=element].is-active [data-accordion=content] {
   margin: 0 !important;
 }
@@ -175,7 +179,7 @@ th, td {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  h5 {
+  h4 {
     margin: 0;
     @each $property,
     $value in $body {

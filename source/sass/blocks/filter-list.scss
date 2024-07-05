@@ -2,6 +2,10 @@
   .container {
     padding-top: 32px;
     padding-bottom: 64px;
+
+    @include vp-1440 {
+      padding-bottom: 80px;
+    }
   }
 
   .filter-list__body {
@@ -18,7 +22,6 @@
     display: none;
     position: fixed;
     top: 50%;
-    left: 50%;
     left: 16px;
     right: 16px;
     transform: translate(0%, -50%);
@@ -29,25 +32,24 @@
     height: max-content;
 
     overflow-y: auto;
-    // max-height: 90vh;
+    overflow-x: hidden;
 
     h2 {
       margin: 0 0 8px;
     }
 
     @include vp-768 {
-
       position: sticky;
       left: 0;
       transform: translate(0);
-      top: 20px;
+      top: 12px;
       height: max-content;
       max-width: 275px;
       margin-right: 20px;
       z-index: 0;
       display: block;
       overflow-y: auto;
-      max-height: calc(100vh - 40px);
+      max-height: calc(100vh - 24px);
     }
 
     @include vp-1440 {
@@ -87,6 +89,24 @@
 
     .filter-container {
       margin-bottom: 20px;
+
+      h3 button {
+        margin: 0;
+
+        @each $property,
+        $value in $button {
+          #{$property}: $value;
+        }
+      }
+
+      h3 {
+        margin: 0;
+
+        @each $property,
+        $value in $button {
+          #{$property}: $value;
+        }
+      }
     }
 
     .filter-input {
@@ -141,10 +161,12 @@
 
 .list-container {
   .list-container__nothing {
+
     @each $property,
     $value in $body {
       #{$property}: $value;
     }
+
     text-align: center;
   }
 }
@@ -172,7 +194,8 @@
 }
 
 
-.filter-item input[type="checkbox"] {
+.filter-item input[type="checkbox"],
+.filter-item input[type="radio"] {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -204,7 +227,8 @@
   }
 }
 
-.filter-item input[type="checkbox"]:checked+.checkmark {
+.filter-item input[type="checkbox"]:checked+.checkmark,
+.filter-item input[type="radio"]:checked+.checkmark {
   background-color: $green;
   transition: background-color 0.3s ease;
 
@@ -215,7 +239,10 @@
 
 .filter-item input[type="checkbox"]:hover+.checkmark,
 .filter-item input[type="checkbox"]:focus-visible+.checkmark,
-.filter-item input[type="checkbox"]:active+.checkmark {
+.filter-item input[type="checkbox"]:active+.checkmark,
+.filter-item input[type="radio"]:hover+.checkmark,
+.filter-item input[type="radio"]:focus-visible+.checkmark,
+.filter-item input[type="radio"]:active+.checkmark {
   background-color: $green;
   transition: background-color 0.3s ease;
   box-shadow: $green-shadow;
@@ -229,19 +256,30 @@
   background-color: $light-grey;
   border-radius: 30px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 2px;
   padding: 4px;
   margin: 16px 0;
 
-  .filter-item input[type=checkbox]+.checkmark {
+  .filter-item {
+    text-align: center;
+    vertical-align: middle;
+    height: 100%;
+
+    label,
+    .checkmark {
+      height: 100%;
+    }
+  }
+
+  .filter-item input[type=radio]+.checkmark {
     border: 1.5px solid transparent;
     box-shadow: none;
   }
 
-  .filter-item input[type=checkbox]:not(:checked):hover+.checkmark,
-  .filter-item input[type=checkbox]:not(:checked):focus-visible+.checkmark,
-  .filter-item input[type=checkbox]:not(:checked):active+.checkmark {
+  .filter-item input[type=radio]:not(:checked):hover+.checkmark,
+  .filter-item input[type=radio]:not(:checked):focus-visible+.checkmark,
+  .filter-item input[type=radio]:not(:checked):active+.checkmark {
     border: 1.5px solid $green;
     background: transparent;
     box-shadow: none;
@@ -379,7 +417,7 @@
   &:focus-visible,
   &:active {
     box-shadow: $dark-shadow;
-}
+  }
 
   // @include vp-768 {
   //   display: none;
@@ -500,7 +538,7 @@
 
 .custom-select__input {
   flex-grow: 1;
-  padding: 8px 12px 8px 0;
+  padding: 8px 24px 8px 0;
   border: none;
   border-bottom: 1px solid $medium-grey;
   border-radius: 0px;
@@ -528,6 +566,16 @@
 
   }
 }
+
+// <style>
+.nice-select .current {
+  color: #A9A9A9;
+}
+
+// .nice-select .list .option.selected {
+//     color: #000 !important;
+// }
+// </style>
 
 .custom-select__options {
   position: absolute;
@@ -568,7 +616,7 @@
   background-color: $light-grey;
 
   @include vp-768 {
-   position: relative;
-   padding: 0;
+    position: relative;
+    padding: 0;
   }
 }

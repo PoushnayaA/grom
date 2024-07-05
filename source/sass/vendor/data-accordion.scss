@@ -1,4 +1,4 @@
-[data-accordion="element"].is-active > [data-accordion="content"] {
+[data-accordion="element"].is-active>[data-accordion="content"] {
   max-height: 100%;
 }
 
@@ -27,7 +27,8 @@
   overflow: hidden;
 }
 
-[data-accordion="button"], .filter-container button {
+[data-accordion="button"],
+.filter-container button {
   border: none;
 
   display: flex;
@@ -37,13 +38,7 @@
   width: 100%;
   padding: 4px 0;
 
-  h3 {
-    margin: 0;
-    @each $property,
-    $value in $button {
-      #{$property}: $value;
-    }
-  }
+
 
 }
 
@@ -59,7 +54,47 @@
   margin: 10px 0 !important;
 }
 
+[data-accordion="element"] {
+
+  h3,
+  button {
+    margin: 0;
+
+    @each $property,
+    $value in $button {
+      #{$property}: $value;
+    }
+  }
+}
 
 .hidden {
   display: none;
 }
+
+[data-accordion="button"] {
+  position: relative;
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg); // Начальное положение
+    width: 20px;
+    height: 20px;
+    background-color: #2E2E2E;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 7.5L10 12.5L15 7.5' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    transition: transform 0.4s ease-in-out;
+  }
+}
+
+[data-accordion="element"].is-active [data-accordion="button"] {
+  &::after {
+    transform: translateY(-50%) rotate(180deg); // Поворот при открытии
+  }
+}
+
+

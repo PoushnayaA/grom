@@ -1,0 +1,325 @@
+.authorization .container {
+  padding-top: 32px;
+  padding-bottom: 64px;
+
+  @include vp-1440 {
+    padding-top: 64px;
+    padding-bottom: 80px;
+  }
+}
+
+.authorization__container {
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.authorization__login .authorization__container {
+  max-width: 398px;
+}
+
+.authorization__registration .authorization__container {
+  max-width: 82px;
+}
+
+.authorization__registration .user-form__fielset {
+  @include vp-768 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+}
+
+.user-form .necessary {
+  color: $red;
+  display: inline;
+}
+
+.authorization__header {
+  width: 100%;
+  text-align: center;
+
+  h2 {
+    margin-top: 0;
+
+    @each $property,
+    $value in $h2 {
+      #{$property}: $value;
+    }
+
+    @include vp-1440 {
+
+      @each $property,
+      $value in $h1 {
+        #{$property}: $value;
+      }
+    }
+  }
+}
+
+
+
+.authorization__switch {
+
+  background-color: $white;
+  list-style-type: none;
+  padding: 4px;
+  margin: 0 auto;
+  text-align: center;
+  white-space: nowrap;
+  border-radius: 30px;
+  width: max-content;
+
+  display: flex;
+  gap: 8px;
+
+  box-shadow: 0px 4px 26px 0px rgba(0, 0, 0, 0.08);
+
+  @each $property,
+  $value in $button {
+    #{$property}: $value;
+  }
+
+  li {
+    button {
+      display: block;
+      border-bottom: 1.5px solid transparent;
+      border: none;
+      background-color: $white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+
+      &:hover,
+      &:focus-visible,
+      &:active {
+        border-color: $green;
+      }
+
+      &.active {
+        border-color: $green;
+        background-color: $green;
+      }
+    }
+
+    @include vp-1440 {
+      button {
+        border: none;
+        padding: 10px 22px;
+
+        border-radius: 25px;
+        border: 1.5px solid transparent;
+
+        &:hover,
+        &:focus-visible,
+        &:active {
+          border-color: $green;
+        }
+      }
+    }
+  }
+}
+
+
+.user-form__wrapper {
+  margin: 24px 0;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include vp-1440 {
+      gap: 24px;
+    }
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    @each $property,
+    $value in $button {
+      #{$property}: $value;
+    }
+  }
+
+  input {
+    border: none;
+    padding-bottom: 16px;
+    background-color: transparent;
+    border-bottom: 1.5px solid $medium-grey;
+    outline: none;
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      border-color: $green;
+    }
+
+    &::placeholder {
+      color: $grey;
+
+      @each $property,
+      $value in $body {
+        #{$property}: $value;
+      }
+    }
+  }
+
+  input.error {
+    border-color: $red;
+  }
+
+  .error-message {
+    color: $red;
+    margin-top: -4px;
+
+    @each $property,
+    $value in $description {
+      #{$property}: $value;
+    }
+  }
+}
+
+.user-form__password {
+  position: relative;
+
+  input {
+    width: 100%;
+  }
+
+  button {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    svg {
+stroke: $grey;
+    }
+
+
+&:hover,
+&:focus-visible,
+&:active {
+  svg {
+    stroke: $dark;
+  }
+}
+  }
+}
+
+.user-form__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 398px;
+  margin: 0 auto;
+
+  [type="submit"] {
+    background-color: $medium-grey;
+    color: $grey;
+    padding: 12px 24px;
+    border-radius: 25px;
+    border: none;
+    display: flex;
+    justify-content: center;
+
+    @each $property,
+    $value in $button {
+      #{$property}: $value;
+    }
+  }
+
+  [type="submit"].active {
+    cursor: pointer;
+    background-color: $green;
+    color: $dark;
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      box-shadow: $dark-shadow;
+    }
+  }
+
+  a {
+    cursor: pointer;
+
+    @each $property,
+    $value in $button {
+      #{$property}: $value;
+    }
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      color: $dark;
+    }
+
+    color: $blue;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-align: center;
+  }
+}
+
+.user-form__fielset {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  padding: 0;
+
+  legend {
+    text-align: center;
+    color: $grey;
+
+    @each $property,
+    $value in $body {
+      #{$property}: $value;
+    }
+  }
+
+  gap: 16px;
+
+  @include vp-1440 {
+    gap: 24px;
+  }
+
+  margin-bottom: 16px;
+}
+
+.user-form__social-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 16px 0 0;
+
+  button {
+    border: none;
+    border-radius: 50%;
+    background-color: $medium-grey;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      cursor: pointer;
+      box-shadow: $green-shadow;
+    }
+  }
+}
