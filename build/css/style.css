@@ -2053,6 +2053,9 @@ footer {
 .competitions__item:hover, .competitions__item:focus-visible, .competitions__item:active {
   border-color: #D6FD52;
 }
+.competitions__item.hidden {
+  display: none;
+}
 .competitions .competitions__members:hover, .competitions .competitions__members:focus-visible, .competitions .competitions__members:active {
   color: #2E2E2E;
 }

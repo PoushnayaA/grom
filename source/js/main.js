@@ -144,19 +144,8 @@ window.addEventListener('DOMContentLoaded', () => {
   const filterList = document.querySelectorAll('.filter-item');
   const selectedContainer = document.querySelector('.selected-items');
 
-  //filter checkbox + add container
-  filterList.forEach(item => {
-    const checkbox = item.querySelector('input');
-    checkbox.addEventListener('change', () => {
-      const text = item.textContent;
-      if (checkbox.checked) {
-        addToSelectedContainer(text, item);
-      } else {
-        removeFromSelectedContainer(text, item);
-      }
-    });
-  });
   function addToSelectedContainer(text, item) {
+
     selectedContainer.classList.remove('visually-hidden');
     const selectedItem = document.createElement('div');
     selectedItem.classList.add('selected-item');
@@ -180,7 +169,7 @@ window.addEventListener('DOMContentLoaded', () => {
     svg.appendChild(path);
     removeBtn.appendChild(svg);
     removeBtn.addEventListener('click', () => {
-      removeFromSelectedContainer(text, item);
+      removeFromSelectedContainer(text, item, niceSelectInstance);
       item.querySelector('input').checked = false;
     });
 
@@ -188,13 +177,32 @@ window.addEventListener('DOMContentLoaded', () => {
     selectedItem.appendChild(removeBtn);
     selectedContainer.appendChild(selectedItem);
   }
-  function removeFromSelectedContainer(text, item) {
+  function removeFromSelectedContainer(text, item, niceSelectInstance) {
     const selectedItems = selectedContainer.querySelectorAll('.selected-item');
     selectedItems.forEach(selectedItem => {
       if (selectedItem.dataset.text === text) {
         selectedItem.remove();
-        const checkbox = item.querySelector('input[type="checkbox"]');
-        checkbox.checked = false;
+
+        if (item.querySelector('input[type="checkbox"]')) {
+          const checkbox = item.querySelector('input[type="checkbox"]');
+          checkbox.checked = false;
+        }
+        if (item.querySelector('input[type="radio"]')) {
+          const radio = item.querySelector('input[type="radio"]');
+          radio.checked = false;
+        }
+        if (item.querySelector('input[type="text"]')) {
+          const text = item.querySelector('input[type="text"]');
+          text.value = '';
+        }
+        if (item.querySelector('#region')) {
+          const region = item.querySelector('#region');
+          region.selectedIndex = -1; // Сбросить выбранный option
+          if (niceSelectInstance) {
+            niceSelectInstance.update();
+            document.querySelector('.nice-select').querySelector('.current').style.color = "";
+          }
+        }
 
         if (document.querySelectorAll('.selected-item').length === 0) {
           selectedContainer.classList.add('visually-hidden');
@@ -205,6 +213,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+
   //filter reset
   const resetButton = document.querySelector('.selected-container button[type="reset"]');
 
@@ -213,16 +222,19 @@ window.addEventListener('DOMContentLoaded', () => {
       const forms = document.querySelectorAll('form');
       forms.forEach((form) => {
         form.reset();
-
         select.value = '';
-        niceSelect.update();
       });
 
       const checkboxes = document.querySelectorAll('input[type="checkbox"]');
       checkboxes.forEach((checkbox) => {
         checkbox.checked = false;
       });
+      const radioInputs = document.querySelectorAll('input[type="radio"]');
+      radioInputs.forEach((radioInput) => {
+        radioInput.checked = false;
+      });
       selectedContainer.classList.add('visually-hidden');
+
       const selectedItems = selectedContainer.querySelectorAll('.selected-item');
       selectedItems.forEach(i => i.remove())
 
@@ -230,50 +242,84 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  //submit
-  const form = document.getElementById('filterForm');
-  if (form) {
-    form.addEventListener('submit', (event) => {
-      // event.preventDefault();
-      filterItems();
-      filtersContainer.classList.remove('active');
-      document.querySelector('body').classList.remove('dark-modal');
-      handleFilterSubmit(event);
+  const select = document.getElementById('region');
+  let niceSelectInstance;
+
+  function setFormValues() {
+    var urlParams = new URLSearchParams(window.location.search);
+
+    urlParams.forEach(function (value, key) {
+      var checkboxes = document.querySelectorAll('input[type="checkbox"][name="' + key + '"]');
+      var radioButtons = document.querySelectorAll('input[type="radio"][name="' + key + '"]');
+
+      checkboxes.forEach(function (checkbox) {
+        if (checkbox.value === value) {
+          checkbox.checked = true;
+          addToSelectedContainer(checkbox.parentNode.textContent.trim(), checkbox.parentNode);
+        }
+      });
+
+      radioButtons.forEach(function (radioButton) {
+        if (radioButton.value === value) {
+          radioButton.checked = true;
+          addToSelectedContainer(radioButton.parentNode.textContent.trim(), radioButton.parentNode);
+        }
+      });
+    });
+
+    var inputDate = document.querySelector('input[name="input-date"]');
+    var dateValue = urlParams.get('input-date');
+    if (inputDate && dateValue) {
+      inputDate.value = dateValue;
+      addToSelectedContainer('Дата: ' + dateValue, inputDate.parentNode);
+    }
+
+    var selectRegion = document.querySelector('select[name="region"]');
+    var regionValue = urlParams.get('region');
+
+    if (select) {
+      niceSelectInstance = new NiceSelect(select, {
+        searchable: true,
+        placeholder: 'Регион/область',
+        searchText: 'Начните поиск'
+      });
+
+      if (selectRegion && regionValue) {
+        selectRegion.value = regionValue;
+        niceSelectInstance.update();
+        document.querySelector('.nice-select').querySelector('.current').style.color = "#2E2E2E";
+        addToSelectedContainer(selectRegion.options[selectRegion.selectedIndex].text, selectRegion.parentNode);
+      } else {
+        selectRegion.value = '';
+        niceSelectInstance.update();
+        document.querySelector('.nice-select').querySelector('.current').style.color = "";
+      }
+
+      select.addEventListener('change', () => {
+        if (select.value !== "") {
+          document.querySelector('.nice-select').querySelector('.current').style.color = "#2E2E2E";
+          addToSelectedContainer(selectRegion.options[selectRegion.selectedIndex].text, selectRegion.parentNode);
+        } else {
+          document.querySelector('.nice-select').querySelector('.current').style.color = "";
+          removeFromSelectedContainer(selectRegion.options[selectRegion.selectedIndex].text, selectRegion.parentNode);
+        }
+      });
+    }
+
+    filterList.forEach(item => {
+      const checkbox = item.querySelector('input');
+      checkbox.addEventListener('change', () => {
+        const text = item.textContent.trim();
+        if (checkbox.checked) {
+          addToSelectedContainer(text, item);
+        } else {
+          removeFromSelectedContainer(text, item);
+        }
+      });
     });
   }
 
-  // function handleFilterSubmit(event) {
-  //   event.preventDefault();
-
-  //   const selectedFilters = getSelectedFilters();
-  //   const updatedUrl = updateFilterUrl(selectedFilters);
-
-  //   window.history.pushState({}, '', updatedUrl);
-  // }
-
-  // function getSelectedFilters() {
-  //   const filterElements = document.querySelectorAll('input');
-  //   const selectedFilters = [];
-
-  //   filterElements.forEach(element => {
-  //     if (element.checked) {
-  //       selectedFilters.push(`${element.name}=${encodeURIComponent(element.value)}`);
-  //     }
-  //   });
-
-  //   const dateInput = document.querySelector('.date-input__field');
-  //   if (dateInput && dateInput.value) {
-  //     selectedFilters.push(`date=${encodeURIComponent(dateInput.value)}`);
-  //   }
-
-  //   return selectedFilters;
-  // }
-
-  // function updateFilterUrl(selectedFilters) {
-  //   const updatedUrl = `${window.location.origin}${window.location.pathname}?${selectedFilters.join('&')}`;
-  //   return updatedUrl;
-  // }
-
+  window.addEventListener('load', setFormValues);
 
   //filter item accordion
   setTimeout(initAccordions(), 1000);
@@ -285,13 +331,13 @@ window.addEventListener('DOMContentLoaded', () => {
   const pagination = document.querySelector('.pagination');
 
 
-
   function filterItems() {
     const seriesFilter = Array.from(document.querySelector('#filter-series').querySelectorAll('input:checked')).map(el => el.value);
     const distanceFilter = Array.from(document.querySelector('#filter-distance').querySelectorAll('input:checked')).map(el => el.value);
     const categoryFilter = Array.from(document.querySelector('#filter-category').querySelectorAll('input:checked')).map(el => el.value);
     const inputDateFilter = dateInput.value;
-    const selectedDateRanges = Array.from(document.querySelector('input[name="date"]:checked')).map(input => input.value);
+    const customSelectInput = Array.from(document.querySelector('#filter-place').querySelectorAll('option:checked')).map(el => el.value);
+    const selectedDateRanges = Array.from(document.querySelector('input[name="date"]')).map(input => input.value);
 
     let visibleItems = 0;
 
@@ -306,7 +352,7 @@ window.addEventListener('DOMContentLoaded', () => {
       const matchesSeries = seriesFilter.length === 0 || seriesFilter.includes(series);
       const matchesDistance = distanceFilter.length === 0 || distanceFilter.some(filter => distances.includes(filter));
       const matchesCategory = categoryFilter.length === 0 || categoryFilter.includes(category);
-      const matchesRegion = customSelectInput.value.length === 0 || customSelectInput.value === region;
+      const matchesRegion = customSelectInput.length === 0 || customSelectInput.value === region;
 
       var matchesDate = inputDateFilter.length === 10 ? itemDate.toLocaleDateString('ru-RU') === inputDateFilter : selectedDateRanges.length === 0 || selectedDateRanges.some(range => isDateInRange(itemDate, range, 0));
 
@@ -596,7 +642,6 @@ window.addEventListener('DOMContentLoaded', () => {
       if (windowWidth < 768) {
         if (currentScrollPos > prevScrollPos && modalTop + modalHeight <= windowHeight) {
           hiddenModalTop = modalTop;
-          console.log(hiddenModalTop);
           informationModal.classList.add('none');
           isModalVisible = false;
         } else if (currentScrollPos <= modalTopStart) {
@@ -682,73 +727,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('load', addLazyLoadingToImages);
 
-
-  //select2
-  const select = document.getElementById('region');
-  if (select) {
-    const niceSelect = new NiceSelect(select, {
-      searchable: true,
-      placeholder: 'Регион/область',
-      searchText: 'Начните поиск'
-    });
-
-    select.value = '';
-    niceSelect.update();
-
-    select.addEventListener('change', () => {
-      if (select.value !== "") {
-        document.querySelector('.nice-select').querySelector('.current').style.color = "#2E2E2E"
-
-      }
-    });
-  }
-
-
-
-
   //авторизация
-
-  // const switchLogin = document.querySelector('.authorization__switch');
-  // const authorizationLogin = document.querySelector('.authorization__login');
-  // const authorizationRegistration = document.querySelector('.authorization__registration');
-
-  // const lastVisitedSection = localStorage.getItem('lastVisitedSection');
-  // if (lastVisitedSection === 'registration') {
-  //   authorizationLogin.classList.add('visually-hidden');
-  //   authorizationRegistration.classList.remove('visually-hidden');
-  //   switchLogin.querySelector('button[data-button="registration"]').classList.add('active');
-  //   switchLogin.querySelector('button[data-button="login"]').classList.remove('active');
-  // } else {
-  //   authorizationLogin.classList.remove('visually-hidden');
-  //   authorizationRegistration.classList.add('visually-hidden');
-  //   switchLogin.querySelector('button[data-button="login"]').classList.add('active');
-  //   switchLogin.querySelector('button[data-button="registration"]').classList.remove('active');
-  // }
-
-  // if (switchLogin) {
-  //   switchLogin.querySelectorAll('button').forEach(buttonSwitch => {
-  //     buttonSwitch.addEventListener('click', function () {
-  //       switchLogin.querySelectorAll('button').forEach(btn => {
-  //         btn.classList.remove('active');
-  //       });
-
-  //       this.classList.add('active');
-
-  //       const dataButton = this.getAttribute('data-button');
-
-  //       if (dataButton === 'login') {
-  //         authorizationLogin.classList.remove('visually-hidden');
-  //         authorizationRegistration.classList.add('visually-hidden');
-  //         localStorage.setItem('lastVisitedSection', 'login');
-  //       } else {
-  //         authorizationLogin.classList.add('visually-hidden');
-  //         authorizationRegistration.classList.remove('visually-hidden');
-  //         localStorage.setItem('lastVisitedSection', 'registration');
-  //       }
-  //     });
-  //   });
-  // }
-
   const switchLogin = document.querySelector('.authorization__switch');
   const authorizationLogin = document.querySelector('.authorization__login');
   const authorizationRegistration = document.querySelector('.authorization__registration');
@@ -805,20 +784,47 @@ window.addEventListener('DOMContentLoaded', () => {
 
       if (field.name === 'user-email' && !EMAIL_REGEXP.test(field.value)) {
         errorMessage.classList.remove('visually-hidden');
+        field.classList.add('error')
         return false;
       } else {
         errorMessage.classList.add('visually-hidden');
+        field.classList.remove('error')
       }
 
       if (field.name === 'user-password-repeat') {
         const passwordField = field.closest('form').querySelector('input[name="user-password"]');
         if (passwordField && field.value !== passwordField.value) {
           errorMessage.classList.remove('visually-hidden');
+          field.classList.add('error')
           return false;
         } else {
           errorMessage.classList.add('visually-hidden');
+          field.classList.remove('error')
         }
       }
+
+
+      if (field.parentElement.querySelector('.necessary')) {
+        if (field.value == '') {
+          errorMessage.classList.remove('visually-hidden');
+          field.classList.add('error')
+          return false;
+        } else {
+          errorMessage.classList.add('visually-hidden');
+          field.classList.remove('error')
+        }
+      }
+
+
+// console.log(form);
+      // form.querySelectorAll('.necessary').forEach((label) => {
+      //   const field = label.parentElement.parentElement.querySelector('input');
+      //   if (field.value.trim() === '') {
+      //     areAllNecessaryFieldsFilled = false;
+      //   }
+      // });
+
+
     }
 
     return true;
@@ -836,8 +842,10 @@ window.addEventListener('DOMContentLoaded', () => {
         if (errorMessage) {
           if (isFieldValid) {
             errorMessage.classList.add('visually-hidden');
+            field.classList.remove('error')
           } else {
             errorMessage.classList.remove('visually-hidden');
+            field.classList.add('error')
           }
         }
 
@@ -857,7 +865,6 @@ window.addEventListener('DOMContentLoaded', () => {
         });
 
         const checkbox = form.querySelector('input[type="checkbox"]');
-        console.log(checkbox);
 
         if (checkbox) {
           if (areAllNecessaryFieldsFilled && areAllErrorMessagesHidden && checkbox.checked) {

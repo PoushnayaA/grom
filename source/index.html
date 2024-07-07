@@ -119,7 +119,7 @@
                   </svg>
                 </button>
               </div>
-              <form id="filterForm" action="https://echo.htmlacademy.ru/" method="get">
+              <form id="filterForm" action="index.html" method="get">
                 <div id="filter-category" class="filter-container">
                   <div class="suggestion-wrapper search-input">
                     <input type="text" class="filter-input" placeholder="Поиск по названию">
@@ -136,7 +136,7 @@
                   <div class="filter-list">
                     <div class="filter-item">
                       <label>
-                        <input type="checkbox" name="category" value="triathlon">
+                        <input type="checkbox" name="category[]" value="triathlon">
                         <span class="checkmark">
                           <svg width="24" height="24" viewBox="0 0 24 24" role="img">
                             <use href="img/sprite.svg#triathlon"></use>
@@ -146,7 +146,7 @@
                     </div>
                     <div class="filter-item">
                       <label>
-                        <input type="checkbox" name="category" value="duathlon">
+                        <input type="checkbox" name="category[]" value="duathlon">
                         <span class="checkmark">
                           <svg width="24" height="24" viewBox="0 0 24 24" role="img">
                             <use href="img/sprite.svg#duathlon"></use>
@@ -156,7 +156,7 @@
                     </div>
                     <div class="filter-item">
                       <label>
-                        <input type="checkbox" name="category" value="aquathlon">
+                        <input type="checkbox" name="category[]" value="aquathlon">
                         <span class="checkmark">
                           <svg width="24" height="24" viewBox="0 0 24 24" role="img">
                             <use href="img/sprite.svg#aquathlon"></use>
@@ -166,7 +166,7 @@
                     </div>
                     <div class="filter-item">
                       <label>
-                        <input type="checkbox" name="category" value="run">
+                        <input type="checkbox" name="category[]" value="run">
                         <span class="checkmark">
                           <svg width="24" height="24" viewBox="0 0 24 24" role="img">
                             <use href="img/sprite.svg#run"></use>
@@ -176,7 +176,7 @@
                     </div>
                     <div class="filter-item">
                       <label>
-                        <input type="checkbox" name="category" value="swimming">
+                        <input type="checkbox" name="category[]" value="swimming">
 
                         <span class="checkmark">
                           <svg width="24" height="24" viewBox="0 0 24 24" role="img">
@@ -187,7 +187,7 @@
                     </div>
                     <div class="filter-item">
                       <label>
-                        <input type="checkbox" name="category" value="skis">
+                        <input type="checkbox" name="category[]" value="skis">
                         <span class="checkmark">
                           <svg width="24" height="24" viewBox="0 0 24 24" role="img">
                             <use href="img/sprite.svg#skis"></use>
@@ -197,7 +197,7 @@
                     </div>
                     <div class="filter-item">
                       <label>
-                        <input type="checkbox" name="category" value="bicycle-race">
+                        <input type="checkbox" name="category[]" value="bicycle-race">
                         <span class="checkmark">
                           <svg width="24" height="24" viewBox="0 0 24 24" role="img">
                             <use href="img/sprite.svg#bicycle-race"></use>
@@ -207,7 +207,7 @@
                     </div>
                     <div class="filter-item">
                       <label>
-                        <input type="checkbox" name="category" value="fight">
+                        <input type="checkbox" name="category[]" value="fight">
                         <span class="checkmark">
                           <svg width="24" height="24" viewBox="0 0 24 24" role="img">
                             <use href="img/sprite.svg#fight"></use>
@@ -217,7 +217,7 @@
                     </div>
                     <div class="filter-item">
                       <label>
-                        <input type="checkbox" name="category" value="another">
+                        <input type="checkbox" name="category[]" value="another">
                         <span class="checkmark">
                           <svg width="24" height="24" viewBox="0 0 24 24" role="img">
                             <use href="img/sprite.svg#another"></use>
@@ -237,25 +237,25 @@
                     <div data-accordion="content" class="filter-list">
                       <div class="filter-item">
                         <label>
-                          <input type="checkbox" name="series" value="grom">
+                          <input type="checkbox" name="series[]" value="grom">
                           <span class="checkmark">Grom</span>
                         </label>
                       </div>
                       <div class="filter-item">
                         <label>
-                          <input type="checkbox" name="series" value="open-band">
+                          <input type="checkbox" name="series[]" value="open-band">
                           <span class="checkmark">OpenBand</span>
                         </label>
                       </div>
                       <div class="filter-item">
                         <label>
-                          <input type="checkbox" name="series" value="swim-cup">
+                          <input type="checkbox" name="series[]" value="swim-cup">
                           <span class="checkmark">Swimcup</span>
                         </label>
                       </div>
                       <div class="filter-item">
                         <label>
-                          <input type="checkbox" name="series" value="another">
+                          <input type="checkbox" name="series[]" value="another">
                           <span class="checkmark">Другие</span>
                         </label>
                       </div>
@@ -270,73 +270,73 @@
                     <div data-accordion="content" class="filter-list">
                       <div class="filter-item">
                         <label>
-                          <input type="checkbox" name="distance" value="100m">
+                          <input type="checkbox" name="distance[]" value="100m">
                           <span class="checkmark">100м</span>
                         </label>
                       </div>
                       <div class="filter-item">
                         <label>
-                          <input type="checkbox" name="distance" value="200m">
+                          <input type="checkbox" name="distance[]" value="200m">
                           <span class="checkmark">200м</span>
                         </label>
                       </div>
                       <div class="filter-item">
                         <label>
-                          <input type="checkbox" name="distance" value="400m">
+                          <input type="checkbox" name="distance[]" value="400m">
                           <span class="checkmark">400м</span>
                         </label>
                       </div>
                       <div class="filter-item">
                         <label>
-                          <input type="checkbox" name="distance" value="1km">
+                          <input type="checkbox" name="distance[]" value="1km">
                           <span class="checkmark">1 км</span>
                         </label>
                       </div>
                       <div class="filter-item">
                         <label>
-                          <input type="checkbox" name="distance" value="3km">
+                          <input type="checkbox" name="distance[]" value="3km">
                           <span class="checkmark">3 км</span>
                         </label>
                       </div>
                       <div class="filter-item">
                         <label>
-                          <input type="checkbox" name="distance" value="5km">
+                          <input type="checkbox" name="distance[]" value="5km">
                           <span class="checkmark">5 км</span>
                         </label>
                       </div>
                       <div class="filter-item">
                         <label>
-                          <input type="checkbox" name="distance" value="10km">
+                          <input type="checkbox" name="distance[]" value="10km">
                           <span class="checkmark">10 км</span>
                         </label>
                       </div>
                       <div class="filter-item">
                         <label>
-                          <input type="checkbox" name="distance" value="15km">
+                          <input type="checkbox" name="distance[]" value="15km">
                           <span class="checkmark">15 км</span>
                         </label>
                       </div>
                       <div class="filter-item">
                         <label>
-                          <input type="checkbox" name="distance" value="half-marathon">
+                          <input type="checkbox" name="distance[]" value="half-marathon">
                           <span class="checkmark">Полумарарфон</span>
                         </label>
                       </div>
                       <div class="filter-item">
                         <label>
-                          <input type="checkbox" name="distance" value="30km">
+                          <input type="checkbox" name="distance[]" value="30km">
                           <span class="checkmark">30 км</span>
                         </label>
                       </div>
                       <div class="filter-item">
                         <label>
-                          <input type="checkbox" name="distance" value="marathon">
+                          <input type="checkbox" name="distance[]" value="marathon">
                           <span class="checkmark">Марафон</span>
                         </label>
                       </div>
                       <div class="filter-item">
                         <label>
-                          <input type="checkbox" name="distance" value="50km">
+                          <input type="checkbox" name="distance[]" value="50km">
                           <span class="checkmark">50 км</span>
                         </label>
                       </div>
