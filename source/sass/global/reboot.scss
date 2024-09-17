@@ -108,9 +108,9 @@ input:matches([type="email"],
 }
 
 button , a{
-  appearance: none;
+  appearance: none !important;
+  color: currentColor;
 }
-
 button,
 [type="button"],
 [type="reset"],
