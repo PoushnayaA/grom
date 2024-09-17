@@ -139,6 +139,12 @@ input:matches([type=email],
           appearance: none;
 }
 
+button, a {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
 button,
 [type=button],
 [type=reset],
