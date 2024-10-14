@@ -25,7 +25,6 @@ html {
 body {
   width: 100%;
   height: 100%;
-
   background-color: $light-grey;
 }
 
@@ -94,6 +93,11 @@ input[type="number"] {
   appearance: textfield;
 }
 
+button , a{
+  appearance:  none !important;
+  color:  currentColor;
+}
+
 // ios button \ inputs reset
 select,
 textarea,
@@ -107,10 +111,6 @@ input:matches([type="email"],
   appearance: none;
 }
 
-button , a{
-  appearance: none !important;
-  color: currentColor;
-}
 button,
 [type="button"],
 [type="reset"],
@@ -120,4 +120,61 @@ button,
 
 li::marker {
   color: transparent;
+}
+
+ol:not([class]) {
+  list-style-type: decimal;
+  list-style-position: inside;
+
+  @each $property,
+  $value in $body {
+    #{$property}: $value;
+  }
+
+  padding: 0;
+  margin: 16px 0 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @include vp-1440 {
+    margin: 24px 0 0;
+    gap: 12px;
+  }
+
+  li {
+    position: relative;
+    padding-left: 0;
+    margin: 0;
+    // display: inline-block;
+
+
+    a {
+      display: inline;
+      color: $blue;
+
+      &:hover,
+      &:focus-visible,
+      &:active {
+        color: $dark;
+    }
+    }
+
+    &::marker {
+      color: currentColor;
+    }
+
+  //   // &:not(.simple-list-item):before {
+  //   //   content: "1";
+  //   //   position: absolute;
+  //   //   left: 0px;
+  //   //   top: 50%;
+  //   //   transform: translateY(-50%);
+  //   //   width: 8px;
+  //   //   height: 8px;
+  //   //   border-radius: 50%;
+  //   //   background-color: $green;
+  //   // }
+  }
 }

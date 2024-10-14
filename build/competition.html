@@ -56,7 +56,7 @@
               <meta itemprop="name" content="Grom">
             </div>
             <nav class="menu hide" itemscope itemtype="http://schema.org/SiteNavigationElement">
-              <ul itemscope itemtype="https://schema.org/BreadcrumbList">
+              <ul itemscope itemtype="https://schema.org/ItemList">
                 <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                   <a itemprop="item" class="active" href="index.html">
                     <span itemprop="name">Соревнования</span>
@@ -76,15 +76,22 @@
                 <div>
                   Регистрация/Вход
                 </div>
-                <svg class="login-icon" width="32" height="33" viewBox="0 0 32 33" role="img">
+                <!-- <svg class="login-icon" width="32" height="33" viewBox="0 0 32 33" role="img">
                   <use href="img/sprite.svg#login"></use>
+                </svg> -->
+                <svg class="login-icon" width="32" height="32" viewBox="0 0 32 32" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M25.5999 27.2V24.8C25.5999 23.527 25.0942 22.3061 24.194 21.4059C23.2938 20.5057 22.0729 20 20.7999 20H11.1999C9.92686 20 8.70596 20.5057 7.80579 21.4059C6.90561 22.3061 6.3999 23.527 6.3999 24.8V27.2"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  <path
+                    d="M16.0002 15.2C18.6512 15.2 20.8002 13.051 20.8002 10.4C20.8002 7.74903 18.6512 5.6 16.0002 5.6C13.3492 5.6 11.2002 7.74903 11.2002 10.4C11.2002 13.051 13.3492 15.2 16.0002 15.2Z"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </a>
             </div>
           </div>
         </div>
-      </div>
-      <div>
       </div>
     </header>
     <main>
@@ -132,21 +139,25 @@
             <div class="competition__container">
               <div class="competition__text-wrapper competitions">
                 <section data-series="another" data-popularity="10" data-like="false" class="competitions__item">
-                  <a class="competitions__item-link" href="competition.html">
+                  <div class="competitions__item-link">
                     <div class="competitions__inf-wrapper">
                       <div data-date="01.06.2024" class="competitions__date">1 июня 2024</div>
                       <div class="competitions__category">
-                        <svg width="24" height="24" viewBox="0 0 24 24" role="img">
+                        <!-- <svg width="24" height="24" viewBox="0 0 24 24" role="img">
                           <use href="img/sprite.svg#another"></use>
-                        </svg>
+                        </svg> -->
+                        <img src="./img/sprite/another.svg" width="24" height="24" alt="Иконка спорта">
                         <div data-category="another">Другое</div>
                       </div>
                     </div>
                     <div class="competitions__card-title">
                       <button data-button="add-like" type="button">
-                        <svg width="20" height="18" viewBox="0 0 20 18" role="img">
+                        <!-- <svg width="20" height="18" viewBox="0 0 20 18" role="img">
                           <use href="img/sprite.svg#like"></use>
-                        </svg>
+                        </svg> -->
+                        <svg width="20" height="18" viewBox="0 0 20 18" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M11.822 1.22513L11.822 1.2251C12.553 0.85449 13.3409 0.666667 14.1695 0.666667C17.0212 0.666667 19.3333 2.96833 19.3333 5.78523C19.3333 7.80193 18.2573 10.0443 15.9445 12.4562C14.0259 14.457 11.6648 16.139 10 17.208C8.33517 16.139 5.97407 14.457 4.05554 12.4562C1.74268 10.0443 0.666667 7.80193 0.666667 5.78523C0.666667 2.96832 2.97883 0.666667 5.83043 0.666667C6.65909 0.666667 7.44697 0.854489 8.17801 1.22511L8.17804 1.22513C8.67477 1.47691 9.13246 1.81229 9.5254 2.21061L10 2.69169L10.4746 2.2106C10.8675 1.81229 11.3252 1.47691 11.822 1.22513Z" stroke-width="1.33333"/>
+                          </svg>
                       </button>
                       <h2 class="competitions__title">SWIM SUP RUN - БУШОВО</h2>
                     </div>
@@ -156,13 +167,14 @@
                       <li data-distance="1km">Открытая вода 1000 метров</li>
                     </ul>
                     <div data-region="1" class="competitions__address-wrapper">
-                      <svg width="16" height="16" viewBox="0 0 16 16" role="img">
+                      <!-- <svg width="16" height="16" viewBox="0 0 16 16" role="img">
                         <use href="img/sprite.svg#map"></use>
-                      </svg>
+                      </svg> -->
+                      <img src="./img/sprite/map.svg" width="16" height="16">
                       <p class="competitions__address competitions__address--mobile">Тула</p>
                       <p class="competitions__address competitions__address--desktop">Тула. Тульская обл, Ленинский р-н, деревня Крюково (Медвенский с/о), мкр Бушово</p>
                     </div>
-                  </a>
+                  </div>
                     <div class="competitions__buttons">
                       <div>
                         <a href="registration.html"
@@ -170,11 +182,8 @@
                         <p>от <span>1 500 ₽</span></p>
                       </div>
                     </div>
-
                 </section>
                 <div data-accordion="parent">
-
-
                   <section data-accordion="element" class="content">
                     <h3>
                       <button data-accordion="button">
@@ -245,7 +254,7 @@
                                 <h4>
                                   SUP 5000 метров
                                 </h4>
-                                <div>Стартовая стоимость – <span>от 500 ₽</span></div>
+                                <div><span>от 500 ₽</span></div>
                               </div>
                             </td>
                             <td>
@@ -255,6 +264,24 @@
                             <td>М/Ж</td>
                             <td>с 0 лет</td>
                             <td>1,0 км</td>
+                            <td><a aria-disabled="true" href="#">Регистрация</a></td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="content__table-title">
+                                <h4>
+                                  Открытая вода 1000 метров
+                                </h4>
+                                <div><span>от 500 ₽</span></div>
+                              </div>
+                            </td>
+                            <td>
+                              <div><span>25</span> из <span>50</span><br>участников</div>
+                            </td>
+                            <td>23.07.24</td>
+                            <td>М/Ж</td>
+                            <td>с 18 лет</td>
+                            <td>1,0 км</td>
                             <td><a href="#">Регистрация</a></td>
                           </tr>
                           <tr>
@@ -263,11 +290,11 @@
                                 <h4>
                                   Открытая вода 1000 метров
                                 </h4>
-                                <div>Стартовая стоимость – <span>от 500 ₽</span></div>
+                                <div><span>от 500 ₽</span></div>
                               </div>
                             </td>
                             <td>
-                              <div data-state="active"></div>
+                              <div><span>25</span><br>участников</div>
                             </td>
                             <td>23.07.24</td>
                             <td>М/Ж</td>
@@ -337,9 +364,10 @@
                   </h3>
                     <div data-accordion="content">
                       <div class="content__text">
-                        <svg width="16" height="16" viewBox="0 0 16 16" role="img">
+                        <!-- <svg width="16" height="16" viewBox="0 0 16 16" role="img">
                           <use href="img/sprite.svg#map"></use>
-                        </svg>
+                        </svg> -->
+                        <img src="./img/sprite/map.svg" width="16" height="16">
                         <p>Координаты места старта 22222.22222</p>
                       </div>
                       <div class="content__map">
@@ -544,6 +572,11 @@
                         <li>За две недели 50% от взноса</li>
                         <li>Передача другому лицу возможно по след механизму: …</li>
                       </ul>
+                      <ol>
+                        <li>За месяц до соревнования 100% от взноса</li>
+                        <li>За две недели 50% от взноса</li>
+                        <li>Передача другому лицу возможно по след механизму: …</li>
+                      </ol>
                     </div>
                   </section>
 

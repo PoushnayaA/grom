@@ -56,7 +56,7 @@
               <meta itemprop="name" content="Grom">
             </div>
             <nav class="menu hide" itemscope itemtype="http://schema.org/SiteNavigationElement">
-              <ul itemscope itemtype="https://schema.org/BreadcrumbList">
+              <ul itemscope itemtype="https://schema.org/ItemList">
                 <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                   <a itemprop="item" class="active" href="index.html">
                     <span itemprop="name">Соревнования</span>
@@ -67,22 +67,39 @@
                     <span itemprop="name">Клубы</span>
                   </a>
                 </li>
+                <li>
+                  <div class="login login--exit login--mobile">
+                    <button>
+                      <div>
+                        Выйти
+                      </div>
+                    </button>
+                  </div>
+                </li>
               </ul>
             </nav>
-            <div class="login">
-              <a href="authorization.html">
+            <div class="login login--account">
+              <a href="account.html">
                 <div>
-                  Регистрация/Вход
+                  Михаил
                 </div>
-                <svg class="login-icon" width="32" height="33" viewBox="0 0 32 33" role="img">
-                  <use href="img/sprite.svg#login"></use>
-                </svg>
+                <picture>
+                  <source type="image/webp" media="(min-width: 320px)" width="32" height="33"
+                    srcset="./img/content/account-img.webp">
+                  <img class="login__account-img" src="./img/content/account-img.png" width="32" height="33"
+                    alt="Фото пользователя">
+                </picture>
               </a>
+            </div>
+            <div class="login login--exit login--desktop">
+              <button>
+                <div>
+                  Выйти
+                </div>
+              </button>
             </div>
           </div>
         </div>
-      </div>
-      <div>
       </div>
     </header>
     <main>
@@ -101,10 +118,13 @@
               </div>
               <ul class="competitions-list__sort-list">
                 <li>
-                  <a href="#" data-sort="date">По дате</a>
+                  <a href="https://grom.k8s.binn-team.ru/?sort=date" data-sort="date">По дате</a>
                 </li>
                 <li>
-                  <a class="active" href="#" data-sort="popularity">По популярности</a>
+                  <a class="active" href="https://grom.k8s.binn-team.ru/?sort=popularity" data-sort="popularity">По популярности</a>
+                </li>
+                <li>
+                  <a  href="https://grom.k8s.binn-team.ru/?sort=past" data-sort="past">Прошедшие</a>
                 </li>
               </ul>
             </div>
@@ -119,7 +139,7 @@
                   </svg>
                 </button>
               </div>
-              <form id="filterForm" action="index.html" method="get">
+              <form id="filterForm" action="./index.html" method="get">
                 <div id="filter-category" class="filter-container">
                   <div class="suggestion-wrapper search-input">
                     <input type="text" class="filter-input" placeholder="Поиск по названию">
@@ -132,7 +152,6 @@
                     </div>
                     <div id="suggestion-list" class="suggestion-list"></div>
                   </div>
-
                   <div class="filter-list">
                     <div class="filter-item">
                       <label>
@@ -177,7 +196,6 @@
                     <div class="filter-item">
                       <label>
                         <input type="checkbox" name="category[]" value="swimming">
-
                         <span class="checkmark">
                           <svg width="24" height="24" viewBox="0 0 24 24" role="img">
                             <use href="img/sprite.svg#swimming"></use>
@@ -360,7 +378,6 @@
                       <option class="custom-select__option" value="71">Тульская область</option>
                     </select>
                   </div>
-
                 </div>
                 <div id="filter-date" class="filter-container">
                   <h3>
@@ -388,46 +405,8 @@
                       </label>
                     </div>
                   </div>
-                  <div class="date-input date-picker">
-                    <input type="text" name="input-date" placeholder="Точная дата" class="date-input__field"
-                      maxlength="10" readonly>
-                    <div class="date-input__btn date-picker__button">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path
-                          d="M15.8333 3.33337H4.16667C3.24619 3.33337 2.5 4.07957 2.5 5.00004V16.6667C2.5 17.5872 3.24619 18.3334 4.16667 18.3334H15.8333C16.7538 18.3334 17.5 17.5872 17.5 16.6667V5.00004C17.5 4.07957 16.7538 3.33337 15.8333 3.33337Z"
-                          stroke="#2E2E2E" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M13.3333 1.66663V4.99996" stroke="#2E2E2E" stroke-linecap="round"
-                          stroke-linejoin="round" />
-                        <path d="M6.66675 1.66663V4.99996" stroke="#2E2E2E" stroke-linecap="round"
-                          stroke-linejoin="round" />
-                        <path d="M2.5 8.33337H17.5" stroke="#2E2E2E" stroke-linecap="round" stroke-linejoin="round" />
-                      </svg>
-                    </div>
-                    <div class="date-picker__calendar">
-                      <div class="date-picker__header">
-                        <button type="button" class="date-picker__prev-month">
-                          <svg class="arrow arrow--prev" width="12" height="6" viewBox="0 0 12 6" role="img">
-                            <use href="img/sprite.svg#arrow"></use>
-                          </svg>
-                        </button>
-                        <div class="date-picker__current-month"></div>
-                        <button type="button" class="date-picker__next-month">
-                          <svg class="arrow arrow--next" width="12" height="6" viewBox="0 0 12 6" role="img">
-                            <use href="img/sprite.svg#arrow"></use>
-                          </svg>
-                        </button>
-                      </div>
-                      <div class="date-picker__days-of-week">
-                        <div class="date-picker__day-of-week">Пн</div>
-                        <div class="date-picker__day-of-week">Вт</div>
-                        <div class="date-picker__day-of-week">Ср</div>
-                        <div class="date-picker__day-of-week">Чт</div>
-                        <div class="date-picker__day-of-week">Пт</div>
-                        <div class="date-picker__day-of-week">Сб</div>
-                        <div class="date-picker__day-of-week">Вс</div>
-                      </div>
-                      <div class="date-picker__days"></div>
-                    </div>
+                  <div class="date-input date-picker filter-item">
+                    <input data-input="range-date" type="text" name="input-date" placeholder="Диапазон" class="date-input__field" maxlength="23" readonly="true">
                   </div>
                 </div>
                 <button type="submit" form="filterForm">Показать</button>
@@ -437,7 +416,18 @@
               <h2 class="visually-hidden">Отсортированный список соревнований.</h2>
               <div class="selected-container">
                 <div class="selected-items visually-hidden">
-                  <button type="reset">Очистить</button>
+                  <button form="filterForm" type="submit">
+                    <svg width="12" height="12" viewBox="0 0 12 12" role="img">
+                      <use href="img/sprite.svg#check"></use>
+                    </svg>
+                    Применить фильтр
+                  </button>
+                  <button form="filterForm" type="reset">
+                    <svg width="12" height="12" viewBox="0 0 12 12" role="img">
+                      <use href="img/sprite.svg#cross-2"></use>
+                    </svg>
+                    Очистить
+                  </button>
                 </div>
               </div>
               <p class="list-container__nothing visually-hidden">Ничего не найдено. Попробуйте изменить фильтр.</p>
@@ -450,7 +440,7 @@
                         <svg width="24" height="24" viewBox="0 0 24 24" role="img">
                           <use href="img/sprite.svg#another"></use>
                         </svg>
-                        <div data-category="another">Другое</div>
+                        <div data-category="another" width="24" height="24">Другое</div>
                       </div>
                     </div>
                     <h2 class="competitions__title">SWIM SUP RUN - БУШОВО</h2>
@@ -464,7 +454,8 @@
                         <use href="img/sprite.svg#map"></use>
                       </svg>
                       <p class="competitions__address competitions__address--mobile">Тула</p>
-                      <p class="competitions__address competitions__address--desktop">Тула. Тульская обл, Ленинский р-н, деревня Крюково (Медвенский с/о), мкр Бушово</p>
+                      <p class="competitions__address competitions__address--desktop">Тула. Тульская обл, Ленинский р-н,
+                        деревня Крюково (Медвенский с/о), мкр Бушово</p>
                     </div>
                   </a>
                   <div class="competitions__buttons">
@@ -474,7 +465,6 @@
                     </div>
                     <a href="members.html" class="competitions__members">Список участников</a>
                   </div>
-
                 </section>
                 <section data-series="swim-cup" data-popularity="80" class="competitions__item">
                   <a class="competitions__item-link" href="competition.html">
@@ -498,8 +488,8 @@
                         <use href="img/sprite.svg#map"></use>
                       </svg>
                       <p class="competitions__address competitions__address--mobile">Москва</p>
-                      <p class="competitions__address competitions__address--desktop">Москва. Турчанинов переулок, 3с1</p>
-
+                      <p class="competitions__address competitions__address--desktop">Москва. Турчанинов переулок, 3с1
+                      </p>
                     </div>
                   </a>
                   <div class="competitions__buttons">
@@ -510,7 +500,6 @@
                     </div>
                     <a href="members.html" class="competitions__members">Список участников</a>
                   </div>
-
                 </section>
                 <section data-series="grom" data-popularity="76" class="competitions__item">
                   <a class="competitions__item-link" href="#">
@@ -534,8 +523,8 @@
                         <use href="img/sprite.svg#map"></use>
                       </svg>
                       <p class="competitions__address competitions__address--mobile">Москва</p>
-                      <p class="competitions__address competitions__address--desktop">Москва. Турчанинов переулок, 3с1</p>
-
+                      <p class="competitions__address competitions__address--desktop">Москва. Турчанинов переулок, 3с1
+                      </p>
                     </div>
                   </a>
                   <div class="competitions__buttons">
@@ -546,7 +535,6 @@
                     </div>
                     <a href="members.html" class="competitions__members">Список участников</a>
                   </div>
-
                 </section>
                 <section data-series="open-band" data-popularity="3" class="competitions__item">
                   <a class="competitions__item-link" href="#">
@@ -570,8 +558,8 @@
                         <use href="img/sprite.svg#map"></use>
                       </svg>
                       <p class="competitions__address competitions__address--mobile">Тула</p>
-                      <p class="competitions__address competitions__address--desktop">Тула. Тульская обл, Ленинский р-н, деревня Крюково (Медвенский с/о), мкр Бушово</p>
-
+                      <p class="competitions__address competitions__address--desktop">Тула. Тульская обл, Ленинский р-н,
+                        деревня Крюково (Медвенский с/о), мкр Бушово</p>
                     </div>
                   </a>
                   <div class="competitions__buttons">
@@ -581,13 +569,10 @@
                     </div>
                     <a href="members.html" class="competitions__members">Список участников</a>
                   </div>
-
                 </section>
-
               </div>
               <div class="pagination">
                 <div class="pagination__buttons-wrapper">
-
                   <ul class="pagination__list">
                     <li class="pagination__item">
                       <a href="#" class="pagination__link pagination__link--prev visually-hidden">

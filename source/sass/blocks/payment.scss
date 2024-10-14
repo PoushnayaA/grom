@@ -1,0 +1,190 @@
+.payment {
+  padding: 24px;
+  border-radius: 10px;
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.payment__content {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -24px;
+    width: 100%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: $medium-grey;
+  }
+}
+
+.payment__header {
+  margin: 0;
+
+  @each $property,
+  $value in $h3 {
+    #{$property}: $value;
+  }
+}
+
+.payment__date {
+
+  @each $property,
+  $value in $small {
+    #{$property}: $value;
+  }
+
+  margin-bottom: 8px;
+}
+
+.payment__name {
+
+  @each $property,
+  $value in $button {
+    #{$property}: $value;
+  }
+
+  margin: 8px 0 16px;
+}
+
+.payment__list {
+  padding: 0;
+  margin: 0;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.payment__person {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: flex-start;
+
+  @include vp-768 {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @each $property,
+  $value in $small {
+    #{$property}: $value;
+  }
+}
+
+.payment__person-name {
+
+  @each $property,
+  $value in $button {
+    #{$property}: $value;
+  }
+
+  margin-bottom: 8px;
+
+  @include vp-768 {
+    margin-bottom: 0;
+    margin-right: 12px;
+  }
+}
+
+.payment__person-date {
+  margin-bottom: 12px;
+  color: $grey;
+  display: block;
+  line-height: normal;
+
+  @include vp-768 {
+    margin-bottom: 0;
+    margin-left: 12px;
+  }
+}
+
+.payment__person-phone {
+  margin-bottom: 4px;
+
+  @include vp-768 {
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: 16px;
+  }
+}
+
+.payment__person-email {
+  margin-top: 4px;
+
+  @include vp-768 {
+    margin-top: 0;
+    margin-left: 16px;
+  }
+}
+
+.payment__price-wrapper {
+  .user-form__buttons {
+    width: 100%;
+
+    @include vp-768 {
+      margin-right: 0;
+      width: auto;
+    }
+  }
+
+  .user-form__submit {
+    width: 100%;
+
+    @include vp-768 {
+      width: max-content;
+    }
+  }
+
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+
+  @include vp-768 {
+    gap: 0;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.registration__verification-text {
+  @each $property,
+  $value in $h4 {
+    #{$property}: $value;
+  }
+  text-align: center;
+  margin: 24px 0;
+
+  @include vp-768 {
+    margin: 40px 0;
+  }
+}
+
+.registration__link {
+  color: $blue;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-align: center;
+  margin: auto;
+  margin-top: 24px;
+  display: block;
+
+  @include vp-768 {
+    margin-top: 40px;
+  }
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    color: $dark;
+  }
+}

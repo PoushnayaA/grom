@@ -302,11 +302,30 @@ body.dark-modal {
   }
 }
 
-.login {
-  a {
-    display: block;
+.login,
+.login--mobile {
+  height: 100%;
+
+  &:not(:last-of-type) {
+    margin-right: 10px;
+  }
+
+  .login__account-img {
+    border-radius: 50%;
+    min-width: 33px;
+  }
+
+  a,
+  button {
+    height: 100%;
     white-space: nowrap;
     transition: background-color 0.3s ease;
+    cursor: pointer;
+    background-color: transparent;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    color: $dark;
 
     @each $property,
     $value in $button {
@@ -326,6 +345,8 @@ body.dark-modal {
     &:hover,
     &:focus-visible,
     &:active {
+      box-shadow: $green-shadow;
+
       svg {
         stroke: $dark;
       }
@@ -357,6 +378,77 @@ body.dark-modal {
       }
 
       color: $dark;
+    }
+  }
+}
+
+.login--account {
+  div {
+    display: none;
+
+    @include vp-768 {
+      display: inline;
+    }
+  }
+
+  a {
+    padding: 0;
+    border-radius: 50%;
+
+    @include vp-768 {
+      display: flex;
+      flex-direction: row-reverse;
+      border: none;
+      gap: 8px;
+      border-radius: 25px;
+      align-items: center;
+      padding: 7px 24px;
+    }
+
+    img {
+      border-radius: 50%;
+    display: block;
+    width: 32px;
+    height: 32px;
+    }
+  }
+}
+
+.login--exit.login--desktop {
+  display: none;
+
+  @include vp-768 {
+    display: block;
+  }
+}
+
+.login--exit.login--mobile {
+  width: 100%;
+
+  @include vp-768 {
+    display: none;
+  }
+
+  a div,
+  button div {
+    display: inline;
+
+  }
+
+  a,
+  button {
+    padding: 12px 24px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    border-radius: 25px;
+    border: 1.5px solid $green;
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      background-color: $green;
+      transition: background-color 0.3s ease;
     }
   }
 }
@@ -446,3 +538,4 @@ footer {
 .footer-logo {
   padding: 9px;
 }
+

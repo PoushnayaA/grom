@@ -2,7 +2,7 @@
   padding-top: 32px;
   padding-bottom: 64px;
 
-  @include vp-1440 {
+  @include vp-768 {
     padding-top: 64px;
     padding-bottom: 80px;
   }
@@ -22,7 +22,7 @@
   max-width: 82px;
 }
 
-.authorization__registration .user-form__fielset {
+.authorization__registration .user-form__fieldset {
   @include vp-768 {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -41,13 +41,15 @@
 
   h2 {
     margin-top: 0;
+    margin-bottom: 16px;
 
     @each $property,
     $value in $h2 {
       #{$property}: $value;
     }
 
-    @include vp-1440 {
+    @include vp-768 {
+      margin-bottom: 24px;
 
       @each $property,
       $value in $h1 {
@@ -123,7 +125,25 @@
 
 
 .user-form__wrapper {
-  margin: 24px 0;
+  margin: 24px 0 0;
+
+  @include vp-768 {
+    margin: 40px 0 0;
+  }
+
+  &--small-margin {
+    @include vp-768 {
+      margin: 24px 0 0;
+    }
+  }
+
+  &--middle-margin:not(:last-of-type) {
+    margin: 32px 0;
+
+    @include vp-768 {
+      margin: 24px 0 48px;
+    }
+  }
 
   form {
     display: flex;
@@ -139,6 +159,7 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+    position: relative;
 
     @each $property,
     $value in $button {
@@ -146,7 +167,8 @@
     }
   }
 
-  input {
+  input,
+  textarea {
     border: none;
     padding-bottom: 16px;
     background-color: transparent;
@@ -167,6 +189,36 @@
         #{$property}: $value;
       }
     }
+  }
+
+  input.filter-input-name {
+    border: 1.5px solid $medium-grey;
+    padding: 16px;
+    padding-right: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-radius: 10px;
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      border-color: $green;
+    }
+  }
+
+  input.filter-input-name--uppercase {
+    text-transform: uppercase;
+
+    &::placeholder {
+      text-transform: none;
+    }
+  }
+
+  .search-input__btn--name {
+    bottom: 50%;
+    top: 50%;
+    transform: translate(0, -55%);
   }
 
   input.error {
@@ -202,17 +254,16 @@
     cursor: pointer;
 
     svg {
-stroke: $grey;
+      stroke: $grey;
     }
 
-
-&:hover,
-&:focus-visible,
-&:active {
-  svg {
-    stroke: $dark;
-  }
-}
+    &:hover,
+    &:focus-visible,
+    &:active {
+      svg {
+        stroke: $dark;
+      }
+    }
   }
 }
 
@@ -224,30 +275,32 @@ stroke: $grey;
   max-width: 398px;
   margin: 0 auto;
 
-  [type="submit"] {
-    background-color: $medium-grey;
-    color: $grey;
+  .user-form__submit {
     padding: 12px 24px;
     border-radius: 25px;
     border: none;
     display: flex;
     justify-content: center;
+    text-decoration: none;
+    background-color: $green;
+    cursor: pointer;
+    color: $dark;
+
+    &:not(:disabled):hover,
+    &:not(:disabled):focus-visible,
+    &:not(:disabled):active {
+      box-shadow: $dark-shadow;
+    }
 
     @each $property,
     $value in $button {
       #{$property}: $value;
     }
-  }
 
-  [type="submit"].active {
-    cursor: pointer;
-    background-color: $green;
-    color: $dark;
-
-    &:hover,
-    &:focus-visible,
-    &:active {
-      box-shadow: $dark-shadow;
+    &:disabled {
+      background-color: $medium-grey;
+      color: $grey;
+      cursor: not-allowed;
     }
   }
 
@@ -272,7 +325,12 @@ stroke: $grey;
   }
 }
 
-.user-form__fielset {
+.user-form__buttons--left {
+  margin-left: 0;
+  width: max-content;
+}
+
+.user-form__fieldset {
   display: flex;
   flex-direction: column;
   border: none;
@@ -322,4 +380,148 @@ stroke: $grey;
       box-shadow: $green-shadow;
     }
   }
+}
+
+
+[data-accordion=element].is-active .search-input__btn svg {
+  transform: rotate(0);
+}
+
+
+.user-form__list {
+  margin: 0;
+  padding: 0;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+
+  &--two-column {
+    @include vp-768 {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+.user-form__item {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  height: max-content;
+}
+
+.user-form__name {
+  margin: 0;
+
+  @each $property,
+  $value in $button {
+    #{$property}: $value;
+  }
+}
+
+.user-form__link {
+  color: $dark;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  @each $property,
+  $value in $button {
+    #{$property}: $value !important;
+  }
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    .user-form__name {
+      color: $blue;
+    }
+  }
+}
+
+.user-form__green-element {
+  display: inline-block;
+  background-color: $green;
+  padding: 8px 16px;
+  border-radius: 25px;
+}
+
+.user-form__wide-input {
+  @include vp-768 {
+  grid-column: 1 / 3;
+  }
+}
+
+.modal {
+  display: none;
+    position: fixed;
+    top: 50%;
+    left: 16px;
+    right: 16px;
+    transform: translate(0%, -50%);
+    z-index: 4;
+    padding: 16px;
+    background-color: $white;
+    border-radius: 10px;
+    height: max-content;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: calc(100vh - 80px);
+
+    &.active {
+      display: block;
+    }
+
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include vp-768 {
+      padding: 40px;
+    }
+}
+
+.modal__header {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.modal__title {
+  margin: 0;
+}
+
+.modal__title--center {
+  text-align: center;
+}
+
+.modal__button-close {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  height: max-content;
+  // margin-left: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: max-content;
+
+  svg {
+    stroke: $grey;
+  }
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    svg {
+      stroke: $dark;
+    }
+}
+}
+
+
+.user-form__fieldset {
+  // display: block;
 }

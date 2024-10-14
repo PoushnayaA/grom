@@ -1,20 +1,12 @@
 .filter-list {
-  .container {
-    padding-top: 32px;
-    padding-bottom: 64px;
-
-    @include vp-1440 {
-      padding-bottom: 80px;
-    }
-  }
-
   .filter-list__body {
     display: flex;
     flex-direction: column;
-    margin-top: 8px;
+    margin-top: 24px;
 
     @include vp-768 {
       flex-direction: row;
+      margin-top: 48px;
     }
   }
 
@@ -33,6 +25,7 @@
 
     overflow-y: auto;
     overflow-x: hidden;
+    max-height: calc(100vh - 80px);
 
     h2 {
       margin: 0 0 8px;
@@ -45,6 +38,7 @@
       top: 12px;
       height: max-content;
       max-width: 275px;
+      width: 100%;
       margin-right: 20px;
       z-index: 0;
       display: block;
@@ -117,6 +111,9 @@
       border: 1.5px solid $medium-grey;
       margin: 16px 0;
       outline: none;
+      padding-right: 32px;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .filter-list {
@@ -227,6 +224,10 @@
   }
 }
 
+.filter-item--transparent .checkmark {
+  background-color: transparent;
+}
+
 .filter-item input[type="checkbox"]:checked+.checkmark,
 .filter-item input[type="radio"]:checked+.checkmark {
   background-color: $green;
@@ -250,6 +251,19 @@
   svg {
     fill: $dark;
   }
+}
+
+.filter-item--transparent input[type="radio"]:hover+.checkmark,
+.filter-item--transparent input[type="radio"]:focus-visible+.checkmark
+.filter-item--transparent input[type="radio"]:active+.checkmark {
+background-color: transparent;
+box-shadow: none;
+}
+
+.filter-item--transparent input[type="radio"]:checked:hover+.checkmark,
+.filter-item--transparent input[type="radio"]:checked:focus-visible+.checkmark
+.filter-item--transparent input[type="radio"]:checked:active+.checkmark {
+background-color: $green;
 }
 
 .filter-dark-wrapper {
@@ -281,7 +295,7 @@
   .filter-item input[type=radio]:not(:checked):focus-visible+.checkmark,
   .filter-item input[type=radio]:not(:checked):active+.checkmark {
     border: 1.5px solid $green;
-    background: transparent;
+    background: $green;
     box-shadow: none;
   }
 }
@@ -306,15 +320,19 @@
     gap: 16px;
   }
 
+  [type="submit"],
   [type="reset"] {
-
     border: none;
     background-color: transparent;
     color: $blue;
     text-decoration: underline;
     text-underline-offset: 4px;
     cursor: pointer;
-    order: 999;
+    order: 9;
+
+    display: flex;
+    align-items: center;
+    gap: 3px;
 
     @each $property,
     $value in $small {
@@ -327,6 +345,24 @@
       color: $dark;
     }
   }
+
+  button[type="submit"] {
+    background-color: $green;
+    padding: 4px 12px;
+    border-radius: 30px;
+    text-decoration: none;
+    color: $dark;
+
+    @each $property,
+    $value in $small {
+      #{$property}: $value;
+    }
+
+    svg {
+      cursor: pointer;
+    }
+  }
+
 }
 
 
@@ -418,10 +454,6 @@
   &:active {
     box-shadow: $dark-shadow;
   }
-
-  // @include vp-768 {
-  //   display: none;
-  // }
 }
 
 .remove-btn {
@@ -503,6 +535,7 @@
 
   &--prev {
     transform: rotate(90deg);
+    left: 0;
   }
 }
 
@@ -567,15 +600,9 @@
   }
 }
 
-// <style>
 .nice-select .current {
   color: #A9A9A9;
 }
-
-// .nice-select .list .option.selected {
-//     color: #000 !important;
-// }
-// </style>
 
 .custom-select__options {
   position: absolute;
@@ -604,6 +631,20 @@
   background-color: $light-grey;
 }
 
+.custom-select__input .current {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.filter-list label {
+  margin: 24px 0;
+}
+
+.filter-item label {
+  margin: 0;
+}
+
 .filter-list__header {
   position: sticky;
   left: 0;
@@ -618,5 +659,389 @@
   @include vp-768 {
     position: relative;
     padding: 0;
+  }
+}
+
+.filter-item--order {
+  .filter-item__text {
+
+    @each $property,
+    $value in $body {
+      #{$property}: $value;
+      margin-top: 0;
+    }
+
+  }
+
+  a {
+    display: block;
+    border-radius: 25px;
+    border: 1.5px solid $green;
+    padding: 12px 24px;
+    color: $dark;
+    width: max-content;
+
+    @each $property,
+    $value in $button {
+      #{$property}: $value;
+      margin-top: 0;
+    }
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      background-color: $green;
+    }
+  }
+}
+
+.filter-item--search {
+
+  input:active+.checkmark,
+  input:focus-visible+.checkmark,
+  input:hover+.checkmark {
+    opacity: 50% !important;
+    background-color: transparent !important;
+    border-color: transparent !important;
+  }
+
+  input:checked+.checkmark,
+  input:checked:hover+.checkmark,
+  input:checked:focus-visible+.checkmark,
+  input:checked:hover+.checkmark {
+    opacity: 100% !important;
+    background-color: transparent !important;
+    border-bottom-color: $green !important;
+  }
+
+  .checkmark:active,
+  .checkmark:focus-visible,
+  .checkmark:hover {
+    background-color: transparent !important;
+    border-color: transparent !important;
+  }
+}
+
+
+
+.custom-select--transparent-background {
+  .nice-select {
+    background-color: transparent;
+
+    &::placeholder {
+      color: $grey;
+    }
+  }
+
+  .multiple-options,
+  .current {
+    color: $grey;
+  }
+
+}
+
+.table-container {
+  margin: 16px 0 0;
+
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  @include vp-1440 {
+    margin: 24px 0 0;
+  }
+
+  &--no-margin {
+    margin-top: 16px;
+
+    @include vp-768 {
+      margin-top: 0;
+    }
+
+    @include vp-1440 {
+      margin-top: 0;
+    }
+  }
+
+  &--no-margin-mobile {
+    margin-top: 8px;
+
+    @include vp-768 {
+      margin-top: 16px;
+    }
+
+
+  }
+
+  .arrows {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    margin-left: 8px;
+    position: relative;
+    width: 10px;
+  }
+
+  .arrows-sort {
+    stroke: $grey;
+  }
+
+  .arrows-sort--top {
+    transform: rotate(180deg);
+    bottom: auto;
+    top: 0;
+  }
+
+  .arrows-sort.active {
+    stroke: $dark;
+  }
+
+  table::-webkit-scrollbar {
+    display: none;
+  }
+
+  table {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+    display: table;
+  }
+
+  th,
+  td {
+    white-space: nowrap;
+  }
+
+  .sortable {
+    padding: 12px;
+  }
+
+  .sortable__name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  th {
+    text-align: center;
+    padding: 16px;
+    border-bottom: 1px solid $medium-grey;
+    color: $grey;
+
+    @each $property,
+    $value in $small {
+      #{$property}: $value;
+    }
+  }
+
+  th.sortable--no-border {
+    border: none;
+    padding-top: 0;
+  }
+
+  td {
+    padding: 16px;
+    border-bottom: 1px solid $medium-grey;
+    text-align: center;
+
+    @each $property,
+    $value in $body {
+      #{$property}: $value;
+    }
+  }
+
+  td a {
+    color: $dark;
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      color: $blue;
+    }
+  }
+
+  .left-align {
+    text-align: left;
+
+    .sortable__name {
+      justify-content: flex-start;
+    }
+  }
+
+  .bold-text {
+    @each $property,
+    $value in $button {
+      #{$property}: $value;
+    }
+  }
+
+  .bold-text-title {
+    @each $property,
+    $value in $h3-m {
+      #{$property}: $value;
+    }
+  }
+
+  .cell-flex {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .cell-flex--button-wrapper {
+    gap: 2px;
+  }
+
+  .green-element {
+    background-color: $green;
+    padding: 8px 16px;
+    border-radius: 25px;
+  }
+
+  .green-element--small {
+    padding: 0;
+    display: inline-block;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+
+    @each $property,
+    $value in $link {
+      #{$property}: $value;
+    }
+
+    text-align: center;
+  }
+
+  td .small-name {
+    color: $grey;
+    white-space: normal;
+
+    @each $property,
+    $value in $description {
+      #{$property}: $value;
+    }
+  }
+
+  .table-remove-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    svg {
+      stroke: $grey;
+    }
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      svg {
+        stroke: $dark;
+      }
+    }
+  }
+
+  .table--left {
+
+    tr th:first-of-type .sortable__name,
+    tr td:first-of-type {
+      justify-content: flex-start;
+      text-align: left;
+    }
+  }
+
+  .user-form__checkbox--center .checkbox__checkmark {
+    top: -12px;
+    bottom: 0;
+
+  }
+
+  .content__text-list,
+  .content__text-list * {
+
+    @each $property,
+    $value in $body {
+      #{$property}: $value;
+    }
+
+    padding: 0;
+    margin: 16px 0 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    @include vp-1440 {
+      margin: 24px 0 0;
+      gap: 12px;
+    }
+
+    li {
+      position: relative;
+      padding-left: 16px;
+      margin: 0;
+      display: inline-block;
+
+      a {
+        display: inline;
+        color: $blue;
+      }
+
+      &:not(.simple-list-item):before {
+        content: "";
+        position: absolute;
+        left: 0px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: $green;
+      }
+    }
+  }
+}
+
+.table-container--two-column {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+
+  @include vp-1024 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.split-position {
+  margin-left: 8px;
+  color: $grey;
+
+  @each $property,
+  $value in $description {
+    #{$property}: $value;
+  }
+
+  svg {
+    fill: transparent;
+    margin-bottom: 1px;
+  }
+}
+
+.split-position--up {
+  svg {
+    stroke: $blue;
+    transform: rotate(180deg);
+    margin-bottom: 2px;
+  }
+}
+
+.split-position--down {
+  svg {
+    stroke: $red;
   }
 }

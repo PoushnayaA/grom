@@ -18,15 +18,17 @@
   }
 
   @include vp-1440 {
-    width: calc(100% - 16px - 292px);
+    width: calc(100% - 16px - 272px);
   }
 }
 
 .content__text p {
+
   @each $property,
   $value in $body {
     #{$property}: $value;
   }
+
   margin: 0;
 }
 
@@ -121,27 +123,29 @@
   @include vp-1440 {
     margin: 24px 0 0;
   }
+
   table {
     width: 100%;
-    // table-layout: fixed;
     border-collapse: collapse;
-    overflow-x: auto; /* Добавляет горизонтальный скролл */
-    display: block; /* Делает таблицу блочным элементом */
+    overflow-x: auto;
+    display: block;
   }
 
-  /* Скрываем системный скроллбар */
   table::-webkit-scrollbar {
-    display: none; /* Для Chrome, Safari и Opera */
+    display: none;
+    /* Для Chrome, Safari и Opera */
   }
 
   table {
-    -ms-overflow-style: none; /* Для Internet Explorer и Edge */
-    scrollbar-width: none; /* Для Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
-th, td {
-  white-space: nowrap;
-}
+  th,
+  td {
+    white-space: nowrap;
+  }
+
   th {
 
     text-align: center;
@@ -153,10 +157,11 @@ th, td {
     }
 
     @each $property,
-  $value in $body {
-    #{$property}: $value;
-  }
-  color: $grey;
+    $value in $body {
+      #{$property}: $value;
+    }
+
+    color: $grey;
   }
 
   td {
@@ -169,70 +174,90 @@ th, td {
     }
 
     @each $property,
-  $value in $small {
-    #{$property}: $value;
-  }
-  }
-
-
-.content__table-title {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  h4 {
-    margin: 0;
-    @each $property,
-    $value in $body {
+    $value in $small {
       #{$property}: $value;
     }
   }
 
-  div {
+  .content__table-title {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    h4 {
+      margin: 0;
+
+      @each $property,
+      $value in $body {
+        #{$property}: $value;
+      }
+    }
+
+    div {
+
+      @each $property,
+      $value in $small {
+        #{$property}: $value;
+      }
+
+      position: relative;
+      padding-left: 12px;
+
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: $green;
+      }
+
+      span {
+
+        @each $property,
+        $value in $link-small {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
+
+  td a {
+    color: $blue;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+
     @each $property,
     $value in $small {
       #{$property}: $value;
     }
 
-position: relative;
-padding-left: 12px;
-&:before {
-  content: "";
-  position: absolute;
-  left: 0px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background-color: $green;
-}
+    &:disabled {
+      color: $grey;
+      pointer-events: none;
+    }
 
-    span {
-      @each $property,
-      $value in $link-small {
-        #{$property}: $value;
+    &[aria-disabled="true"] {
+      color: $grey;
+      cursor: not-allowed;
+      text-decoration: none;
+
+      &:hover,
+      &:focus-visible,
+      &:active {
+        color: $grey;
       }
     }
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      color: $dark;
+    }
   }
-}
-
-td a {
-  color: $blue;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  @each $property,
-  $value in $small {
-    #{$property}: $value;
-  }
-
-
-
-&:hover,
-&:focus-visible,
-&:active {
-  color: $dark;
-}
-}
 
 
   [data-state="disabled"]::after {
@@ -240,12 +265,10 @@ td a {
     color: $grey;
   }
 
-  [data-state="active"]::after {
-    content: 'Есть места';
+  [data-state="disabled"] {
+    color: $grey;
   }
 }
-
-
 
 .content__text-list,
 .content__text-list * {
@@ -293,10 +316,12 @@ td a {
 }
 
 .content__small-text p {
+
   @each $property,
   $value in $small {
     #{$property}: $value;
   }
+
   margin: 0;
 }
 
@@ -368,12 +393,373 @@ td a {
 
     p {
       margin: 0;
+
       @each $property,
       $value in $small {
         #{$property}: $value;
       }
     }
   }
+}
+
+[data-accordion="content"] ul:not([class]) {
+
+  @each $property,
+  $value in $body {
+    #{$property}: $value;
+  }
+
+  padding: 0;
+  margin: 16px 0 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @include vp-1440 {
+    margin: 24px 0 0;
+    gap: 12px;
+  }
+
+  li {
+    position: relative;
+    padding-left: 16px;
+    margin: 0;
+    display: inline-block;
+
+    a {
+      display: inline;
+      color: $blue;
+
+      &:hover,
+  &:focus-visible,
+  &:active {
+    color: $dark;
+}
+    }
+
+    &:not(.simple-list-item):before {
+      content: "";
+      position: absolute;
+      left: 0px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: $green;
+    }
+  }
+}
+
+.content-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 32px 0;
+  gap: 24px;
+
+  @include vp-768 {
+    margin: 48px 0 24px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .registration__date {
+    margin-bottom: 0;
+  }
+
+  .user-form__submit {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+}
 
 
+.content-header .content-header__buttons {
+  display: flex;
+  flex-direction: column;
+  max-width: unset;
+  width: 100%;
+
+  @include vp-768 {
+    flex-direction: row;
+    max-width: unset;
+    width: auto;
+    margin: 0;
+  }
+}
+
+
+.text-block {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-block--left-align {
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.text-block__title {
+
+  @each $property,
+  $value in $h3 {
+    #{$property}: $value;
+  }
+
+  margin: 0;
+}
+
+.text-block__title--main {
+  @each $property,
+  $value in $h1 {
+    #{$property}: $value;
+  }
+
+  margin-bottom: 8px;
+  margin-top: -8px;
+}
+
+.text-block__container {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.text-block__title--small {
+
+  @each $property,
+  $value in $h3-m {
+    #{$property}: $value;
+  }
+
+  margin: 0;
+  margin-bottom: 16px;
+}
+
+.text-block__title--new-small {
+  @each $property,
+  $value in $h3 {
+    #{$property}: $value;
+  }
+  margin: 16px 0;
+}
+
+.text-block__title-decoration {
+  position: relative;
+  padding-left: 36px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: $dark;
+  }
+}
+
+.text-block__title--big {
+
+  @each $property,
+  $value in $error {
+    #{$property}: $value;
+  }
+
+  color: $grey;
+
+  @include vp-768 {
+
+    @each $property,
+    $value in $error-desktop {
+      #{$property}: $value;
+    }
+  }
+
+  margin: 0;
+  margin-bottom: 8px;
+}
+
+.text-block__text {
+  margin: 0;
+
+  @each $property,
+  $value in $body {
+    #{$property}: $value;
+  }
+
+  .bold {
+    @each $property,
+  $value in $button {
+    #{$property}: $value;
+  }
+  }
+}
+
+.text-block__text--blue {
+  color: $blue;
+}
+
+.text-block__item--not-decoration {
+  list-style-type: none;
+}
+
+.text-block__text--slim {
+  max-width: 608px;
+}
+
+.text-block__link {
+
+  @each $property,
+  $value in $link {
+    #{$property}: $value;
+  }
+
+  color: $blue;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    color: $dark;
+  }
+}
+
+.text-block__text-wrapper {
+
+  .text-block__text {
+    margin: 12px 0;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+}
+
+.text-block__section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.text-block__list {
+  padding: 0;
+  padding-left: 24px;
+  margin: 0;
+  margin-top: 12px;
+}
+
+.text-block__list--blue {
+  .text-block__item::before {
+    background-color: $blue;
+  }
+}
+
+.text-block__item {
+  position: relative;
+  margin: 10px 0;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: -12px;
+    top: 10px;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background-color: $dark;
+  }
+}
+
+
+.text-block__table-wrapper {
+  table {
+    margin: 16px 0;
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    display: table;
+  }
+
+  table::-webkit-scrollbar {
+    display: none;
+  }
+
+  table {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  th, td {
+    padding: 8px 12px;
+    border-bottom: 1px solid $medium-grey;
+
+    @media (max-width: 768px) {
+      max-width: 120px;
+      word-break: normal;
+    }
+  }
+
+  th {
+    @each $property, $value in $small {
+      #{$property}: $value;
+    }
+    color: $grey;
+  }
+
+  td {
+    @each $property, $value in $body {
+      #{$property}: $value;
+    }
+    color: $dark;
+
+    a {
+      color: $blue;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+
+      &:hover,
+      &:focus-visible,
+      &:active {
+        color: $dark;
+      }
+    }
+  }
+
+  .bold {
+    @each $property, $value in $link {
+      #{$property}: $value;
+    }
+  }
+
+  .left-align {
+    text-align: left;
+  }
+
+  .right-align {
+    text-align: right;
+  }
 }

@@ -1,0 +1,245 @@
+.alphabet {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.alphabet--mobile {
+  @include vp-768 {
+    display: none;
+  }
+}
+
+.alphabet--desktop {
+  display: none;
+
+  @include vp-768 {
+    display: flex;
+  }
+}
+
+.alphabet__row {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.alphabet {
+  .alphabet__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 32px;
+    height: 28px;
+    border-radius: 10px;
+    background-color: transparent;
+
+    @each $property,
+    $value in $button {
+      #{$property}: $value;
+    }
+
+    text-transform: uppercase;
+    color: $dark;
+  }
+
+  .alphabet__button:hover {
+    border-color: $green;
+  }
+
+  .alphabet__button:focus {
+    border-color: $green;
+    background-color: $green;
+  }
+
+  .alphabet__button:active {
+    border-color: $green;
+    background-color: $green;
+  }
+}
+
+.alphabet__select {
+  margin: 0;
+}
+
+.alphabet__open-button-mobile {
+  background-color: transparent;
+  width: 100%;
+  text-align: left;
+
+  @include vp-768 {
+    display: none;
+  }
+
+  color: $grey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .arrow {
+    margin-left: auto;
+  }
+}
+
+.alphabet {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+
+  margin-top: 12px;
+
+  @include vp-768 {
+    margin-top: 0;
+  }
+}
+
+.alphabet.visible {
+  max-height: 1000px;
+  transition: max-height 0.5s ease-in;
+}
+
+
+.user-form__wrapper--grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+
+  @include vp-1024 {
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+  }
+
+  .user-form__title {
+
+    @each $property,
+    $value in $h3 {
+      #{$property}: $value;
+    }
+  }
+}
+
+.user-form__wrapper--grid.user-form__wrapper--one-column {
+  grid-template-columns: 1fr;
+
+  @include vp-1024 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.user-form__wrapper--grid-template {
+  .user-form__block--grid-tall-element {
+    @include vp-1024 {
+      grid-row: 1 / 3;
+    }
+  }
+
+  .user-form__block--grid-last-element {
+    @include vp-1024 {
+      grid-column: -1 / 2;
+    }
+  }
+}
+
+.user-form__block {
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include vp-1024 {
+    padding: 24px;
+  }
+}
+
+.user-form__block--white {
+  background-color: $white;
+}
+
+.user-form__block--new-padding {
+  padding: 24px 16px;
+}
+
+.user-form__text--small {
+
+  @each $property,
+  $value in $small {
+    #{$property}: $value;
+  }
+}
+
+.user-form__text--flex {
+  display: flex;
+  gap: 12px;
+}
+
+.user-form__text {
+  a {
+    color: $blue;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+
+    @each $property,
+    $value in $link {
+      #{$property}: $value;
+    }
+
+    font-size: 14px;
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      color: $dark;
+    }
+
+    &.user-form__link--dark {
+      color: $dark;
+      text-decoration: none;
+
+      &:hover,
+      &:focus-visible,
+      &:active {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+    }
+
+    &.user-form__link--over {
+
+      @each $property,
+      $value in $body {
+        #{$property}: $value !important;
+      }
+    }
+  }
+
+  .bold-text {
+
+    @each $property,
+    $value in $button {
+      #{$property}: $value;
+    }
+  }
+}
+
+.user-form__list--new-gap {
+  gap: 16px;
+}
+
+
+.alphabet input:disabled {
+  +.alphabet__button {
+    color: $grey;
+    cursor: not-allowed;
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      border: none;
+    }
+  }
+}
+

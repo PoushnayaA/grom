@@ -101,6 +101,9 @@ NiceSelect.prototype.create = function() {
   this.el.style.width     = "0";
   this.el.style.padding   = "0";
   this.el.style.height    = "0";
+  this.el.style.position    = "absolute";
+  this.el.style.top    = "0";
+  this.el.style.left    = "0";
   if (this.data) {
     this.processData(this.data);
   } else {

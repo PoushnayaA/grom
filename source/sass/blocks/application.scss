@@ -1,0 +1,785 @@
+.application {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+
+  @include vp-768 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.application--one-column {
+  grid-template-columns: 1fr;
+
+  @include vp-768 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.application--new-gap {
+  gap: 16px;
+
+  @include vp-768 {
+    gap: 20px;
+  }
+}
+
+.application__item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  color: $dark;
+
+  @include vp-768 {
+    gap: 24px;
+  }
+
+  background-color: $white;
+
+  border: 1px solid transparent;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    border-color: $green;
+  }
+
+  padding: 24px 16px;
+  border-radius: 10px;
+}
+
+.application__item--not-link {
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    border-color: transparent;
+    cursor: auto;
+  }
+}
+
+.application__number {
+
+  @each $property,
+  $value in $h4 {
+    #{$property}: $value;
+  }
+
+  .smaller-text {
+
+    @each $property,
+    $value in $body {
+      #{$property}: $value;
+    }
+  }
+
+  .bold-text {
+
+    @each $property,
+    $value in $button {
+      #{$property}: $value;
+    }
+  }
+}
+
+.application__number {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include vp-768 {
+    flex-direction: row;
+    gap: 24px;
+  }
+}
+
+.application__name {
+  margin: 0;
+  margin-bottom: 12px;
+
+  @each $property,
+  $value in $h2 {
+    #{$property}: $value;
+  }
+
+  &--no-margin {
+    margin-bottom: 0px;
+  }
+
+  &--small-mobile {
+    margin: 0;
+
+    @each $property,
+    $value in $h3-m {
+      #{$property}: $value;
+    }
+
+    @include vp-768 {
+
+      @each $property,
+      $value in $h3 {
+        #{$property}: $value;
+      }
+    }
+  }
+
+  &--medium {
+    margin: 0 0 8px;
+
+    @each $property,
+    $value in $h3 {
+      #{$property}: $value;
+    }
+
+    @include vp-768 {
+      margin: 0 0 16px;
+
+      @each $property,
+      $value in $h2 {
+        #{$property}: $value;
+      }
+    }
+  }
+
+  &--small {
+
+    @each $property,
+    $value in $h3 {
+      #{$property}: $value;
+    }
+
+    margin-bottom: 12px;
+
+    @include vp-768 {
+
+      @each $property,
+      $value in $h2 {
+        #{$property}: $value;
+      }
+
+      margin: 0;
+    }
+  }
+
+  &--column {
+    margin-bottom: 0;
+
+    @include vp-768 {
+      margin-bottom: 12px;
+    }
+  }
+}
+
+.application__description {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  @each $property,
+  $value in $small {
+    #{$property}: $value;
+  }
+}
+
+.application__description-item {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  .application__description-link {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    color: $blue;
+
+    svg {
+      fill: $blue;
+    }
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      color: $dark;
+
+      svg {
+        fill: $dark;
+      }
+    }
+  }
+}
+
+.application__description-item--light {
+  color: $grey;
+}
+
+.application__description-decoration {
+  width: 8px;
+  height: 8px;
+  background-color: $green;
+  border-radius: 50%;
+}
+
+.application__options {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.application__option-name {
+  margin: 0;
+
+  @each $property,
+  $value in $button {
+    #{$property}: $value !important;
+  }
+}
+
+.application__option--space-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.application__option {
+  display: flex;
+  gap: 8px;
+
+  @each $property,
+  $value in $body {
+    #{$property}: $value;
+  }
+
+  a {
+    color: $blue;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      color: $dark;
+    }
+  }
+}
+
+.application__option-value {
+
+  @each $property,
+  $value in $button {
+    #{$property}: $value;
+  }
+}
+
+.application__status {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .application__status-value {
+    margin-left: 8px;
+    margin-right: auto;
+
+    @each $property,
+    $value in $h4 {
+      #{$property}: $value;
+    }
+  }
+
+  .application__status-date {
+    margin-left: 32px;
+
+    @include vp-768 {
+      margin-left: auto;
+    }
+
+    @each $property,
+    $value in $small {
+      #{$property}: $value;
+    }
+
+    color: $grey;
+  }
+}
+
+[data-application-status="created"],
+[data-application-status="reserved"] {
+  svg {
+    fill: $orange;
+  }
+}
+
+[data-application-status="canceled"],
+[data-application-status="not-payed"] {
+  svg {
+    fill: $red;
+  }
+}
+
+[data-application-status="payed"],
+[data-application-status="transfer"],
+[data-application-status="filled"],
+[data-application-status="complete"] {
+  svg {
+    fill: $green;
+  }
+}
+
+[data-application-status="rollback"],
+[data-application-status="not-filled"] {
+  svg {
+    fill: $grey;
+  }
+}
+
+.application__status {
+  svg {
+    fill: $grey;
+  }
+
+  &--green {
+    svg {
+      fill: $green;
+    }
+  }
+
+  &--grey {
+    svg {
+      fill: $grey;
+    }
+  }
+
+  &--orange {
+    svg {
+      fill: $orange;
+    }
+  }
+
+  &--red {
+    svg {
+      fill: $red;
+    }
+  }
+}
+
+
+.application__action {
+
+  @each $property,
+  $value in $body {
+    #{$property}: $value;
+  }
+
+  border-radius: 10px;
+  padding: 16px;
+  background-color: $medium-grey;
+  width: 100%;
+  max-width: max-content;
+  display: inline;
+}
+
+.application__action--no-padding {
+  padding: 0;
+  background-color: transparent;
+}
+
+.application__action-date {
+
+  @each $property,
+  $value in $button {
+    #{$property}: $value;
+  }
+}
+
+
+.application__text-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.application__main-text {
+  margin: 0;
+
+  @each $property,
+  $value in $h3-m {
+    #{$property}: $value;
+  }
+
+  width: 100%;
+  margin-bottom: 24px;
+
+  @include vp-768 {
+
+    @each $property,
+    $value in $h3 {
+      #{$property}: $value;
+    }
+  }
+
+  @include vp-1024 {
+    margin-bottom: 0;
+    margin-right: 24px;
+    width: max-content;
+  }
+}
+
+.application__text {
+
+  @each $property,
+  $value in $body {
+    #{$property}: $value;
+  }
+
+  &--red {
+    color: $red;
+  }
+
+  .bold-text {
+
+    @each $property,
+    $value in $button {
+      #{$property}: $value;
+    }
+  }
+}
+
+.search-container--relative {
+  position: relative;
+}
+
+.filter-item--order a.checkmark__edit-btn {
+  border: none;
+  width: max-content;
+  height: max-content;
+  padding: 0;
+  margin-left: 8px;
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    background-color: transparent;
+  }
+}
+
+.application__green-element {
+  background-color: $green;
+  border-radius: 25px;
+  padding: 8px 16px;
+
+  @each $property,
+  $value in $button {
+    #{$property}: $value;
+  }
+
+  color: $dark;
+}
+
+.application__green-element--small {
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  text-align: center;
+}
+
+.application__extra-text {
+  margin-left: auto;
+}
+
+.application__header-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: space-between;
+
+  margin-bottom: 18px;
+
+  @include vp-768 {
+    flex-direction: row;
+    align-items: center;
+
+    margin-bottom: 0;
+  }
+}
+
+.application__link {
+  color: $blue;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-align: left;
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    color: $dark;
+  }
+}
+
+.application__status-text {
+  margin: 0;
+  margin-top: 12px;
+  padding-left: 32px;
+
+  @each $property,
+  $value in $body {
+    #{$property}: $value;
+  }
+
+  .bold-text {
+    font-weight: 500;
+  }
+
+  .red-text {
+    color: $red;
+  }
+}
+
+.application__link-wrapper {
+  background-color: $white;
+  border-radius: 10px;
+  padding: 12px 10px;
+
+
+  @include vp-768 {
+    padding: 16px;
+  }
+
+  text-align: left;
+
+  cursor: pointer;
+  border: 1px solid transparent;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  @include vp-768 {
+    gap: 8px;
+  }
+
+  @each $property,
+  $value in $body {
+    #{$property}: $value;
+  }
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    border-color: $green;
+  }
+
+  color: $dark;
+}
+
+.application__link-wrapper--green {
+  background-color: $green;
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    border-color: $green;
+    box-shadow: $dark-shadow;
+  }
+
+  svg {
+    fill: $dark;
+  }
+}
+
+.filter-item.filter-item--static {
+  .checkmark {
+    cursor: auto;
+    padding: 0;
+    background-color: transparent !important;
+    border: none;
+
+    margin: 24px 0;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      background-color: transparent;
+      border: none;
+    }
+  }
+}
+
+.user-form-competition--max-width {
+  width: 100%;
+}
+
+.aside-block {
+  width: 100%;
+  margin-top: 40px;
+
+  @include vp-768 {
+    width: 396px;
+    margin: 0;
+  }
+
+  .qr-code {
+    display: none;
+
+    @include vp-768 {
+      display: inline-block;
+    }
+  }
+}
+
+.aside-block__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.aside-block__title {
+
+  @each $property,
+  $value in $h3 {
+    #{$property}: $value;
+  }
+
+  margin: 0;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.aside-block__description {
+
+  @each $property,
+  $value in $body {
+    #{$property}: $value;
+  }
+
+  text-align: center;
+  margin: 0;
+}
+
+.aside-block__button {
+  border: none;
+  color: $dark;
+  background-color: $green;
+  width: 100%;
+  max-width: 350px;
+  padding: 12px 24px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+
+  @include vp-768 {
+    width: max-content;
+  }
+
+  @each $property,
+  $value in $button {
+    #{$property}: $value;
+  }
+}
+
+.user-form-competition--slim {
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.user-form__wrapper--no-margin {
+  margin-top: 0;
+}
+
+.form__title--new-margin {
+  margin-bottom: 40px;
+}
+
+.user-form-competition .user-form__wrapper.user-form__wrapper--application {
+  .user-form__legend:not(.user-form__legend--label-name) {
+
+    @each $property,
+    $value in $h3 {
+      #{$property}: $value;
+    }
+  }
+}
+
+// .user-form__fieldset--not-flex {
+//   display: -webkit-box;
+// }
+
+.user-form__legend--no-margin {
+  margin-top: 0 !important;
+}
+
+.js-members-table .sortable__name {
+  cursor: pointer;
+}
+
+.application__text {
+  margin: 0;
+}
+
+.search-container--checked input[type="radio"],
+.search-container--checked input[type="checkbox"] {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.user-form__wrapper .search-container.search-container--checked {
+  input+.checkmark {
+    box-shadow: none;
+  }
+}
+
+.search-container:not(.search-container--checked) label {
+  margin: 0;
+
+}
+
+.user-form__wrapper .search-container.search-container--checked input+.checkmark {
+  display: grid;
+  grid-template-columns: 1fr auto;
+margin-top: 20px;
+
+  @include vp-768 {
+    display: flex;
+  }
+}
+
+.checkmark__btn-wrapper {
+  display: flex;
+  grid-row: 1 / 4;
+  grid-column: -1 / -2;
+}
+
+
+.file-upload--small {
+  width: 143px;
+  margin-left: 0;
+
+  label {
+    flex-direction: column;
+  }
+}
+
+// .user-form__legend--no-margin {
+//   margin: 0 !important;
+//   // margin-top: ;
+// }
+
+// .user-form__fieldset--one-column {
+//   grid-template-columns: 1fr !important;
+//   gap: 12px;
+// }

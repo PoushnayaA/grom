@@ -1,0 +1,118 @@
+.document-block {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+
+  @include vp-768 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.document-block__item {
+  width: 100%;
+  background-color: $white;
+  border-radius: 10px;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.document-block__content {
+
+}
+
+.document-block__name {
+  margin: 0;
+  margin-bottom: 12px;
+
+  @each $property,
+  $value in $h2 {
+    #{$property}: $value;
+  }
+}
+
+.document-block__date {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.document-block__date-value {
+  @each $property,
+  $value in $small {
+    #{$property}: $value;
+  }
+}
+
+.document-block__buttons {
+display: flex;
+justify-content: flex-end;
+flex-direction: column;
+gap: 16px;
+
+@include vp-768 {
+  flex-direction: row;
+  gap: 24px;
+}
+}
+
+.document-block__button-delete {
+text-align: left;
+border: none;
+background-color: transparent;
+color: $grey;
+display: flex;
+align-items: center;
+gap: 4px;
+cursor: pointer;
+
+svg {
+  stroke: $grey;
+}
+
+&:not(:disabled):hover,
+&:not(:disabled):focus-visible,
+&:not(:disabled):active {
+  color: $dark;
+
+  svg {
+    stroke: $dark;
+  }
+}
+}
+
+.document-block__button-view {
+  padding: 12px 24px;
+    border-radius: 25px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    background-color: $green;
+    cursor: pointer;
+    color: $dark;
+    width: max-content;
+
+
+    &:not(:disabled):hover,
+    &:not(:disabled):focus-visible,
+    &:not(:disabled):active {
+      box-shadow: $dark-shadow;
+    }
+
+    @each $property,
+    $value in $button {
+      #{$property}: $value;
+    }
+
+    &:disabled {
+      background-color: $medium-grey;
+      color: $grey;
+      cursor: not-allowed;
+    }
+
+    @include vp-768 {
+
+    }
+}

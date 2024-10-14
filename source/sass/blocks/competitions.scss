@@ -25,16 +25,6 @@
     }
   }
 
-
-  .competitions__members {
-
-    &:hover,
-    &:focus-visible,
-    &:active {
-      color: $dark;
-    }
-  }
-
   &__category {
     color: $dark;
   }
@@ -187,10 +177,21 @@
     color: $blue;
     text-decoration: underline;
     text-underline-offset: 4px;
+    border: none;
+    background-color: transparent;
+    width: max-content;
+    cursor: pointer;
+    padding-left: 0;
 
     @each $property,
     $value in $small {
       #{$property}: $value;
+    }
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      color: $dark;
     }
   }
 
@@ -215,6 +216,11 @@
 
 .competitions__item-link {
   cursor: pointer;
+}
+
+.competitions__item.visually-hidden {
+  width: 0;
+  height: 0;
 }
 
 .competitions-list {
@@ -253,7 +259,7 @@
     display: flex;
     justify-content: space-between;
     margin-left: auto !important;
-    margin: 24px 0;
+    // margin: 24px 0;
   }
 
   &__sort-button {
@@ -262,7 +268,7 @@
     align-items: center;
     justify-content: center;
 
-    svg {
+    &:not(.competitions-list__sort-button--visible) svg {
       @include vp-1440 {
         display: none;
       }
@@ -273,6 +279,7 @@
     background-color: transparent;
     border: none;
     margin-right: 6px;
+    padding-right: 24px;
 
     cursor: pointer;
     color: $grey;
@@ -314,6 +321,7 @@
     }
 
     @include vp-1440 {
+      &:not(.competitions-list__sort-list--one-style) {
       box-shadow: none;
       position: relative;
       display: flex;
@@ -321,9 +329,9 @@
       gap: 8px;
       padding: 4px;
       height: 100%;
+      }
     }
   }
-
   &__sort-list li {
     a {
       margin-left: auto;
@@ -338,10 +346,12 @@
         border-color: $green;
       }
     }
-
     .active {
       border-color: $green;
     }
+  }
+
+  &__sort-list:not(.competitions-list__sort-list--one-style) li {
 
     @include vp-1440 {
       a {
@@ -363,8 +373,6 @@
         border-color: $green;
       }
     }
-
-
   }
 
   &__sort-list.active {
@@ -458,7 +466,6 @@
   gap: 6px;
 
   button {
-    // padding: 3px;
     display: flex;
     align-items: center;
     border: none;

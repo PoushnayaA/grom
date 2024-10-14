@@ -1,0 +1,261 @@
+.form {
+  .form__section.user-form__fieldset {
+
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @include vp-768 {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    margin-bottom: 24px;
+  }
+
+  .form__section.user-form__fieldset:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+
+.form__block {
+  margin-bottom: 64px;
+
+  @include vp-768 {
+    margin-bottom: 96px;
+  }
+
+  position: relative;
+
+  &:not(:last-of-type)::after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    background-color: $medium-grey;
+    width: 100%;
+    bottom: -32px;
+    left: 0;
+
+    @include vp-768 {
+      bottom: -48px;
+    }
+  }
+
+  &:last-of-type {
+    margin-bottom: 32px;
+
+    @include vp-768 {
+      margin-bottom: 48px;
+    }
+  }
+}
+
+.form__title {
+  text-align: center;
+  margin: 24px 0;
+
+  @each $property,
+  $value in $h2 {
+    #{$property}: $value;
+  }
+
+  @include vp-768 {
+    margin: 48px 0;
+
+    @each $property,
+    $value in $h1 {
+      #{$property}: $value;
+    }
+  }
+}
+
+.form__title--left-align {
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.form__title--no-margin {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.form__title--small {
+  color: $grey;
+
+  @each $property,
+  $value in $small {
+    #{$property}: $value;
+  }
+
+  @include vp-768 {
+
+    @each $property,
+    $value in $h4 {
+      #{$property}: $value;
+    }
+  }
+}
+
+.form__title--middle {
+
+  @each $property,
+  $value in $h3-m {
+    #{$property}: $value;
+  }
+
+  margin-bottom: 12px;
+
+  @include vp-768 {
+
+    @each $property,
+    $value in $h3 {
+      #{$property}: $value;
+    }
+
+    margin-bottom: 8px;
+  }
+
+
+}
+
+.form__container,
+.user-form__fieldset.form__container {
+  gap: 24px;
+  // margin: auto !important;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 24px;
+  max-width: 820px;
+
+
+  @include vp-768 {
+    margin-bottom: 40px;
+  }
+}
+
+.form__container--white {
+  background-color: $white;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.user-form__fieldset--part {
+  gap: 15px;
+}
+
+.form__small-title {
+  margin: 0;
+
+  @each $property,
+  $value in $h3 {
+    #{$property}: $value;
+  }
+
+  @include vp-768 {
+
+    @each $property,
+    $value in $h3 {
+      #{$property}: $value;
+    }
+  }
+}
+
+.form__link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: $blue;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    color: $dark;
+  }
+}
+
+.form__text {
+  margin: 0;
+
+  @each $property,
+  $value in $small {
+    #{$property}: $value;
+  }
+}
+
+.form__section .user-form__legend {
+
+  @each $property,
+  $value in $h3 {
+    #{$property}: $value;
+  }
+
+  @include vp-768 {
+
+    @each $property,
+    $value in $h3 {
+      #{$property}: $value;
+    }
+  }
+}
+
+.form__section .user-form__legend--label-name {
+
+  @each $property,
+  $value in $button {
+    #{$property}: $value;
+  }
+}
+
+.profile-photo__preview {
+  width: 100%;
+  height: 100%;
+  max-width: 146px;
+  max-height: 146px;
+  display: block;
+
+  // border: 1px solid $grey;
+  border-radius: 10px;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    max-width: 146px;
+    max-height: 146px;
+    border-radius: 10px;
+  }
+}
+
+
+.profile-photo .profile-photo__action {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  padding: 0;
+
+  background-color: transparent;
+  border: none;
+  color: $grey;
+
+  margin: 16px 0;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    color: $dark;
+  }
+
+  @each $property,
+  $value in $small {
+    #{$property}: $value;
+  }
+
+  svg {
+    stroke: $grey;
+  }
+}

@@ -2,17 +2,12 @@
   position: relative;
 
   .container {
-    padding-top: 32px;
-    padding-bottom: 64px;
-    gap: 0;
-
     @include vp-768 {
       padding-top: 67px;
     }
 
     @include vp-1440 {
       padding-top: 160px;
-      padding-bottom: 102px;
     }
   }
 }
@@ -95,7 +90,7 @@
   }
 
   .breadcrumb__item-button {
-    color: $green !important;
+    color: $green ;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -130,6 +125,19 @@
       text-decoration: underline;
       text-underline-offset: 4px;
     }
+  }
+}
+
+.breadcrumb--dark {
+  margin-bottom: 32px;
+
+  @include vp-768 {
+    margin-top: -16px;
+    margin-bottom: 48px;
+  }
+  .breadcrumb__item a,
+  .breadcrumb__item-button {
+    color: $dark;
   }
 }
 
@@ -241,7 +249,7 @@
   }
 
   @include vp-1440 {
-    max-width: 292px;
+    max-width: 272px;
   }
 }
 
@@ -261,6 +269,15 @@
     display: flex;
   }
 }
+
+.information-modal__links--visible {
+  display: flex;
+  align-items: center;
+  @include vp-768 {
+    flex-direction: row;
+  }
+}
+
 
 .information-modal__close {
   display: none;
@@ -307,16 +324,16 @@
   }
 }
 
-
-.information-modal__links-container {
-  // background-color: ;
-}
-
-.information-modal__link {
+.information-modal__link,
+.checkmark.information-modal__link  {
   color: $blue;
   text-decoration: underline;
   text-underline-offset: 4px;
   list-style-type: none;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
 
   @each $property,
   $value in $link {
@@ -329,6 +346,17 @@
     color: $dark;
   }
 
+}
+
+.checkmark.information-modal__link.information-modal__link--checkbox {
+  border: 1px solid $green;
+  padding: 12px 24px;
+  color: $dark;
+  text-decoration: none;
+}
+
+.filter-item label {
+  height: auto !important;
 }
 
 
@@ -466,7 +494,63 @@
   }
 
   .competitions__item-link {
-    pointer-events: none;
     cursor: default;
   }
+}
+
+.registration__myself {
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.registration .user-form-competition .user-form__fieldset--checkbox .user-form__checkboxes {
+  &.user-form__checkboxes--two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    }
+}
+
+.user-form__checkboxes--one-column {
+  align-items: center;
+}
+
+
+.user-form__wrapper .user-form__fieldset {
+  max-width: 820px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 100%;
+}
+
+.user-form__wrapper .user-form__fieldset--checkbox {
+  max-width: unset;
+}
+
+.switch-block .user-form__fieldset,
+.form__block .user-form__fieldset,
+.application .user-form__fieldset {
+  max-width: unset;
+  margin-left: 0 !important;
+  width: 100%;
+}
+
+.authorization__header ~ .alert,
+.payment {
+  max-width: 820px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+
+.user-form__text--center,
+.competitions__members--center {
+text-align: center !important;
+margin-left: auto;
+margin-right: auto;
+display: block;
+}
+
+.user-form__text--mb {
+  margin-bottom: 24px !important;
 }

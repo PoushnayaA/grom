@@ -1,4 +1,5 @@
-.user-form__checkbox {
+.user-form__checkbox,
+.user-form__radio {
   display: inline-block;
   position: relative;
   padding-left: 32px;
@@ -6,7 +7,8 @@
   user-select: none;
 }
 
-.user-form__checkbox input {
+.user-form__checkbox input,
+.user-form__radio input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -24,15 +26,16 @@
 
 .user-form__checkbox:hover input ~ .checkbox__checkmark {
   box-shadow: $dark-shadow;
-  border-color: $dark;
+  border-color: $green;
 }
 
 .user-form__checkbox:hover input:checked ~ .checkbox__checkmark {
   box-shadow: $dark-shadow;
-  border-color: $dark;
+  border-color: $green;
 }
 
-.user-form__checkbox .checkbox__checkmark {
+.user-form__checkbox .checkbox__checkmark,
+.user-form__radio .radio__checkmark {
   position: absolute;
   top: 4px;
   left: 0;
@@ -47,18 +50,43 @@
 .user-form__checkbox .checkbox__checkmark:after {
   content: "";
   position: absolute;
-  left: 6px;
-  top: 3px;
-  width: 9px;
-  height: 12px;
-  border: 1.5px solid $grey;
-  border-width: 0 1.5px 1.5px 0;
+  left: 10px;
+  top: -7px;
+  width: 7px;
+  height: 20px;
+  border: 2px solid $grey;
+  border-width: 0 2px 2px 0;
   transform: rotate(45deg);
   opacity: 0;
   transition: opacity 0.2s ease;
 }
 
-.user-form__checkbox .checkbox__body {
+.user-form__buttons {
+  .user-form__checkbox .checkbox__checkmark:after {
+    top: -5px;
+  }
+}
+
+.user-form-competition__checkbox .checkbox__checkmark:after {
+  top: -8px;
+}
+
+.user-form__checkbox .checkbox__checkmark:before {
+  content: "";
+  position: absolute;
+  background-color: transparent;
+  width: 10px;
+  height: 10px;
+  top: -4px;
+  right: -5px;
+}
+
+.user-form__checkbox input:checked ~ .checkbox__checkmark:before {
+  background-color: $light-grey;
+}
+
+.user-form__checkbox .checkbox__body,
+.user-radio .radio__body {
   color: $grey;
   @each $property,
   $value in $description {
@@ -73,3 +101,18 @@
   text-underline-offset: 3px;
  }
 }
+
+.user-form__fieldset--white-background .user-form__checkbox input:checked~.checkbox__checkmark:before {
+  background-color: $white;
+}
+
+
+.user-form__fieldset--select {
+  gap: 12px;
+
+  .custom-select__input {
+    margin-bottom: 12px;
+  }
+}
+
+

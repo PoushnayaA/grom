@@ -1,167 +1,29 @@
-
 .date-picker {
   position: relative;
-  display: inline-block;
 
-  @each $property,
-  $value in $small {
-    #{$property}: $value;
+  &::after {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15.8333 3.33331H4.16667C3.24619 3.33331 2.5 4.07951 2.5 4.99998V16.6666C2.5 17.5871 3.24619 18.3333 4.16667 18.3333H15.8333C16.7538 18.3333 17.5 17.5871 17.5 16.6666V4.99998C17.5 4.07951 16.7538 3.33331 15.8333 3.33331Z" stroke="%232E2E2E" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.3333 1.66669V5.00002" stroke="%232E2E2E" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.66675 1.66669V5.00002" stroke="%232E2E2E" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.5 8.33331H17.5" stroke="%232E2E2E" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    position: absolute;
+    right: 0;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    z-index: 0;
   }
-}
-
-.date-picker__calendar {
-  position: absolute;
-  top: -720%;
-  left: auto;
-  right: 0;
-  z-index: 1;
-  background-color: $white;
-  border: 1px solid $medium-grey;
-  padding: 12px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  display: none;
-  width: 100%;
-  max-width: 250px;
-  font-size: 14px;
-  border-radius: 8px;
-}
-
-.date-picker__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-  padding: 12px;
-  background-color: $light-grey;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-}
-
-.date-picker__prev-month,
-.date-picker__next-month {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-.date-picker__days {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 4px;
-}
-
-.date-picker__day {
-  width: 26px;
-  height: 26px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 12px;
-  border-radius: 10px;
-  transition: background-color 0.3s, color 0.3s;
-
-}
-
-.date-picker__day:hover {
-  background-color: $green;
-}
-
-.date-input {
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-.date-input__field {
-  flex-grow: 1;
-  padding: 8px 12px;
-  border-bottom: 1px solid $medium-grey;
-  border-radius: 0;
-  font-size: 16px;
-}
-
-.date-input__btn {
-  background-color: transparent;
-  margin-left: 8px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 32px;
-  height: 32px;
 }
 
 .search-input__btn {
   background-color: transparent;
   margin-left: 8px;
   position: absolute;
-  right: 0;
+  right: 16px;
   top: 25px;
-  width: 32px;
-  height: 32px;
-}
-.date-picker__days-of-week {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 4px;
-  margin-bottom: 8px;
+  width: 24px;
+  height: 24px;
 }
 
-.date-picker__day-of-week {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  @each $property,
-  $value in $description {
-    #{$property}: $value;
-  }
-
-  color: $grey;
+.date-input__field {
+  z-index: 1;
+  background-color: transparent;
 }
 
-
-.is-selected {
-  background-color: $green;
-}
-
-.date-picker__day.is-start-date,
-.date-picker__day.is-end-date {
-  background-color: $green;
-}
-
-.date-picker__day.is-in-range:not(.is-start-date):not(.is-end-date) {
-  background-color: $green-hover;
-
-}
-
-.date-picker__day.is-hovered {
-  background-color: $green;
-}
-
-.date-picker__day.is-start-date,
-.date-picker__day.is-end-date {
-  background-color: $green;
-}
-
-.date-picker__day.is-in-range:not(.is-start-date):not(.is-end-date) {
-  background-color: $green-hover;
-
-}
-
-.date-picker__day.is-hovered {
-  background-color: $green;
-}
-
-.date-picker__day--empty {
-  pointer-events: none;
-}
-
-.date-picker__next-month {
-  svg {
-    margin-left: auto;
-  }
-}
-.date-picker__current-month {
-  text-align: center;
-}

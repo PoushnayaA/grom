@@ -1,0 +1,98 @@
+.friend {
+  margin: 16px 0 0;
+
+  @include vp-768 {
+    grid-template-columns: 1fr;
+    margin: 40px 0 0;
+  }
+
+  .document-block__buttons {
+    gap: 16px;
+  }
+}
+
+.friend__item {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.friend__item.hide {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.friend__list {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+
+  @include vp-768 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include vp-1440 {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.friend__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  background-color: $white;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  min-height: 180px;
+
+  padding: 16px;
+  cursor: pointer;
+
+  @include vp-768 {
+  }
+}
+
+.friend__content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include vp-768 {
+    flex-direction: row;
+  }
+
+}
+
+
+.friend__img {
+  max-width: 64px;
+  max-height: 64px;
+  width: 100%;
+  height: 100%;
+  img {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.friend__name {
+  margin: 0;
+  margin-bottom: 8px;
+
+  @each $property,
+  $value in $h4 {
+    #{$property}: $value;
+  }
+}
+
+.friend__date {
+  @each $property,
+  $value in $small {
+    #{$property}: $value;
+  }
+
+  color: $grey;
+}

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="">
+  <title>Grom</title>
+
+  <link rel="icon" href="favicon.ico">
+  <link rel="icon" href="img/favicons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="img/favicons/apple.png">
+  <link rel="manifest" href="manifest.webmanifest">
+
+  <link rel="preload" href="fonts/montserrat.woff2" type="font/woff2" as="font" crossorigin="anonymous">
+  <link rel="preload" href="fonts/montserrat-medium.woff2" type="font/woff2" as="font" crossorigin="anonymous">
+  <link rel="preload" href="fonts/montserrat-bold.woff2" type="font/woff2" as="font" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="top-bar">
+        <div class="container" itemscope itemtype="http://schema.org/Organization">
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M11.3335 2.33345H4.66683C2.66683 2.33345 1.3335 3.33345 1.3335 5.66678V10.3334C1.3335 12.6668 2.66683 13.6668 4.66683 13.6668H11.3335C13.3335 13.6668 14.6668 12.6668 14.6668 10.3334V5.66678C14.6668 3.33345 13.3335 2.33345 11.3335 2.33345ZM11.6468 6.39345L9.56016 8.06011C9.12016 8.41345 8.56016 8.58678 8.00016 8.58678C7.44016 8.58678 6.8735 8.41345 6.44016 8.06011L4.3535 6.39345C4.14016 6.22011 4.10683 5.90011 4.2735 5.68678C4.44683 5.47345 4.76016 5.43345 4.9735 5.60678L7.06016 7.27345C7.56683 7.68011 8.42683 7.68011 8.9335 7.27345L11.0202 5.60678C11.2335 5.43345 11.5535 5.46678 11.7202 5.68678C11.8935 5.90011 11.8602 6.22011 11.6468 6.39345Z"
+                fill="#D6FD52" />
+            </svg>
+            <a href="mailto:test@mail.ru" itemprop="email">test@mail.ru</a>
+          </div>
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M14.6468 12.22C14.6468 12.46 14.5935 12.7067 14.4802 12.9467C14.3668 13.1867 14.2202 13.4134 14.0268 13.6267C13.7002 13.9867 13.3402 14.2467 12.9335 14.4134C12.5335 14.58 12.1002 14.6667 11.6335 14.6667C10.9535 14.6667 10.2268 14.5067 9.46016 14.18C8.6935 13.8534 7.92683 13.4134 7.16683 12.86C6.40016 12.3 5.6735 11.68 4.98016 10.9934C4.2935 10.3 3.6735 9.57335 3.12016 8.81335C2.5735 8.05335 2.1335 7.29335 1.8135 6.54002C1.4935 5.78002 1.3335 5.05335 1.3335 4.36002C1.3335 3.90668 1.4135 3.47335 1.5735 3.07335C1.7335 2.66668 1.98683 2.29335 2.34016 1.96002C2.76683 1.54002 3.2335 1.33335 3.72683 1.33335C3.9135 1.33335 4.10016 1.37335 4.26683 1.45335C4.44016 1.53335 4.5935 1.65335 4.7135 1.82668L6.26016 4.00668C6.38016 4.17335 6.46683 4.32668 6.52683 4.47335C6.58683 4.61335 6.62016 4.75335 6.62016 4.88002C6.62016 5.04002 6.5735 5.20002 6.48016 5.35335C6.3935 5.50668 6.26683 5.66668 6.10683 5.82668L5.60016 6.35335C5.52683 6.42668 5.4935 6.51335 5.4935 6.62002C5.4935 6.67335 5.50016 6.72002 5.5135 6.77335C5.5335 6.82668 5.5535 6.86668 5.56683 6.90668C5.68683 7.12668 5.8935 7.41335 6.18683 7.76002C6.48683 8.10668 6.80683 8.46002 7.1535 8.81335C7.5135 9.16668 7.86016 9.49335 8.2135 9.79335C8.56016 10.0867 8.84683 10.2867 9.0735 10.4067C9.10683 10.42 9.14683 10.44 9.1935 10.46C9.24683 10.48 9.30016 10.4867 9.36016 10.4867C9.4735 10.4867 9.56016 10.4467 9.6335 10.3734L10.1402 9.87335C10.3068 9.70668 10.4668 9.58002 10.6202 9.50002C10.7735 9.40668 10.9268 9.36002 11.0935 9.36002C11.2202 9.36002 11.3535 9.38668 11.5002 9.44668C11.6468 9.50668 11.8002 9.59335 11.9668 9.70668L14.1735 11.2734C14.3468 11.3934 14.4668 11.5333 14.5402 11.7C14.6068 11.8667 14.6468 12.0333 14.6468 12.22Z"
+                fill="#D6FD52" />
+            </svg>
+            <a href="tel:+74951289835" itemprop="telephone">+7 (495) 128-98-35</a>
+          </div>
+        </div>
+      </div>
+      <div class="navbar">
+        <div class="container">
+          <div class="navbar-wrapper">
+            <div class="burger">
+              <div class="burger-line"></div>
+            </div>
+            <div class="logo" itemscope itemtype="http://schema.org/Organization">
+              <a href="index.html" itemprop="url">
+                <img itemprop="logo" src="./img/svg/logo.svg" width="62" height="30" alt="Логотип">
+              </a>
+              <meta itemprop="name" content="Grom">
+            </div>
+            <nav class="menu hide" itemscope itemtype="http://schema.org/SiteNavigationElement">
+              <ul itemscope itemtype="https://schema.org/ItemList">
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                  <a itemprop="item" class="active" href="index.html">
+                    <span itemprop="name">Соревнования</span>
+                  </a>
+                </li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                  <a itemprop="item" href="club.html">
+                    <span itemprop="name">Клубы</span>
+                  </a>
+                </li>
+                <li>
+                  <div class="login login--exit login--mobile">
+                    <button>
+                      <div>
+                        Выйти
+                      </div>
+                    </button>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+            <div class="login login--account">
+              <a href="account.html">
+                <div>
+                  Михаил
+                </div>
+                <picture>
+                  <source type="image/webp" media="(min-width: 320px)" width="32" height="33"
+                    srcset="./img/content/account-img.webp">
+                  <img class="login__account-img" src="./img/content/account-img.png" width="32" height="33"
+                    alt="Фото пользователя">
+                </picture>
+              </a>
+            </div>
+            <div class="login login--exit login--desktop">
+              <button>
+                <div>
+                  Выйти
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="authorization form">
+        <form action="https://echo.htmlacademy.ru/" method="get">
+          <h1 class="visually-hidden">Страница участников</h1>
+          <div class="container">
+            <nav class="breadcrumb breadcrumb--dark" aria-label="breadcrumb" itemscope
+              itemtype="https://schema.org/BreadcrumbList">
+              <ul class="breadcrumb__list">
+                <li class="breadcrumb__item" itemprop="itemListElement" itemscope
+                  itemtype="https://schema.org/ListItem">
+                  <a itemprop="item" href="index.html">
+                    <span itemprop="name">Главная страница</span>
+                  </a>
+                  <meta itemprop="position" content="1" />
+                </li>
+                <li class="breadcrumb__item" itemprop="itemListElement" itemscope
+                  itemtype="https://schema.org/ListItem">
+                  <a itemprop="item" href="results.html">
+                    <span itemprop="name">Swimcup Коренево 2024</span>
+                  </a>
+                  <meta itemprop="position" content="2" />
+                </li>
+                <li class="breadcrumb__item" itemprop="itemListElement" itemscope
+                  itemtype="https://schema.org/ListItem">
+                  <a itemprop="item" href="local-results.html">
+                    <span itemprop="name">Лайт 1000 метров</span>
+                  </a>
+                  <meta itemprop="position" content="3" />
+                </li>
+                <li class="breadcrumb__item active" itemprop="itemListElement" itemscope
+                  itemtype="https://schema.org/ListItem">
+                  <a itemprop="item" href="local-leaders.html">
+                    <span itemprop="name">Лидеры</span>
+                  </a>
+                  <meta itemprop="position" content="4" />
+                </li>
+              </ul>
+              <a class="breadcrumb__item-button" href="results.html" itemprop="itemListElement" itemscope
+                itemtype="https://schema.org/ListItem">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M8.6665 18.3333L1.99984 11.6667L8.6665 5" stroke="#2e2e2e" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M2.95959 11.6665L22 11.6665" stroke="#2e2e2e" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+                <span itemprop="name">Назад</span>
+                <meta itemprop="position" content="0" />
+              </a>
+            </nav>
+            <section class="user-form-competition">
+              <div class="content-header">
+                <div class="content-header__text">
+                  <h2 class="form__title form__title--no-margin form__title--left-align form__title--middle">Абсолютный зачет Лайт 1000
+                    метров — Swimcup Коренево 2024</h2>
+                  <div class="registration__description">Расчет по времени от стартового сигнала (gun time)</div>
+                </div>
+                <section class="switch ">
+                  <h3 class="visually-hidden">Лидеры</h3>
+                  <div class="switch__button-container open-list-js">
+                    <button class="switch__button-mobile"> <svg width="24" height="24" viewBox="0 0 24 24" role="img">
+                        <use href="img/sprite.svg#list-2"></use>
+                      </svg>Лидеры
+                    </button>
+                    <svg class="arrow" width="10" height="5" viewBox="0 0 10 5" role="img">
+                      <use href="img/sprite.svg#arrow"></use>
+                    </svg>
+                  </div>
+                  <ul class="switch__list">
+                    <li class="switch__item">
+                      <a href="local-results.html" class="user-form__submit switch__button switch__button--grey">
+                        <svg width="24" height="24" viewBox="0 0 24 24" role="img">
+                          <use href="img/sprite.svg#list-2"></use>
+                        </svg>
+                        Результаты
+                      </a>
+                    </li>
+                    <li class="switch__item">
+                      <a href="local-leaders.html" class="user-form__submit switch__button switch__button--grey active">
+                        <svg width="24" height="24" viewBox="0 0 24 24" role="img">
+                          <use href="img/sprite.svg#another"></use>
+                        </svg>
+                        Лидеры
+                      </a>
+                    </li>
+                  </ul>
+                </section>
+              </div>
+              <div class="table-container table-container--two-column">
+                <div class="table-scroll-wrapper table--decoration js-checkbox-listener">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th colspan="4" class="sortable sortable--no-border left-align">
+                          <span class="sortable__name">Мужчины</span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td class="left-align"><a href="member-profile.html">Гладченко Денис</a></td>
+                        <td><span class="green-element">90</span></td>
+                        <td>00:14:14.55</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td class="left-align"><a href="member-profile.html">Токарев Иван</a></td>
+                        <td><span class="green-element">175</span></td>
+                        <td>00:14:40.09</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td class="left-align"><a href="member-profile.html">	Жилин Евгений</a></td>
+                        <td><span class="green-element">107</span></td>
+                        <td>00:14:41.39</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="table-scroll-wrapper table--decoration js-checkbox-listener">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th colspan="4" class="sortable sortable--no-border left-align">
+                          <span class="sortable__name">Женщины</span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td class="left-align"><a href="member-profile.html">Артемова Анна</a></td>
+                        <td><span class="green-element">73</span></td>
+                        <td>00:14:28.82</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td class="left-align"><a href="member-profile.html">Зинина Дарья</a></td>
+                        <td><span class="green-element">111</span></td>
+                        <td>00:15:33.54
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td class="left-align"><a href="member-profile.html">Покровская Елизавета</a></td>
+                        <td><span class="green-element">152</span></td>
+                        <td>00:16:02.62</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+            <section class="user-form-competition">
+              <div class="content-header">
+                <div class="content-header__text">
+                  <h2 class="form__title form__title--no-margin form__title--left-align form__title--middle">Лидеры по категориям Лайт 1000 метров — Swimcup Коренево 2024</h2>
+                  <div class="registration__description">Расчет по времени от стартового сигнала (gun time)</div>
+                </div>
+              </div>
+              <div class="table-container table-container--two-column">
+                <div class="table-scroll-wrapper table--decoration js-checkbox-listener">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th colspan="4" class="sortable sortable--no-border left-align">
+                          <span class="sortable__name">F30-39</span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td class="left-align"><a href="member-profile.html">Артемова Анна</a></td>
+                        <td><span class="green-element">73</span></td>
+                        <td>00:14:28.82</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td class="left-align"><a href="member-profile.html">Зинина Дарья</a></td>
+                        <td><span class="green-element">111</span></td>
+                        <td>00:15:33.54
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td class="left-align"><a href="member-profile.html">Покровская Елизавета</a></td>
+                        <td><span class="green-element">152</span></td>
+                        <td>00:16:02.62</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="table-scroll-wrapper table--decoration js-checkbox-listener">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th colspan="4" class="sortable sortable--no-border left-align">
+                          <span class="sortable__name">F18-29</span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td class="left-align"><a href="member-profile.html">Артемова Анна</a></td>
+                        <td><span class="green-element">73</span></td>
+                        <td>00:14:28.82</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td class="left-align"><a href="member-profile.html">Зинина Дарья</a></td>
+                        <td><span class="green-element">111</span></td>
+                        <td>00:15:33.54
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td class="left-align"><a href="member-profile.html">Покровская Елизавета</a></td>
+                        <td><span class="green-element">152</span></td>
+                        <td>00:16:02.62</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="table-scroll-wrapper table--decoration js-checkbox-listener">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th colspan="4" class="sortable sortable--no-border left-align">
+                          <span class="sortable__name">M14-17</span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td class="left-align"><a href="member-profile.html">Гладченко Денис</a></td>
+                        <td><span class="green-element">90</span></td>
+                        <td>00:14:14.55</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td class="left-align"><a href="member-profile.html">Токарев Иван</a></td>
+                        <td><span class="green-element">175</span></td>
+                        <td>00:14:40.09</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td class="left-align"><a href="member-profile.html">	Жилин Евгений</a></td>
+                        <td><span class="green-element">107</span></td>
+                        <td>00:14:41.39</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="table-scroll-wrapper table--decoration js-checkbox-listener">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th colspan="4" class="sortable sortable--no-border left-align">
+                          <span class="sortable__name">M40-49</span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td class="left-align"><a href="member-profile.html">Артемова Анна</a></td>
+                        <td><span class="green-element">73</span></td>
+                        <td>00:14:28.82</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td class="left-align"><a href="member-profile.html">Зинина Дарья</a></td>
+                        <td><span class="green-element">111</span></td>
+                        <td>00:15:33.54
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td class="left-align"><a href="member-profile.html">Покровская Елизавета</a></td>
+                        <td><span class="green-element">152</span></td>
+                        <td>00:16:02.62</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="table-scroll-wrapper table--decoration js-checkbox-listener">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th colspan="4" class="sortable sortable--no-border left-align">
+                          <span class="sortable__name">F60+</span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td class="left-align"><a href="member-profile.html">Артемова Анна</a></td>
+                        <td><span class="green-element">73</span></td>
+                        <td>00:14:28.82</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td class="left-align"><a href="member-profile.html">Зинина Дарья</a></td>
+                        <td><span class="green-element">111</span></td>
+                        <td>00:15:33.54
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td class="left-align"><a href="member-profile.html">Покровская Елизавета</a></td>
+                        <td><span class="green-element">152</span></td>
+                        <td>00:16:02.62</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="table-scroll-wrapper table--decoration js-checkbox-listener">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th colspan="4" class="sortable sortable--no-border left-align">
+                          <span class="sortable__name">F18-59</span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td class="left-align"><a href="member-profile.html">Гладченко Денис</a></td>
+                        <td><span class="green-element">90</span></td>
+                        <td>00:14:14.55</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td class="left-align"><a href="member-profile.html">Токарев Иван</a></td>
+                        <td><span class="green-element">175</span></td>
+                        <td>00:14:40.09</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td class="left-align"><a href="member-profile.html">	Жилин Евгений</a></td>
+                        <td><span class="green-element">107</span></td>
+                        <td>00:14:41.39</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="table-scroll-wrapper table--decoration js-checkbox-listener">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th colspan="4" class="sortable sortable--no-border left-align">
+                          <span class="sortable__name">F18-49</span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td class="left-align"><a href="member-profile.html">Гладченко Денис</a></td>
+                        <td><span class="green-element">90</span></td>
+                        <td>00:14:14.55</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td class="left-align"><a href="member-profile.html">Токарев Иван</a></td>
+                        <td><span class="green-element">175</span></td>
+                        <td>00:14:40.09</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td class="left-align"><a href="member-profile.html">	Жилин Евгений</a></td>
+                        <td><span class="green-element">107</span></td>
+                        <td>00:14:41.39</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+          </div>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <div class="container">
+        <div class="footer-wrapper">
+          <div class="footer-logo" itemscope itemtype="http://schema.org/Organization">
+            <a href="index.html" itemprop="url">
+              <img itemprop="logo" src="./img/svg/logo-dark.svg" width="79" height="39" alt="Логотип">
+            </a>
+            <meta itemprop="name" content="Grom">
+          </div>
+          <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
+            <ul class="footer-list">
+              <li><a itemprop="url" href="#"><span itemprop="name">О сервисе</span></a></li>
+              <li><a itemprop="url" href="#"><span itemprop="name">Реквизиты</span></a></li>
+              <li><a itemprop="url" href="#"><span itemprop="name">Пользовательское соглашение</span></a></li>
+              <li><a itemprop="url" href="#"><span itemprop="name">Политика конфиденциальности</span></a></li>
+              <li><a itemprop="url" href="#"><span itemprop="name">Публичная оферта</span></a></li>
+              <li><a itemprop="url" href="#"><span itemprop="name">Програмное обеспечение</span></a></li>
+            </ul>
+          </nav>
+          <p class="copyright">© 2024 grom.place</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/vendor.min.js"></script>
+  <script src="js/main.min.js"></script>
+</body>
+
+</html>

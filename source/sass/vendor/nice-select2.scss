@@ -41,20 +41,15 @@ $arrow_color: $gray !default;
   white-space: nowrap;
   width: auto;
   margin-bottom: 20px;
-  &:hover {
-    // border-color: darken($gray_light, 5%);
-  }
-  &:active, &:focus {
-    // border-color: $primary_light;
-  }
-  // Arrow
+  // margin-bottom: 0;
+
   &::after {
     content: '';
     display: block;
     position: absolute;
     right: 0px;
     top: 50%;
-    transform: translateY(-50%) rotate(0deg); // Начальное положение
+    transform: translateY(-50%) rotate(0deg);
     width: 20px;
     height: 20px;
     background-color: #2E2E2E;
@@ -67,7 +62,7 @@ $arrow_color: $gray !default;
 
   &.open {
     &::after {
-      transform: translateY(-50%) rotate(180deg); // Поворот при открытии
+      transform: translateY(-50%) rotate(180deg);
     }
 
     .nice-select-dropdown {
@@ -158,12 +153,16 @@ $arrow_color: $gray !default;
     padding-left: 8px;
     padding-right: 8px;
     text-align: left;
-    transition: all 0.2s;
-    &:hover, &.focus, &.selected.focus {
+
+    &:hover {
       background-color: $light-grey;
     }
-    &.selected {
+
+    &:not(.disabled).selected {
       font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-color: $green;
     }
     &.disabled {
       background-color: transparent;
@@ -200,7 +199,7 @@ $arrow_color: $gray !default;
     min-height: 36px;
     line-height: 22px;
 
-    span.current {
+    .current {
       border: 1px solid #CCC;
       background: #EEE;
       padding: 0 10px;
@@ -242,4 +241,8 @@ $arrow_color: $gray !default;
     outline: 0!important;
     font-size: $font_size;
   }
+}
+
+.custom-select--transparent-background .nice-select {
+  margin-bottom: 0;
 }

@@ -56,7 +56,7 @@
               <meta itemprop="name" content="Grom">
             </div>
             <nav class="menu hide" itemscope itemtype="http://schema.org/SiteNavigationElement">
-              <ul itemscope itemtype="https://schema.org/BreadcrumbList">
+              <ul itemscope itemtype="https://schema.org/ItemList">
                 <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                   <a itemprop="item" href="index.html">
                     <span itemprop="name">Соревнования</span>
@@ -74,15 +74,22 @@
                 <div>
                   Регистрация/Вход
                 </div>
-                <svg class="login-icon" width="32" height="33" viewBox="0 0 32 33" role="img">
+                <!-- <svg class="login-icon" width="32" height="33" viewBox="0 0 32 33" role="img">
                   <use href="img/sprite.svg#login"></use>
+                </svg> -->
+                <svg class="login-icon" width="32" height="32" viewBox="0 0 32 32" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M25.5999 27.2V24.8C25.5999 23.527 25.0942 22.3061 24.194 21.4059C23.2938 20.5057 22.0729 20 20.7999 20H11.1999C9.92686 20 8.70596 20.5057 7.80579 21.4059C6.90561 22.3061 6.3999 23.527 6.3999 24.8V27.2"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  <path
+                    d="M16.0002 15.2C18.6512 15.2 20.8002 13.051 20.8002 10.4C20.8002 7.74903 18.6512 5.6 16.0002 5.6C13.3492 5.6 11.2002 7.74903 11.2002 10.4C11.2002 13.051 13.3492 15.2 16.0002 15.2Z"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </a>
             </div>
           </div>
         </div>
-      </div>
-      <div>
       </div>
     </header>
     <main>
@@ -107,8 +114,8 @@
             <div class="authorization__container">
               <h2 class="visually-hidden">Форма входа</h2>
               <div class="user-form__wrapper">
-                <form id="loginForm" action="https://echo.htmlacademy.ru/" method="post">
-                  <fieldset class="user-form__fielset">
+                <form autocomplete id="loginForm" action="https://echo.htmlacademy.ru/" method="post">
+                  <fieldset class="user-form__fieldset">
                     <legend class="visually-hidden">Данные для входа</legend>
                     <label>
                       <div>E-mail<span class="necessary"></span></div>
@@ -119,7 +126,7 @@
                       <div>Пароль<span class="necessary"></span></div>
                       <div class="user-form__password">
                         <input type="password" name="user-password" minlength="8" placeholder="Введите пароль">
-                        <button>
+                        <button class="show-password-js">
                           <svg class="visually-hidden" width="20" height="20" viewBox="0 0 20 20" role="img">
                             <use href="img/sprite.svg#show-password"></use>
                           </svg>
@@ -131,23 +138,19 @@
                       <span class="error-message visually-hidden">Неверный пароль</span>
                     </label>
                   </fieldset>
-                  <fieldset class="user-form__fielset">
+                  <fieldset class="user-form__fieldset">
                     <legend>Войти с помощью:</legend>
                     <div class="user-form__social-media">
                       <button type="button">
-                        <svg class="login-icon" width="32" height="32" viewBox="0 0 32 32" role="img">
-                          <use href="img/sprite.svg#yandex"></use>
-                        </svg>
+                        <img src="./img/sprite/yandex.svg" width="32" height="32" alt="Логотип Яндекса">
                       </button>
                       <button type="button">
-                        <svg class="login-icon" width="32" height="32" viewBox="0 0 32 32" role="img">
-                          <use href="img/sprite.svg#vk"></use>
-                        </svg>
+                        <img src="./img/sprite/vk.svg" width="32" height="32" alt="Логотип Вконтакте">
                       </button>
                     </div>
                   </fieldset>
                   <div class="user-form__buttons">
-                    <button type="submit">Войти</button>
+                    <button class="user-form__submit" type="submit" disabled>Войти</button>
                     <a href="access-recovery.html">Забыли пароль?</a>
                   </div>
                 </form>
@@ -157,8 +160,8 @@
           <section class="authorization__registration user-form visually-hidden">
             <h2 class="visually-hidden">Форма регистрации</h2>
             <div class="user-form__wrapper">
-              <form id="loginForm" action="https://echo.htmlacademy.ru/" method="post">
-                <fieldset class="user-form__fielset">
+              <form id="registrationForm" action="https://echo.htmlacademy.ru/" method="post">
+                <fieldset class="user-form__fieldset">
                   <legend class="visually-hidden">Данные для регистрации</legend>
                   <label>
                     <div>Фамилия <span class="necessary">*</span></div>
@@ -183,7 +186,7 @@
                     <div>Новый пароль <span class="necessary">*</span></div>
                     <div class="user-form__password">
                       <input type="password" name="user-password" minlength="8" placeholder="Введите пароль">
-                      <button>
+                      <button class="show-password-js">
                         <svg class="visually-hidden" width="20" height="20" viewBox="0 0 20 20" role="img">
                           <use href="img/sprite.svg#show-password"></use>
                         </svg>
@@ -193,12 +196,12 @@
                       </button>
                     </div>
                     <span class="error-message visually-hidden">Пароль должен содержать ...</span>
-                    </label>
+                  </label>
                   <label>
                     <div>Подтвердите пароль <span class="necessary">*</span></div>
                     <div class="user-form__password">
                       <input type="password" name="user-password-repeat" minlength="8" placeholder="Введите пароль">
-                      <button>
+                      <button class="show-password-js">
                         <svg class="visually-hidden" width="20" height="20" viewBox="0 0 20 20" role="img">
                           <use href="img/sprite.svg#show-password"></use>
                         </svg>
@@ -211,11 +214,12 @@
                   </label>
                 </fieldset>
                 <div class="user-form__buttons">
-                  <button type="submit">Зарегистрироваться</button>
+                  <button class="user-form__submit" type="submit" disabled>Зарегистрироваться</button>
                   <label class="user-form__checkbox">
-                    <input type="checkbox"/>
+                    <input type="checkbox" />
                     <div class="checkbox__checkmark"></div>
-                    <div class="checkbox__body">Нажимая кнопку, я согласен с условиями передачи <a href="">персональных данных</a></div>
+                    <div class="checkbox__body">Нажимая кнопку, я согласен с условиями передачи <a href="">персональных
+                        данных</a></div>
                   </label>
                 </div>
               </form>

@@ -62,6 +62,7 @@
     "node": ">=16.15.1"
   },
   "dependencies": {
+    "air-datepicker": "^3.5.3",
     "imask": "^7.6.1"
   }
 }

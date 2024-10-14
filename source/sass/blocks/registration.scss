@@ -1,0 +1,1111 @@
+.registration__switch-list {
+
+  background-color: $white;
+  background-color: $white;
+  list-style-type: none;
+  padding: 4px;
+
+  text-align: center;
+  white-space: nowrap;
+  border-radius: 30px;
+
+  gap: 8px;
+
+
+  display: flex;
+  flex-direction: column;
+  box-shadow: none;
+  width: 100%;
+  margin: 0;
+
+
+  @include vp-768 {
+    box-shadow: 0px 4px 26px 0px rgba(0, 0, 0, 0.08);
+    margin: 0 auto;
+    flex-direction: row;
+    width: max-content;
+  }
+
+  button.mobile {
+    @include vp-768 {
+      display: none;
+    }
+  }
+
+  button.desktop {
+    display: none;
+
+    @include vp-768 {
+      display: block;
+    }
+  }
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .checkmark {
+    border: 1.5px solid transparent;
+    padding: 10px 22px;
+    border-radius: 25px;
+    background-color: transparent;
+    width: max-content;
+
+    @include vp-max-767 {
+      text-align: left;
+      justify-content: flex-start;
+      padding: 0;
+    }
+  }
+
+  .checkmark::before {
+    content: attr(data-text-mobile);
+    display: inline;
+
+    @each $property,
+    $value in $body {
+      #{$property}: $value;
+    }
+
+    @include vp-768 {
+      content: attr(data-text-desktop);
+    }
+  }
+
+  input:checked+.checkmark {
+    border: 1.5px solid $green;
+    background-color: $green;
+    width: max-content;
+
+    @include vp-max-767 {
+      background-color: transparent !important;
+      border-radius: 0;
+      border: none;
+      padding-bottom: 4px;
+      border-bottom: 1.5px solid $green;
+
+    }
+  }
+
+  input:not(:checked):hover+.checkmark,
+  input:not(:checked):focus-visible+.checkmark,
+  input:not(:checked):hover+.checkmark {
+    @include vp-max-767 {
+      background-color: transparent;
+      box-shadow: none;
+      border-bottom: 1.5px solid $green;
+    }
+
+    @include vp-768 {
+      background-color: transparent;
+      box-shadow: none;
+      border: 1.5px solid $green;
+    }
+  }
+}
+
+.registration__button-list {
+  background-color: $white;
+  padding: 12px 16px;
+  border-radius: 25px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+
+  button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    width: 100%;
+
+    @each $property,
+    $value in $button {
+      #{$property}: $value;
+    }
+  }
+
+  @include vp-768 {
+    display: none;
+  }
+
+  &.active {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    transition: transform 0.4s ease-in-out;
+  }
+}
+
+.registration__button-list--grey {
+  background-color: $light-grey;
+}
+
+.registration__button {
+  width: 100%;
+}
+
+
+.registration__switch-form {
+  display: none;
+  position: absolute;
+  z-index: 2;
+  top: calc(100% - 18px);
+  right: 0;
+  background-color: $white;
+  border-radius: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  list-style-type: none;
+
+  margin: 0;
+  text-align: right;
+  white-space: nowrap;
+  box-shadow: none;
+
+  @include vp-max-767 {
+    gap: 16px;
+    width: 100%;
+    padding: 16px;
+  }
+
+  @include vp-768 {
+    box-shadow: none;
+    position: relative;
+    display: flex;
+    border-radius: 30px;
+    gap: 8px;
+    padding: 0px !important;
+    height: 100%;
+  }
+
+
+
+  &.active {
+    display: flex;
+    flex-direction: column;
+    animation-name: sortOpen;
+    animation-duration: 0.4s;
+    animation-timing-function: ease-in-out;
+
+
+
+    @include vp-768 {
+      display: flex;
+      flex-direction: row;
+      border-radius: 30px;
+      gap: 8px;
+      padding: 4px;
+      height: 100%;
+    }
+  }
+
+}
+
+.registration__switch-form--relative {
+
+  height: auto;
+
+  @include vp-768 {
+    top: 0;
+  }
+}
+
+.registration__button-list.active {
+  .arrow {
+    margin-left: auto;
+    display: block;
+    transform: rotate(180deg) !important;
+  }
+}
+
+.registration__switch-wrapper {
+  position: relative;
+
+  @include vp-768 {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  p {
+    display: none;
+
+    @include vp-768 {
+      display: inline;
+
+      @each $property,
+      $value in $h3-m {
+        #{$property}: $value;
+      }
+    }
+  }
+
+  .active .arrow {
+    transform: rotate(180deg) !important;
+  }
+}
+
+.registration__date {
+  margin-bottom: 16px;
+
+  @include vp-1440 {
+    margin-bottom: 24px;
+  }
+}
+
+.registration__description {
+  color: $grey;
+  @each $property,
+      $value in $small {
+        #{$property}: $value;
+      }
+}
+
+.registration__steps {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  width: max-content;
+  border-bottom: 1.5px solid $medium-grey;
+  margin: 16px auto;
+
+  @include vp-768 {
+    margin: 24px auto;
+  }
+
+  padding: 0;
+
+  &.c-pointer {
+    &::after {
+      content: none;
+    }
+
+    color: $dark;
+  }
+}
+
+.necessary {
+  color: $red;
+}
+
+.registration__step {
+
+  @each $property,
+  $value in $button {
+    #{$property}: $value;
+  }
+
+  padding-bottom: 4px;
+  color: $grey;
+
+  &.active {
+    color: $dark;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: $green;
+    }
+
+  }
+}
+
+.user-form-competition .user-form__legend {
+  @each $property,
+  $value in $h2 {
+    #{$property}: $value;
+  }
+
+  color: $dark;
+  text-align: left;
+  margin-bottom: 12px;
+
+  @include vp-768 {
+    margin-bottom: 16px;
+  }
+
+  &--extra {
+    @each $property,
+    $value in $h3 {
+      #{$property}: $value;
+    }
+  }
+}
+
+.registration .user-form__legend--label-name {
+  @each $property,
+  $value in $button {
+    #{$property}: $value;
+  }
+}
+
+.user-form__description {
+  margin-bottom: 8px;
+  @each $property,
+  $value in $body {
+    #{$property}: $value;
+  }
+  color: $grey;
+}
+
+.registration .user-form-competition .user-form__fieldset--checkbox .user-form__checkboxes,
+.registration .user-form-competition .user-form__fieldset--radio .user-form__radio-buttons {
+  gap: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.registration .user-form__radio-text {
+  label {
+    padding-left: 0;
+  }
+
+input[type="radio"] + .radio__body {
+  border-bottom: 1.5px solid transparent;
+  width: max-content;
+  @each $property,
+  $value in $body {
+    #{$property}: $value;
+  }
+}
+
+input[type="radio"]:hover + .radio__body,
+input[type="radio"]:focus-visible + .radio__body,
+input[type="radio"]:hover + .radio__body {
+  border-bottom: 1.5px solid $green;
+
+}
+
+input[type="radio"]:checked + .radio__body {
+  border-color: $green;
+  @each $property,
+  $value in $button {
+    #{$property}: $value;
+  }
+}
+}
+
+.user-form-competition .user-form__fieldset--checkbox {
+  label {
+    height: 24px;
+  }
+
+  .user-form__checkboxes {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+
+    @include vp-768 {
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    @include vp-1440 {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
+  .user-form__checkbox {
+    display: flex;
+    justify-content: center;
+  }
+
+  .checkbox__checkmark {
+    top: 2px;
+    height: 20px;
+    width: 20px;
+  }
+
+  .checkbox__body {
+    color: $dark;
+
+    @each $property,
+    $value in $body {
+      #{$property}: $value;
+    }
+  }
+}
+
+.user-form-competition .user-form__fieldset--radio {
+  label {
+    height: 24px;
+  }
+
+  .user-form__radio-buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+
+    @include vp-768 {
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    @include vp-1440 {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
+  .user-form__radio {
+    display: flex;
+    justify-content: center;
+  }
+
+  .radio__checkmark {
+    top: 2px;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+  }
+
+  .radio__body {
+    color: $dark;
+
+    @each $property,
+    $value in $body {
+      #{$property}: $value;
+    }
+  }
+}
+
+.user-form__fieldset--checkbox .search-container label {
+  height: auto;
+}
+
+.user-form__fieldset--checkbox .filter-list:last-of-type label{
+margin-bottom: 0;
+margin-top: 16px;
+}
+
+.user-form__fieldset--checkbox {
+  height: max-content;
+}
+
+.user-form__checkboxes {
+  input:not(:checked):hover+.checkbox__checkmark,
+  input:not(:checked):focus-visible+.checkbox__checkmark,
+  input:not(:checked):hover+.checkbox__checkmark {
+    box-shadow: $dark-shadow;
+    border-color: $green;
+  }
+
+  input:checked~.checkbox__checkmark {
+    background-color: transparent;
+    border-color: $green;
+  }
+
+  input:checked:hover+.checkbox__checkmark,
+  input:checked:focus-visible+.checkbox__checkmark,
+  input:checked:hover+.checkbox__checkmark {
+    box-shadow: $dark-shadow;
+    border-color: $green;
+  }
+}
+
+.user-form__fieldset--checkbox .user-form__checkboxes.user-form__checkboxes--flex {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 24px;
+
+  @include vp-768 {
+    flex-direction: row;
+  }
+}
+
+.user-form__checkboxes--one-column {
+  grid-template-columns: 1fr !important;
+}
+
+.user-form__checkboxes--right-align {
+  @include vp-1024 {
+    margin-left: auto;
+  }
+}
+
+.user-form__radio-buttons {
+  input:not(:checked):hover+.radio__checkmark,
+  input:not(:checked):focus-visible+.radio__checkmark,
+  input:not(:checked):hover+.radio__checkmark {
+    box-shadow: $dark-shadow;
+    border-color: $green;
+  }
+
+  input:checked~.radio__checkmark {
+    background-color: transparent;
+    border-color: $green;
+    border-width: 4px;
+  }
+
+  input:checked~.radio__body {
+    @each $property,
+    $value in $button {
+      #{$property}: $value;
+    }
+  }
+
+  input:checked:hover+.radio__checkmark,
+  input:checked:focus-visible+.radio__checkmark,
+  input:checked:hover+.radio__checkmark {
+    box-shadow: $dark-shadow;
+    border-color: $green;
+  }
+}
+
+.registration {
+  .user-form__fieldset {
+    margin: 24px 0;
+
+    @include vp-768 {
+      margin: 40px 0;
+    }
+
+    .filter-list {
+      label:not(:last-of-type) {
+        margin-bottom: 24px;
+      }
+    }
+  }
+
+  .search-input__btn {
+    bottom: 0;
+    top: auto;
+  }
+
+  .user-form__fieldset .user-form__fieldset {
+    margin: 0;
+  }
+}
+
+.user-form__fieldset--white-background {
+  background-color: $white;
+  padding: 24px;
+  border-radius: 10px;
+}
+
+.user-form__fieldset--new-gap {
+  gap: 12px;
+}
+
+.filter-item--order {
+  label:not(:last-of-type) {
+    margin-bottom: 16px;
+  }
+
+  .checkmark {
+    @include vp-max-767 {
+      flex-direction: column;
+      align-items:flex-start;
+    }
+
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: $dark;
+
+    @each $property,
+    $value in $small {
+      #{$property}: $value;
+    }
+
+    border-radius: 10px;
+    border: 1.5px solid transparent;
+  }
+
+  input[type=radio]+.checkmark {
+    border-color: transparent;
+    background-color: $light-grey;
+  }
+
+  .checkmark {
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      border-color: $green !important;
+      background-color: $light-grey !important;
+      box-shadow: none !important;
+    }
+  }
+
+  input[type=radio]:checked+.checkmark {
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      border-color: $green;
+      background-color: $green !important;
+    }
+  }
+
+  .checkmark__name {
+
+    @each $property,
+    $value in $button {
+      #{$property}: $value;
+    }
+
+    margin-right: 12px;
+  }
+
+  .checkmark__phone {
+    @include vp-max-767 {
+      margin-left: 0;
+    }
+
+    margin-left: auto;
+    margin-right: 8px;
+  }
+
+  .checkmark__date {
+    color: $grey;
+    margin-right: auto;
+  }
+}
+
+.user-form-competition {
+  [data-accordion=button] {
+
+    @each $property,
+    $value in $h3-m {
+      #{$property}: $value;
+    }
+
+    @include vp-1440 {
+      @each $property,
+      $value in $h3 {
+        #{$property}: $value;
+      }
+    }
+  }
+}
+
+.file-upload {
+  width: 100%;
+  margin: 0 auto;
+
+
+  @each $property,
+  $value in $body {
+    #{$property}: $value;
+  }
+
+  color: $grey;
+}
+
+.file-upload input[type="file"] {
+  display: none;
+}
+
+.file-upload label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  text-align: center;
+  cursor: pointer;
+  padding: 32px;
+  border: 1.5px dashed $medium-grey;
+  border-radius: 5px;
+}
+
+.file-upload label:hover {
+  border-color: $grey;
+}
+
+.user-form__fieldset {
+  height: auto;
+
+  output {
+
+    @each $property,
+    $value in $button {
+      #{$property}: $value;
+    }
+
+    text-align: center;
+  }
+}
+
+.file-info {
+  display: none;
+  margin: 16px 0;
+  gap: 8px;
+  flex-direction: column;
+}
+
+.file-wrapper {
+  padding: 8px 12px;
+  background: $medium-grey;
+  display: none;
+  width: max-content;
+  border-radius: 30px;
+}
+
+.file-upload {
+  display: flex;
+  flex-direction: column-reverse;
+
+}
+
+.file-info .file-name {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: $dark;
+}
+
+.file-info .remove-file {
+  float: right;
+  color: $grey;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.file-info .remove-file:hover {
+  color: $dark;
+}
+
+.file-info .file-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.user-form-competition .date-picker__calendar {
+  top: -600%;
+}
+
+.user-form__fieldset {
+  position: relative;
+}
+
+.user-form__text {
+  margin: 0;
+
+  @each $property,
+  $value in $body {
+    #{$property}: $value;
+  }
+}
+
+.user-form__title {
+  margin: 0;
+}
+
+.user-form__title--table {
+  margin-bottom: 24px;
+}
+
+.people-list-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 60px;
+  z-index: 5;
+}
+
+.people-list {
+  position: absolute;
+  top: 90%;
+  left: 24px;
+  right: 24px;
+  padding: 12px;
+  border-radius: 10px;
+  z-index: 1;
+  background-color: $white;
+  width: auto !important;
+  max-height: 190px;
+  overflow-y: auto;
+  box-shadow: $dark-shadow;
+
+  label {
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+    border-bottom: 1.5px solid $light-grey;
+  }
+
+  .checkmark {
+    background-color: $white !important;
+    padding-left: 0;
+    padding-right: 0;
+    border-radius: 0;
+  }
+}
+
+.filter-item--search-checkbox {
+  top: 95%;
+}
+
+.people-list label {
+  display: block;
+  padding: 10px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.user-form-competition--success {
+  text-align: center;
+
+  p {
+
+    @each $property,
+    $value in $h3 {
+      #{$property}: $value;
+    }
+    margin-top: 0;
+  }
+
+  a {
+
+    @each $property,
+    $value in $link {
+      #{$property}: $value;
+    }
+    margin-top: 0;
+
+    color: $blue;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      color: $dark;
+    }
+  }
+}
+
+input:disabled~.checkbox__checkmark,
+input:disabled:hover~.checkbox__checkmark,
+input:disabled~.radio__checkmark,
+input:disabled:hover~.radio__checkmark {
+  border-color: $grey !important;
+  cursor: not-allowed;
+}
+
+input:disabled~.checkbox__body,
+input:disabled~.radio__body {
+  color: $grey !important;
+  cursor: not-allowed;
+}
+
+.user-form__checkbox {
+  cursor: auto;
+
+  .checkbox__body {
+    cursor: pointer;
+  }
+
+  .checkbox__checkmark {
+    cursor: pointer;
+  }
+}
+
+.user-form__radio {
+  cursor: auto;
+
+  .radio__body {
+    cursor: pointer;
+  }
+
+  .radio__checkmark {
+    cursor: pointer;
+  }
+}
+
+.filter-item--search-container input[type=radio] + .checkmark,
+.filter-item--search-container input[type=checkbox] + .checkmark {
+  .checkmark__close-btn {
+    margin-left: 8px;
+    margin-right: 3px;
+    display: block;
+    width: 16px;
+    cursor: pointer;
+  }
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent !important;
+  padding: 0;
+  margin: 10px 0 0;
+  border: none !important;
+}
+
+.filter-item--search-container input:hover,
+.filter-item--search-container input:focus-visible,
+.filter-item--search-container input:active {
+  box-shadow: none !important;
+}
+
+.filter-item--search-container input:checked:hover + .checkmark,
+.filter-item--search-container input:checked:focus-visible + .checkmark,
+.filter-item--search-container input:checked:active + .checkmark {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.filter-item--search-container input {
+  cursor: text !important;
+  pointer-events: none !important;
+}
+
+.filter-item--search-container.filter-item--order {
+  input[type=radio]:checked+.checkmark,
+  input[type=radio]:checked+.checkmark:active,
+  input[type=radio]:checked+.checkmark:focus-visible,
+  input[type=radio]:checked+.checkmark:hover,
+  input[type=checkbox]:checked+.checkmark,
+  input[type=checkbox]:checked+.checkmark:active,
+  input[type=checkbox]:checked+.checkmark:focus-visible,
+  input[type=checkbox]:checked+.checkmark:hover {
+    background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none;
+  }
+}
+
+.registration__switch-wrapper p.registration__switch-text {
+  @each $property,
+  $value in $small {
+    #{$property}: $value;
+  }
+  color: $grey;
+}
+
+.user-form__fieldset--no-margin .search-container label {
+margin: 0 !important;
+margin-bottom: 16px;
+}
+
+.custom-select-wrapper {
+  position: relative;
+}
+
+.custom-select-wrapper--grid {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @include vp-1024 {
+    grid-template-columns: 1fr 1fr auto;
+    gap: 20px;
+  }
+
+  .custom-select__input {
+    padding-left: 0;
+    padding-right: 20px;
+  }
+
+  label {
+    height: max-content;
+  }
+
+  .filter-item label {
+    height: auto;
+  }
+
+  .registration__switch-list {
+    height: max-content;
+  }
+}
+
+.custom-select-wrapper--flex-row {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 12px;
+
+  @include vp-1024 {
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 40px;
+    margin-top: 0;
+  }
+}
+
+.custom-select__input-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.custom-select__input {
+  width: 100%;
+  padding: 5px;
+  padding-left: 0;
+  cursor: pointer;
+}
+
+.arrow {
+  margin-left: -20px;
+  pointer-events: none;
+  transition: transform 0.3s ease;
+
+  &--prev {
+    margin-left: 0;
+  }
+}
+
+.custom-options {
+  position: absolute;
+  top: 105%;
+  left: 0;
+  padding: 16px;
+  border-radius: 10px;
+  right: 0;
+  background: $white;
+  box-shadow: $dark-shadow;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+
+}
+
+.custom-options.active {
+  max-height: 200px;
+  opacity: 1;
+  overflow-y: auto;
+  z-index: 2;
+}
+
+.custom-option {
+  padding: 5px 0 5px 28px;
+}
+
+.registration label.user-form__legend--label-name {
+  flex-direction: row;
+  margin-bottom: 0;
+}
+
+.registration__switch-form--grey {
+  background-color: $light-grey;
+
+  .registration__switch-list {
+    background-color: $light-grey;
+  }
+}

@@ -1,0 +1,51 @@
+.counter-block {
+  display: flex;
+  flex-direction: column;
+
+  .competitions-list__sort {
+    margin-left: 0 !important;
+    width: max-content;
+  }
+
+  .competitions-list__sort-button button {
+    color: $dark;
+    padding-left: 0;
+    margin: 0;
+
+    @each $property,
+    $value in $button {
+      #{$property}: $value;
+    }
+  }
+
+  .competitions-list__sort-button--visible {
+    padding: 0;
+  }
+
+  @include vp-768 {
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+
+    .competitions-list__sort {
+      margin-left: 20px !important;
+    }
+  }
+
+  @each $property,
+  $value in $description {
+    #{$property}: $value;
+  }
+
+  .counter-block__text {
+    margin: 8px 0;
+    @include vp-768 {
+      margin: 0;
+    }
+    color: $grey;
+
+    .counter-block__value {
+      color: $dark;
+    }
+  }
+}

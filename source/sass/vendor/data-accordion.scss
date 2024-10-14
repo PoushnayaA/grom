@@ -27,6 +27,12 @@
   overflow: hidden;
 }
 
+[data-accordion="element"].is-active [data-accordion="content"] {
+  svg {
+    transform: rotate(0);
+  }
+}
+
 [data-accordion="button"],
 .filter-container button {
   border: none;
@@ -37,9 +43,6 @@
   background-color: transparent;
   width: 100%;
   padding: 4px 0;
-
-
-
 }
 
 [data-accordion="parent"] [data-accordion="button"] {
@@ -65,10 +68,6 @@
       #{$property}: $value;
     }
   }
-}
-
-.hidden {
-  display: none;
 }
 
 [data-accordion="button"] {
@@ -98,3 +97,19 @@
 }
 
 
+[data-accordion="element"] .button-name {
+ margin: 0;
+
+ button {
+  @each $property,
+  $value in $h3-m {
+    #{$property}: $value;
+  }
+  @include vp-768 {
+    @each $property,
+    $value in $h3 {
+      #{$property}: $value;
+    }
+  }
+ }
+}

@@ -10,6 +10,13 @@ export class Accordions {
   _init() {
     this.fullUpdate();
     document.addEventListener('click', this._documentClickHandler);
+    if (document.querySelectorAll('.people-list')) {
+      document.querySelectorAll('.people-list').forEach(peopleList => {
+        peopleList.querySelectorAll('input').forEach(i => {
+          i.addEventListener('click', this._windowResizeHandler);
+        })
+      })
+    }
     window.addEventListener('resize', this._windowResizeHandler);
   }
 
@@ -35,9 +42,6 @@ export class Accordions {
   }
 
   _windowResizeHandler() {
-    if (this._windowWidth === window.innerWidth) {
-      return;
-    }
     this._windowWidth = window.innerWidth;
     this.updateAccordionsHeight();
   }
@@ -57,6 +61,7 @@ export class Accordions {
       const content = element.querySelector('[data-accordion="content"]');
       content.style.transition = 'none';
       content.style.maxHeight = `${content.scrollHeight + 5}px`;
+      // content.style.maxHeight = '100%'
       setTimeout(() => {
         content.style.transition = null;
       });
@@ -85,6 +90,7 @@ export class Accordions {
       }
       content.style.transition = 'none';
       content.style.maxHeight = `${content.scrollHeight + 5}px`;
+      // content.style.maxHeight = '100%';
       setTimeout(() => {
         content.style.transition = null;
       });
@@ -120,9 +126,11 @@ export class Accordions {
     element.classList.add('is-active');
     if (transition) {
       contentElement.style.maxHeight = `${this._openHeight + 5}px`;
+      // contentElement.style.maxHeight = '100%';
     } else {
       contentElement.style.transition = 'none';
       contentElement.style.maxHeight = `${this._openHeight + 5}px`;
+      // contentElement.style.maxHeight = '100%';
       setTimeout(() => {
         contentElement.style.transition = null;
       });

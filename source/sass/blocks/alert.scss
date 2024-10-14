@@ -1,0 +1,135 @@
+.alert {
+  background-color: $green;
+  padding: 16px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 24px auto;
+  position: relative;
+
+  @include vp-768 {
+    margin: 40px auto;
+  }
+
+  .checkmark {
+    padding: 0;
+    background-color: $green !important;
+    box-shadow: none !important;
+    pointer-events: none;
+    cursor:text;
+  }
+}
+
+.alert--no-margin {
+  margin: 0;
+}
+
+.alert__header {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.alert__title {
+  margin: 0;
+  @each $property,
+  $value in $h3 {
+    #{$property}: $value;
+  }
+}
+
+.alert__content, .alert__content *, .filter-list__text {
+  margin: 0;
+
+    @each $property,
+  $value in $body {
+    #{$property}: $value;
+  }
+
+a {
+  color: $blue;
+  text-decoration: underline;
+    text-underline-offset: 4px;
+
+    &:hover,
+  &:focus-visible,
+  &:active {
+    color: $dark;
+}
+}
+}
+
+.notification .alert {
+  max-width: unset;
+}
+
+.user-form__fieldset .alert {
+  margin: 24px 0;
+
+  @include vp-768 {
+    margin: 24px 0;
+  }
+}
+
+.alert__header {
+  svg {
+    max-width: 24px;
+    width: 100%;
+    fill: $dark;
+  }
+}
+
+.alert__close {
+  svg {
+    stroke: $dark;
+  }
+
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  right: 16px;
+  top: 16px;
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    opacity: 50%;
+    cursor: pointer;
+}
+}
+
+.alert--error {
+  background-color: $red;
+  color: $white;
+
+  .alert__header {
+    svg {
+      fill: $white;
+    }
+  }
+
+  .alert__close {
+    svg {
+      stroke: $white;
+    }
+  }
+}
+
+.alert--information {
+  background-color: $blue;
+  color: $white;
+
+  .alert__header {
+    svg {
+      fill: $white;
+    }
+  }
+
+  .alert__close {
+    svg {
+      stroke: $white;
+    }
+  }
+}

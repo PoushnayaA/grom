@@ -56,7 +56,7 @@
               <meta itemprop="name" content="Grom">
             </div>
             <nav class="menu hide" itemscope itemtype="http://schema.org/SiteNavigationElement">
-              <ul itemscope itemtype="https://schema.org/BreadcrumbList">
+              <ul itemscope itemtype="https://schema.org/ItemList">
                 <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                   <a itemprop="item" href="index.html">
                     <span itemprop="name">Соревнования</span>
@@ -74,15 +74,17 @@
                 <div>
                   Регистрация/Вход
                 </div>
-                <svg class="login-icon" width="32" height="33" viewBox="0 0 32 33" role="img">
+                <!-- <svg class="login-icon" width="32" height="33" viewBox="0 0 32 33" role="img">
                   <use href="img/sprite.svg#login"></use>
-                </svg>
+                </svg> -->
+                <svg class="login-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M25.5999 27.2V24.8C25.5999 23.527 25.0942 22.3061 24.194 21.4059C23.2938 20.5057 22.0729 20 20.7999 20H11.1999C9.92686 20 8.70596 20.5057 7.80579 21.4059C6.90561 22.3061 6.3999 23.527 6.3999 24.8V27.2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M16.0002 15.2C18.6512 15.2 20.8002 13.051 20.8002 10.4C20.8002 7.74903 18.6512 5.6 16.0002 5.6C13.3492 5.6 11.2002 7.74903 11.2002 10.4C11.2002 13.051 13.3492 15.2 16.0002 15.2Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
               </a>
             </div>
           </div>
         </div>
-      </div>
-      <div>
       </div>
     </header>
     <main>
@@ -99,8 +101,8 @@
             <div class="authorization__container">
               <h2 class="visually-hidden">Форма восставновления пароля</h2>
               <div class="user-form__wrapper">
-                <form id="accessRecoveryForm" action="https://echo.htmlacademy.ru/" method="post">
-                  <fieldset class="user-form__fielset">
+                <form id="accessRecoveryForm" action="access-recovery.html" method="post">
+                  <fieldset class="user-form__fieldset">
                     <legend class="visually-hidden">Данные для входа</legend>
                     <label>
                       <div>E-mail</div>
@@ -110,7 +112,7 @@
                   </fieldset>
 
                   <div class="user-form__buttons">
-                    <button type="submit">Получить инструкции</button>
+                    <button class="user-form__submit" type="submit" disabled>Получить инструкции</button>
                     <a href="authorization.html">Вход</a>
                   </div>
                 </form>

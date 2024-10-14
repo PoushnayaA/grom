@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="">
+  <title>Grom</title>
+
+  <link rel="icon" href="favicon.ico">
+  <link rel="icon" href="img/favicons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="img/favicons/apple.png">
+  <link rel="manifest" href="manifest.webmanifest">
+
+  <link rel="preload" href="fonts/montserrat.woff2" type="font/woff2" as="font" crossorigin="anonymous">
+  <link rel="preload" href="fonts/montserrat-medium.woff2" type="font/woff2" as="font" crossorigin="anonymous">
+  <link rel="preload" href="fonts/montserrat-bold.woff2" type="font/woff2" as="font" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="top-bar">
+        <div class="container" itemscope itemtype="http://schema.org/Organization">
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M11.3335 2.33345H4.66683C2.66683 2.33345 1.3335 3.33345 1.3335 5.66678V10.3334C1.3335 12.6668 2.66683 13.6668 4.66683 13.6668H11.3335C13.3335 13.6668 14.6668 12.6668 14.6668 10.3334V5.66678C14.6668 3.33345 13.3335 2.33345 11.3335 2.33345ZM11.6468 6.39345L9.56016 8.06011C9.12016 8.41345 8.56016 8.58678 8.00016 8.58678C7.44016 8.58678 6.8735 8.41345 6.44016 8.06011L4.3535 6.39345C4.14016 6.22011 4.10683 5.90011 4.2735 5.68678C4.44683 5.47345 4.76016 5.43345 4.9735 5.60678L7.06016 7.27345C7.56683 7.68011 8.42683 7.68011 8.9335 7.27345L11.0202 5.60678C11.2335 5.43345 11.5535 5.46678 11.7202 5.68678C11.8935 5.90011 11.8602 6.22011 11.6468 6.39345Z"
+                fill="#D6FD52" />
+            </svg>
+            <a href="mailto:test@mail.ru" itemprop="email">test@mail.ru</a>
+          </div>
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M14.6468 12.22C14.6468 12.46 14.5935 12.7067 14.4802 12.9467C14.3668 13.1867 14.2202 13.4134 14.0268 13.6267C13.7002 13.9867 13.3402 14.2467 12.9335 14.4134C12.5335 14.58 12.1002 14.6667 11.6335 14.6667C10.9535 14.6667 10.2268 14.5067 9.46016 14.18C8.6935 13.8534 7.92683 13.4134 7.16683 12.86C6.40016 12.3 5.6735 11.68 4.98016 10.9934C4.2935 10.3 3.6735 9.57335 3.12016 8.81335C2.5735 8.05335 2.1335 7.29335 1.8135 6.54002C1.4935 5.78002 1.3335 5.05335 1.3335 4.36002C1.3335 3.90668 1.4135 3.47335 1.5735 3.07335C1.7335 2.66668 1.98683 2.29335 2.34016 1.96002C2.76683 1.54002 3.2335 1.33335 3.72683 1.33335C3.9135 1.33335 4.10016 1.37335 4.26683 1.45335C4.44016 1.53335 4.5935 1.65335 4.7135 1.82668L6.26016 4.00668C6.38016 4.17335 6.46683 4.32668 6.52683 4.47335C6.58683 4.61335 6.62016 4.75335 6.62016 4.88002C6.62016 5.04002 6.5735 5.20002 6.48016 5.35335C6.3935 5.50668 6.26683 5.66668 6.10683 5.82668L5.60016 6.35335C5.52683 6.42668 5.4935 6.51335 5.4935 6.62002C5.4935 6.67335 5.50016 6.72002 5.5135 6.77335C5.5335 6.82668 5.5535 6.86668 5.56683 6.90668C5.68683 7.12668 5.8935 7.41335 6.18683 7.76002C6.48683 8.10668 6.80683 8.46002 7.1535 8.81335C7.5135 9.16668 7.86016 9.49335 8.2135 9.79335C8.56016 10.0867 8.84683 10.2867 9.0735 10.4067C9.10683 10.42 9.14683 10.44 9.1935 10.46C9.24683 10.48 9.30016 10.4867 9.36016 10.4867C9.4735 10.4867 9.56016 10.4467 9.6335 10.3734L10.1402 9.87335C10.3068 9.70668 10.4668 9.58002 10.6202 9.50002C10.7735 9.40668 10.9268 9.36002 11.0935 9.36002C11.2202 9.36002 11.3535 9.38668 11.5002 9.44668C11.6468 9.50668 11.8002 9.59335 11.9668 9.70668L14.1735 11.2734C14.3468 11.3934 14.4668 11.5333 14.5402 11.7C14.6068 11.8667 14.6468 12.0333 14.6468 12.22Z"
+                fill="#D6FD52" />
+            </svg>
+            <a href="tel:+74951289835" itemprop="telephone">+7 (495) 128-98-35</a>
+          </div>
+        </div>
+      </div>
+      <div class="navbar">
+        <div class="container">
+          <div class="navbar-wrapper">
+            <div class="burger">
+              <div class="burger-line"></div>
+            </div>
+            <div class="logo" itemscope itemtype="http://schema.org/Organization">
+              <a href="index.html" itemprop="url">
+                <img itemprop="logo" src="./img/svg/logo.svg" width="62" height="30" alt="Логотип">
+              </a>
+              <meta itemprop="name" content="Grom">
+            </div>
+            <nav class="menu hide" itemscope itemtype="http://schema.org/SiteNavigationElement">
+              <ul itemscope itemtype="https://schema.org/ItemList">
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                  <a itemprop="item" href="index.html">
+                    <span itemprop="name">Соревнования</span>
+                  </a>
+                </li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                  <a itemprop="item" href="club.html">
+                    <span itemprop="name">Клубы</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+            <div class="login">
+              <a href="authorization.html">
+                <div>
+                  Регистрация/Вход
+                </div>
+                <svg class="login-icon" width="32" height="33" viewBox="0 0 32 33" role="img">
+                  <use href="img/sprite.svg#login"></use>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="notification">
+        <div class="container">
+          <div class="notification__item alert">
+            <div class="alert__header">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                fill="none">
+                <path
+                  d="M12.0005 1.99902C6.48649 1.99902 2.00049 6.48502 2.00049 11.999C2.00049 17.513 6.48649 21.999 12.0005 21.999C17.5145 21.999 22.0005 17.513 22.0005 11.999C22.0005 6.48502 17.5145 1.99902 12.0005 1.99902ZM13.0005 16.999H11.0005V10.999H13.0005V16.999ZM13.0005 8.99902H11.0005V6.99902H13.0005V8.99902Z"
+                  />
+              </svg>
+              <div class="alert__content">
+                <p>
+                  Изменения информации профиля сохранены
+                </p>
+              </div>
+            </div>
+            <button class="alert__close js-alert-close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M1 1L17 17M17 1L1 17" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="notification__item alert alert--error">
+            <div class="alert__header">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                fill="none">
+                <path
+                  d="M12.0005 1.99902C6.48649 1.99902 2.00049 6.48502 2.00049 11.999C2.00049 17.513 6.48649 21.999 12.0005 21.999C17.5145 21.999 22.0005 17.513 22.0005 11.999C22.0005 6.48502 17.5145 1.99902 12.0005 1.99902ZM13.0005 16.999H11.0005V10.999H13.0005V16.999ZM13.0005 8.99902H11.0005V6.99902H13.0005V8.99902Z"
+                   />
+              </svg>
+              <div class="alert__content">
+                <p>
+                  Сообщение об ошибке
+                </p>
+              </div>
+            </div>
+            <button class="alert__close js-alert-close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M1 1L17 17M17 1L1 17" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="notification__item alert alert--information">
+            <div class="alert__header">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                fill="none">
+                <path
+                  d="M12.0005 1.99902C6.48649 1.99902 2.00049 6.48502 2.00049 11.999C2.00049 17.513 6.48649 21.999 12.0005 21.999C17.5145 21.999 22.0005 17.513 22.0005 11.999C22.0005 6.48502 17.5145 1.99902 12.0005 1.99902ZM13.0005 16.999H11.0005V10.999H13.0005V16.999ZM13.0005 8.99902H11.0005V6.99902H13.0005V8.99902Z"
+                   />
+              </svg>
+              <div class="alert__content">
+                <p>
+                  Информация
+                </p>
+              </div>
+            </div>
+            <button class="alert__close js-alert-close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M1 1L17 17M17 1L1 17" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+      <section class="authorization">
+        <h1 class="visually-hidden">Личный кабинет</h1>
+        <div class="container">
+          <section class="switch">
+            <h2 class="visually-hidden">Разделы личного кабинета</h2>
+            <div class="switch__button-container switch__open-list-js">
+              <button class="switch__button-mobile">
+              </button>
+              <svg class="arrow" width="10" height="5" viewBox="0 0 10 5" role="img">
+                <use href="img/sprite.svg#arrow"></use>
+              </svg>
+            </div>
+            <ul class="switch__list">
+              <li class="switch__item">
+                <h3 class="visually-hidden">Профиль</h3>
+                <button class="active switch__button" type="button" data-button="profile">Профиль</button>
+              </li>
+              <li class="switch__item ">
+                <h3 class="visually-hidden">Профиль тренера</h3>
+                <button class="switch__button" type="button" data-button="trainer">Профиль тренера</button>
+              </li>
+              <li class="switch__item visually-hidden">
+                <h3 class="visually-hidden">Ресурсы организатора</h3>
+                <button class="switch__button" type="button" data-button="organizer">Ресурсы организатора</button>
+              </li>
+            </ul>
+          </section>
+          <section class="switch-block profile">
+            <h2 class="visually-hidden">Профиль</h2>
+            <div class="profile__section profile__data-wrapper">
+              <div class="profile__data">
+                <div class="profile__text">
+                  <h3 class="profile__name">Громов Михаил Николаевич</h3>
+                  <ul class="profile__list">
+                    <li class="profile__item">
+                      <svg width="16" height="16" viewBox="0 0 16 16" role="img">
+                        <use href="img/sprite.svg#birthday"></use>
+                      </svg>
+                      <div class="profile__item-text">28.10.1979</div>
+                    </li>
+                    <li class="profile__item">
+                      <svg width="16" height="16" viewBox="0 0 16 16" role="img">
+                        <use href="img/sprite.svg#map"></use>
+                      </svg>
+                      <div class="profile__item-text">Москва</div>
+                    </li>
+                    <li class="profile__item">
+                      <svg width="16" height="16" viewBox="0 0 16 16" role="img">
+                        <use href="img/sprite.svg#club"></use>
+                      </svg>
+                      <div class="profile__item-text"><a href="#">DWC</a></div>
+                    </li>
+                    <li class="profile__item">
+                      <svg width="16" height="16" viewBox="0 0 16 16" role="img">
+                        <use href="img/sprite.svg#phone"></use>
+                      </svg>
+                      <div class="profile__item-text">+ 7 999 333-22-22</div>
+                    </li>
+                    <li class="profile__item">
+                      <svg width="16" height="16" viewBox="0 0 16 16" role="img">
+                        <use href="img/sprite.svg#mail"></use>
+                      </svg>
+                      <div class="profile__item-text">grom@3sport.org</div>
+                    </li>
+                    <li class="profile__item">
+                      <svg width="16" height="16" viewBox="0 0 16 16" role="img">
+                        <use href="img/sprite.svg#phone"></use>
+                      </svg>
+                      <div class="profile__item-text">
+                        <span>Дополнительный телефон:</span>
+                        <span>+ 7 999 444-11-11, супруга Полина Разбицкая</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="profile__img" itemscope itemtype="http://schema.org/ImageObject">
+                  <picture>
+                    <source type="image/webp" media="(min-width: 320px)" width="292" height="292"
+                      srcset="./img/content/photo-profile.webp">
+                    <img itemprop="contentUrl" src="./img/content/photo-profile.jpg" width="292" height="292"
+                      alt="Фото профиля">
+                  </picture>
+                  <meta itemprop="width" content="292">
+                  <meta itemprop="height" content="292">
+                  <meta itemprop="name" content="Фото профиля">
+                </div>
+              </div>
+              <a class="profile__link" href="edit-account.html">Редактировать профиль</a>
+              <div class="profile__menu">
+                <ul class="profile__menu-list">
+                  <li class="profile__menu-item">
+                    <a class="profile__menu-link" href="applications.html">
+                      <svg width="32" height="32" viewBox="0 0 32 32" role="img">
+                        <use href="img/sprite.svg#list"></use>
+                      </svg>
+                      <h4 class="profile__menu-title">Мои заявки</h4>
+                      <span class="profile__menu-counter active">2</span>
+                    </a>
+                  </li>
+                  <li class="profile__menu-item">
+                    <a class="profile__menu-link" href="certificates.html">
+                      <svg width="32" height="32" viewBox="0 0 32 32" role="img">
+                        <use href="img/sprite.svg#paper"></use>
+                      </svg>
+                      <h4 class="profile__menu-title">Мои справки</h4>
+                      <span class="profile__menu-counter"></span>
+                    </a>
+                  </li>
+                  <li class="profile__menu-item">
+                    <a class="profile__menu-link" href="#">
+                      <svg width="32" height="32" viewBox="0 0 32 32" role="img">
+                        <use href="img/sprite.svg#like-menu"></use>
+                      </svg>
+                      <h4 class="profile__menu-title">Мои подписки</h4>
+                      <span class="profile__menu-counter"></span>
+                    </a>
+                  </li>
+                  <li class="profile__menu-item">
+                    <a class="profile__menu-link" href="#">
+                      <svg width="32" height="32" viewBox="0 0 32 32" role="img">
+                        <use href="img/sprite.svg#tickets"></use>
+                      </svg>
+                      <h4 class="profile__menu-title">Мои абонементы</h4>
+                      <span class="profile__menu-counter"></span>
+                    </a>
+                  </li>
+                  <li class="profile__menu-item">
+                    <a class="profile__menu-link" href="#">
+                      <svg width="32" height="32" viewBox="0 0 32 32" role="img">
+                        <use href="img/sprite.svg#star"></use>
+                      </svg>
+                      <h4 class="profile__menu-title">Мой клуб</h4>
+                      <span class="profile__menu-counter"></span>
+                    </a>
+                  </li>
+                  <li class="profile__menu-item">
+                    <a class="profile__menu-link" href="friends.html">
+                      <svg width="32" height="32" viewBox="0 0 32 32" role="img">
+                        <use href="img/sprite.svg#club"></use>
+                      </svg>
+                      <h4 class="profile__menu-title">Мои друзья</h4>
+                      <span class="profile__menu-counter active">56</span>
+                    </a>
+                  </li>
+                  <li class="profile__menu-item">
+                    <a class="profile__menu-link" href="#">
+                      <svg width="32" height="32" viewBox="0 0 32 32" role="img">
+                        <use href="img/sprite.svg#present"></use>
+                      </svg>
+                      <h4 class="profile__menu-title">Мои подарки</h4>
+                      <span class="profile__menu-counter active">1</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="profile__section profile__children">
+              <h3 class="profile__title">Анкеты детей</h3>
+              <div data-accordion="parent" class="profile__accordion-container">
+                <p class="profile__text visually-hidden">У вас нет заполненых анкет</p>
+                <section data-accordion="element" class="profile__accordion">
+                  <h4 class="profile__accordion-button-wrapper">
+                    <button data-accordion="button" class="profile__accordion-button">
+                      Громов Никита Михайлович
+                    </button>
+                  </h4>
+                  <div class="profile__section profile__data-wrapper" data-accordion="content">
+                    <div class="profile__data">
+                      <div class="profile__text">
+                        <ul class="profile__list">
+                          <li class="profile__item">
+                            <svg width="16" height="16" viewBox="0 0 16 16" role="img">
+                              <use href="img/sprite.svg#birthday"></use>
+                            </svg>
+                            <div class="profile__item-text">28.10.1979</div>
+                          </li>
+                          <li class="profile__item">
+                            <svg width="16" height="16" viewBox="0 0 16 16" role="img">
+                              <use href="img/sprite.svg#map"></use>
+                            </svg>
+                            <div class="profile__item-text">Москва</div>
+                          </li>
+                          <li class="profile__item">
+                            <svg width="16" height="16" viewBox="0 0 16 16" role="img">
+                              <use href="img/sprite.svg#club"></use>
+                            </svg>
+                            <div class="profile__item-text"><a href="#">DWC</a></div>
+                          </li>
+                          <li class="profile__item">
+                            <svg width="16" height="16" viewBox="0 0 16 16" role="img">
+                              <use href="img/sprite.svg#phone"></use>
+                            </svg>
+                            <div class="profile__item-text">+ 7 999 333-22-22</div>
+                          </li>
+                          <li class="profile__item">
+                            <svg width="16" height="16" viewBox="0 0 16 16" role="img">
+                              <use href="img/sprite.svg#mail"></use>
+                            </svg>
+                            <div class="profile__item-text">grom@3sport.org</div>
+                          </li>
+                          <li class="profile__item">
+                            <svg width="16" height="16" viewBox="0 0 16 16" role="img">
+                              <use href="img/sprite.svg#phone"></use>
+                            </svg>
+                            <div class="profile__item-text">
+                              <span>Дополнительный телефон:</span>
+                              <span>+ 7 999 444-11-11, отец Громов Михаил</span>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <a class="profile__link" href="edit-child.html">Редактировать профиль</a>
+                    <div class="profile__menu">
+                      <ul class="profile__menu-list">
+                        <li class="profile__menu-item">
+                          <a class="profile__menu-link" href="#">
+                            <svg width="32" height="32" viewBox="0 0 32 32" role="img">
+                              <use href="img/sprite.svg#list"></use>
+                            </svg>
+                            <h5 class="profile__menu-title">Заявки</h5>
+                            <span class="profile__menu-counter"></span>
+                          </a>
+                        </li>
+                        <li class="profile__menu-item">
+                          <a class="profile__menu-link" href="#">
+                            <svg width="32" height="32" viewBox="0 0 32 32" role="img">
+                              <use href="img/sprite.svg#paper"></use>
+                            </svg>
+                            <h5 class="profile__menu-title">Справки</h5>
+                            <span class="profile__menu-counter"></span>
+                          </a>
+                        </li>
+                        <li class="profile__menu-item profile__menu-item--button">
+                          <button type="button" class="profile__delete-button">
+                            <svg width="24" height="24" viewBox="0 0 24 24" role="img">
+                              <use href="img/sprite.svg#cross"></use>
+                            </svg>
+                            Удалить анкету
+                          </button>
+                        </li>
+                      </ul>
+
+                    </div>
+                  </div>
+                </section>
+                <section data-accordion="element" class="profile__accordion">
+                  <h4 class="profile__accordion-button-wrapper">
+                    <button data-accordion="button" class="profile__accordion-button">
+                      Громова Маргарита Михайловна
+                    </button>
+                  </h4>
+                  <div class="profile__section profile__data-wrapper" data-accordion="content">
+                    <div class="profile__data">
+                      <div class="profile__text">
+                        <ul class="profile__list">
+                          <li class="profile__item">
+                            <svg width="16" height="16" viewBox="0 0 16 16" role="img">
+                              <use href="img/sprite.svg#birthday"></use>
+                            </svg>
+                            <div class="profile__item-text">28.10.1979</div>
+                          </li>
+                          <li class="profile__item">
+                            <svg width="16" height="16" viewBox="0 0 16 16" role="img">
+                              <use href="img/sprite.svg#map"></use>
+                            </svg>
+                            <div class="profile__item-text">Москва</div>
+                          </li>
+                          <li class="profile__item">
+                            <svg width="16" height="16" viewBox="0 0 16 16" role="img">
+                              <use href="img/sprite.svg#club"></use>
+                            </svg>
+                            <div class="profile__item-text"><a href="#">DWC</a></div>
+                          </li>
+                          <li class="profile__item">
+                            <svg width="16" height="16" viewBox="0 0 16 16" role="img">
+                              <use href="img/sprite.svg#phone"></use>
+                            </svg>
+                            <div class="profile__item-text">+ 7 999 333-22-22</div>
+                          </li>
+                          <li class="profile__item">
+                            <svg width="16" height="16" viewBox="0 0 16 16" role="img">
+                              <use href="img/sprite.svg#mail"></use>
+                            </svg>
+                            <div class="profile__item-text">grom@3sport.org</div>
+                          </li>
+                          <li class="profile__item">
+                            <svg width="16" height="16" viewBox="0 0 16 16" role="img">
+                              <use href="img/sprite.svg#phone"></use>
+                            </svg>
+                            <div class="profile__item-text">
+                              <span>Дополнительный телефон:</span>
+                              <span>+ 7 999 444-11-11, отец Громов Михаил</span>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <a class="profile__link" href="edit-child.html">Редактировать профиль</a>
+                    <div class="profile__menu">
+                      <ul class="profile__menu-list">
+                        <li class="profile__menu-item">
+                          <a class="profile__menu-link" href="#">
+                            <svg width="32" height="32" viewBox="0 0 32 32" role="img">
+                              <use href="img/sprite.svg#list"></use>
+                            </svg>
+                            <h5 class="profile__menu-title">Заявки</h5>
+                            <span class="profile__menu-counter"></span>
+                          </a>
+                        </li>
+                        <li class="profile__menu-item">
+                          <a class="profile__menu-link" href="#">
+                            <svg width="32" height="32" viewBox="0 0 32 32" role="img">
+                              <use href="img/sprite.svg#paper"></use>
+                            </svg>
+                            <h5 class="profile__menu-title">Справки</h5>
+                            <span class="profile__menu-counter"></span>
+                          </a>
+                        </li>
+                        <li class="profile__menu-item profile__menu-item--button">
+                          <button type="button" class="profile__delete-button">
+                            <svg width="24" height="24" viewBox="0 0 24 24" role="img">
+                              <use href="img/sprite.svg#cross"></use>
+                            </svg>
+                            Удалить анкету
+                          </button>
+                        </li>
+                      </ul>
+
+                    </div>
+                  </div>
+                </section>
+                <div class="user-form__buttons user-form__buttons--left">
+                  <a href="edit-child.html" class="user-form__submit">Добавить анкету ребенка</a>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="switch-block visually-hidden">
+            <h2 class="visually-hidden">Профиль тренера</h2>
+            В разработке
+          </section>
+          <section class="switch-block visually-hidden">
+            <h2 class="visually-hidden">Ресурсы организатора</h2>
+            В разработке
+          </section>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="container">
+        <div class="footer-wrapper">
+          <div class="footer-logo" itemscope itemtype="http://schema.org/Organization">
+            <a href="index.html" itemprop="url">
+              <img itemprop="logo" src="./img/svg/logo-dark.svg" width="79" height="39" alt="Логотип">
+            </a>
+            <meta itemprop="name" content="Grom">
+          </div>
+          <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
+            <ul class="footer-list">
+              <li><a itemprop="url" href="#"><span itemprop="name">О сервисе</span></a></li>
+              <li><a itemprop="url" href="#"><span itemprop="name">Реквизиты</span></a></li>
+              <li><a itemprop="url" href="#"><span itemprop="name">Пользовательское соглашение</span></a></li>
+              <li><a itemprop="url" href="#"><span itemprop="name">Политика конфиденциальности</span></a></li>
+              <li><a itemprop="url" href="#"><span itemprop="name">Публичная оферта</span></a></li>
+              <li><a itemprop="url" href="#"><span itemprop="name">Програмное обеспечение</span></a></li>
+            </ul>
+          </nav>
+          <p class="copyright">© 2024 grom.place</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/vendor.min.js"></script>
+  <script src="js/main.min.js"></script>
+</body>
+
+</html>
